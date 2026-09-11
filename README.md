@@ -66,7 +66,7 @@ Use the same skill for both situations: you already have a prototype, or you nee
 Category: Patient or Provider
 Project: <project name>
 Prototype title: <prototype title>
-Owner: <person or team>
+Owner: <your name or team>
 ```
 
 Owner may be a Designer, a Product Manager, or a Product or Design team. A job title is not required. Status defaults to **Draft**.
@@ -83,7 +83,7 @@ Already have a prototype? Open the existing project and UX-Projects in Cursor, s
 Category: <Patient or Provider>
 Project: <project name>
 Prototype title: <prototype title>
-Owner: <person or team>
+Owner: <your name or team>
 ```
 
 - Cursor attempts to find the existing prototype automatically.
@@ -102,7 +102,7 @@ If no existing prototype is available, use the same `@add-prototype` skill. Afte
 Category: Provider
 Project: Clinical Ops Messaging
 Prototype title: Nurse Workflow
-Owner: Eddie De La Torre
+Owner: <your name or team>
 ```
 
 ### Add a Prototype (Fallback)
