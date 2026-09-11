@@ -254,6 +254,7 @@ a:hover {
   position: relative;
   max-height: 420px;
   overflow: hidden;
+  background: var(--gradient-hero);
 }
 
 .hero-image-wrap img {

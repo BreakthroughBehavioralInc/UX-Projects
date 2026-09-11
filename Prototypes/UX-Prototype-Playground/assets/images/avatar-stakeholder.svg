@@ -5,5 +5,7 @@
   <circle cx="52" cy="42" r="4" fill="#7c2d12"/>
   <circle cx="68" cy="42" r="4" fill="#7c2d12"/>
   <path d="M48 56 Q60 62 72 56" fill="none" stroke="#7c2d12" stroke-width="2"/>
-  <text x="60" y="115" text-anchor="middle" font-size="20">></text>
+  <path d="M38 104 Q48 96 60 104 Q72 96 82 104" fill="none" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="38" cy="104" r="4" fill="#c2410c"/>
+  <circle cx="82" cy="104" r="4" fill="#c2410c"/>
 </svg>

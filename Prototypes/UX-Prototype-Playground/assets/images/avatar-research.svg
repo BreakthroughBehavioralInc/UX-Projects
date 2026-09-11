@@ -5,5 +5,7 @@
   <circle cx="52" cy="42" r="4" fill="#312e81"/>
   <circle cx="68" cy="42" r="4" fill="#312e81"/>
   <rect x="48" y="55" width="24" height="3" rx="1.5" fill="#312e81" transform="rotate(-5 60 56)"/>
-  <text x="60" y="115" text-anchor="middle" font-size="20">=,</text>
+  <circle cx="60" cy="108" r="10" fill="#4338ca"/>
+  <line x1="60" y1="103" x2="60" y2="98" stroke="#c7d2fe" stroke-width="2"/>
+  <circle cx="60" cy="96" r="3" fill="#c7d2fe"/>
 </svg>
