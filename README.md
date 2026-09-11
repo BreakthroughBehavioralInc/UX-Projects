@@ -24,6 +24,31 @@ The Sandbox supports:
 
 ---
 
+## Access Requirements
+
+UX Design Sandbox is hosted through a **Private** GitHub Pages site. Viewers must sign in to GitHub and have authorized access.
+
+Viewing the Sandbox and contributing prototypes are different permission levels. Being able to open the live site does **not** automatically allow someone to add or publish prototypes.
+
+Designers who need to add, edit, or publish prototypes must have **Write** access to the **UX-Projects** repository. Write access lets designers pull the repository, add prototype files, commit approved changes, and push updates.
+
+Designers do **not** need Maintain or Admin access for the standard Add Prototype workflow.
+
+If a designer can view the Sandbox but cannot push changes, the repository owner should verify that the designer has Write access.
+
+When repository access is granted, designers should use their exact GitHub username. If a designer cannot be found when selecting **Add people**, confirm the designer’s exact GitHub username and organization access before trying again.
+
+### Before using `@add-prototype`
+
+- [ ] You can sign in to the organization’s GitHub environment
+- [ ] You can open the UX-Projects repository
+- [ ] You have Write access to UX-Projects
+- [ ] You have cloned or pulled the latest repository
+- [ ] You opened UX-Projects in Cursor
+- [ ] You started a new Cursor chat so `@add-prototype` is available
+
+---
+
 ## Add a Prototype
 
 1. Open **UX-Projects** in Cursor.
@@ -150,6 +175,16 @@ Rules:
 ### I cannot open the live Sandbox
 
 The site is **Private**. Sign in to GitHub with an account that has access to this repository.
+
+### I can view the Sandbox but cannot add a prototype
+
+1. Viewing the Private Pages site and contributing to the repository are separate permissions.
+2. Confirm your repository role is **Write**.
+3. Confirm you are signed into the correct GitHub account.
+4. Confirm the local repository is connected to the correct GitHub account.
+5. Pull the latest `main` branch.
+6. Open a new Cursor chat and invoke `@add-prototype`.
+7. Contact the repository owner.
 
 ### My prototype card does not appear
 
