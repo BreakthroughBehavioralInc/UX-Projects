@@ -8,7 +8,11 @@ disable-model-invocation: true
 
 Adds an existing or new Patient or Provider prototype to **Prototype Hub**. Handles technical setup, validation, preview, and publish-after-approval.
 
-Speak to contributors in plain language. Do not ask them to run scripts, name folders, or edit metadata. Do not begin with a technical questionnaire.
+Speak to contributors in plain language. Do not ask them to run scripts, name folders, edit metadata, or run Git commands. Do not begin with a technical questionnaire.
+
+Handle all technical repository checks behind the scenes: branch state, `git status`, pull, validation, catalog rebuild, commit, push, and deployment confirmation. Explain outcomes in plain language.
+
+When something fails or looks unexpected, diagnose the issue, explain what happened, and recommend the next safe step. Never tell contributors to contact the repository owner, administrator, or any named person.
 
 Do **not** hard-code catalog totals. Prototype counts change as contributors publish work.
 
@@ -55,14 +59,16 @@ Optional details, only if the contributor offers them or they are needed to reco
 
 Do not ask contributors to create or edit `prototype.json`. Do not expose generated technical fields unless the contributor requests them or validation failed.
 
-## Preflight (stop on failure)
+## Preflight (agent-owned, stop on failure)
+
+Run these checks behind the scenes. Do not ask the contributor to run them.
 
 1. Confirm the workspace is the **UX-Projects** repository.
 2. Confirm the current branch is `main`.
 3. Run `git status`.
-4. **Stop** if unexpected local changes exist. Explain what changed and wait for direction.
+4. **Stop** if unexpected local changes exist. Explain what changed in plain language and wait for direction.
 5. Pull the latest `origin/main` safely.
-6. **Stop** if the pull cannot complete cleanly. Never force-push.
+6. **Stop** if the pull cannot complete cleanly. Never force-push. Explain the issue and recommend the next safe step.
 
 Always pull before starting. Always check `git status`. Stop if `main` changes while the contributor is working.
 
@@ -279,7 +285,7 @@ Before publishing, show:
 ## Publication (only after explicit approval)
 
 1. Pull the latest `origin/main` safely.
-2. **Stop** if remote changes create a conflict. Do not manually resolve a conflict by deleting another contributor’s work. Ask the repository owner for help if the same catalog or project file was changed by someone else.
+2. **Stop** if remote changes create a conflict. Do not manually resolve a conflict by deleting another contributor’s work. Explain the conflict in plain language and recommend the next safe step.
 3. Re-run `node scripts/validate-prototypes.js` and `node scripts/build-prototype-catalog.js`.
 4. Run `git status`, `git diff`, and `git diff --check`.
 5. Confirm no unrelated files changed.
@@ -293,6 +299,8 @@ Before publishing, show:
 
 ## Never
 
+- Ask contributors to run Git commands, validation scripts, or catalog builders manually
+- Tell contributors to contact the repository owner, administrator, or any named person
 - Force-push, reset shared work, or discard unexpected changes
 - Delete or overwrite another contributor's work without explicit approval
 - Move or delete the contributor’s original source folder by default

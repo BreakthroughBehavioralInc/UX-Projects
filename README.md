@@ -35,22 +35,19 @@ Prototype Hub is hosted through a **Private** GitHub Pages site. Viewers must si
 
 Viewing Prototype Hub and contributing to **UX-Projects** are separate permissions. Being able to open the live site does **not** automatically allow someone to add or publish prototypes.
 
-Contributors who add or publish prototypes must have **Write** access to the **UX-Projects** repository. Write access lets contributors pull the repository, add prototype files, commit approved changes, and push updates.
+Contributors who add or publish prototypes must have **Write** access to the **UX-Projects** repository.
 
 Contributors do **not** need Maintain or Admin access for the standard Add Prototype workflow.
 
-If a contributor can view Prototype Hub but cannot push changes, the repository owner should verify that the contributor has Write access.
-
 When repository access is granted, contributors should use their exact GitHub username. If a contributor cannot be found when selecting **Add people**, confirm the contributor’s exact GitHub username and organization access before trying again.
 
-If access or pushing fails, contact the repository owner.
+If access or publishing fails, tell Cursor what happened and ask it to diagnose the issue and recommend the next safe step.
 
 ### Before using `@add-prototype`
 
 - [ ] You can sign in to the organization’s GitHub environment
 - [ ] You can open the UX-Projects repository
 - [ ] You have Write access to UX-Projects
-- [ ] You have cloned or pulled the latest repository
 - [ ] You opened UX-Projects in Cursor
 - [ ] You started a new Cursor chat so `@add-prototype` is available
 
@@ -116,13 +113,8 @@ If the Cursor skill is unavailable, paste the instruction from [.cursor/skills/a
 1. **Preview locally** — Ask Cursor to start a local preview. Open your prototype and Prototype Hub in the browser.
 2. **Check the Prototype Hub card** — Confirm your prototype appears with the correct name, project, category, owner, and status.
 3. **Test the prototype** — Review screens, links, images, interactions, accessibility, and mobile layout.
-4. **Approve before publish** — Tell Cursor explicitly when you are ready to commit and push.
-5. **Confirm deployment** — After push, ask Cursor to confirm the GitHub Pages deployment succeeded.
-6. **Open the live Prototype Hub** — Find your prototype card and use **Open Prototype** for the live link.
-
-**Direct-to-main workflow:** Changes go to the `main` branch. There are no feature branches or pull requests in the standard contributor workflow.
-
-Always pull the latest `main` before starting and again before publishing. Check `git status`. Stop on unexpected local changes. Do not overwrite another contributor’s prototype. Stop if `main` changes while you are working. Never force-push. Do not resolve a conflict by deleting another contributor’s work. Ask the repository owner for help if the same catalog or project file was changed by someone else.
+4. **Approve before publish** — Tell Cursor when you are ready to publish.
+5. **Confirm the live link** — Ask Cursor to confirm your prototype is live, then open it from Prototype Hub.
 
 ---
 
@@ -187,10 +179,8 @@ The site is **Private**. Sign in to GitHub with an account that has access to th
 1. Viewing Prototype Hub and contributing to UX-Projects are separate permissions.
 2. Confirm your repository role is **Write**.
 3. Confirm you are signed into the correct GitHub account.
-4. Confirm the local repository is connected to the correct GitHub account.
-5. Pull the latest `main` branch.
-6. Open a new Cursor chat and invoke `@add-prototype`.
-7. Contact the repository owner.
+4. Open a new Cursor chat and invoke `@add-prototype`.
+5. Tell Cursor what happened and ask it to diagnose the issue and recommend the next safe step.
 
 ### Cursor cannot find my existing prototype
 
@@ -209,58 +199,53 @@ The site is **Private**. Sign in to GitHub with an account that has access to th
 
 ### My imported prototype does not appear in Prototype Hub
 
-1. Confirm validation passed.
-2. Confirm the prototype contains `index.html`.
-3. Confirm the catalog builder included the prototype.
-4. Confirm deployment succeeded.
-5. Confirm the prototype is not `Archived`.
-6. Review the Prototype Hub error state.
-7. Contact the repository owner if the issue remains.
+1. Confirm the prototype is not **Archived**.
+2. Reload Prototype Hub.
+3. Describe the issue to Cursor and ask it to validate the prototype and recommend the next safe step.
 
 ### My prototype card does not appear
 
-1. Confirm the deployment succeeded in **Actions > Deploy GitHub Pages**.
-2. Ask Cursor to validate the prototype.
-3. Confirm the status is not `Archived` (archived prototypes are hidden by default).
-4. Confirm the prototype has a working `index.html` entry point.
-5. Review any visible error message in Prototype Hub.
-6. Contact the repository owner if the issue remains.
+1. Confirm the status is not **Archived** (archived prototypes are hidden by default).
+2. Review any visible error message in Prototype Hub.
+3. Describe the issue to Cursor and ask it to diagnose the problem and recommend the next safe step.
 
 ### Prototype Hub shows zero prototypes
 
-1. Open browser developer tools.
-2. Check the **Console** for catalog-loading errors.
-3. Check the **Network** request for `generated/catalog.json`.
-4. Confirm the response is HTTP 200 and contains a `prototypes` array.
-5. Ask Cursor to validate the prototype and rebuild the Prototype Hub catalog.
-6. Reload Prototype Hub.
+1. Reload Prototype Hub.
+2. Describe the issue to Cursor and ask it to diagnose catalog loading and recommend the next safe step.
 
-### Push rejected or permission denied
+### Publishing failed or permission was denied
 
-Someone else may have pushed newer changes, or you may lack write access. Ask Cursor to pull the latest `main` safely and try again. Do not force-push. Contact the repository owner if pushing still fails.
+Tell Cursor what happened and ask it to diagnose the issue and recommend the next safe step. Do not run repository commands manually.
 
 ### Page returns 404
 
-Check folder names, capitalization, and that the latest deployment completed successfully.
+Describe the issue to Cursor and ask it to check the prototype path and live link.
 
 ---
 
 ## How Automatic Indexing Works
 
-Contributors do not manually create cards in **Prototype Hub**. Cursor organizes the prototype and creates the technical information required by Prototype Hub.
+Contributors do not manually create cards in **Prototype Hub**. After you approve publishing, Cursor organizes the prototype, creates the technical information Prototype Hub needs, and updates the catalog for you.
 
-After approved changes are pushed to `main`, the deployment workflow validates the prototypes, rebuilds the catalog, and publishes the updated Prototype Hub. A valid prototype then appears automatically as a searchable and filterable card. Catalog totals change as prototypes are added; do not treat any count as a fixed requirement.
+A valid prototype then appears automatically as a searchable and filterable card. Catalog totals change as prototypes are added; do not treat any count as a fixed requirement.
 
-If a prototype does not appear:
+If a prototype does not appear, describe the issue to Cursor and ask it to diagnose the problem and recommend the next safe step.
 
-1. Confirm the deployment succeeded.
-2. Ask Cursor to validate the prototype.
-3. Confirm the prototype is not `Archived`.
-4. Confirm the prototype has a working `index.html` entry point.
-5. Review any visible Prototype Hub error message.
-6. Contact the repository owner if the issue remains.
+**Do not manually edit `Prototypes/generated/catalog.json`.** Cursor handles catalog updates during the `@add-prototype` workflow.
 
-**Do not manually edit `Prototypes/generated/catalog.json`.** Cursor or the deployment workflow rebuilds it automatically.
+---
+
+## Before You Publish
+
+1. Use `@add-prototype` to add an existing prototype or create a new one.
+2. Work only on the prototype selected in the Cursor plan.
+3. Review the local prototype and Prototype Hub previews before publishing.
+4. Do not edit, move, or delete another contributor’s work.
+5. Never include patient information, personal information, passwords, credentials, secrets, production data, or confidential information.
+6. If Cursor reports an unexpected change or conflict, stop the publishing process and ask Cursor to explain the issue and recommend the next safe step.
+
+> **Cursor handles the technical checks.** The `@add-prototype` skill retrieves the latest repository version, checks for unexpected changes, validates the prototype, updates the catalog, reviews the files being published, and confirms deployment. Contributors do not need to run Git commands manually.
 
 ---
 
@@ -283,7 +268,7 @@ The Prototype Hub interface uses EverKit design-system tokens and patterns where
 - [Manual Workflow (Fallback)](#manual-workflow-fallback)
 - [Governance and Safety](#governance-and-safety)
 - [Project-Level README Template](#project-level-readme-template)
-- [Working Agreements](#working-agreements)
+- [Maintainer Working Agreements](#maintainer-working-agreements)
 
 ---
 
@@ -554,18 +539,20 @@ This prototype uses fictional or sanitized data and is not a production applicat
 
 ---
 
-## Working Agreements
+## Maintainer Working Agreements
 
-1. Pull the latest `main` branch before starting.
-2. Work only inside the intended prototype folder.
-3. Keep every prototype self-contained.
-4. Coordinate before editing another contributor's project.
-5. Preview and test before committing.
-6. Commit only intended files and push directly to `main`.
-7. Never force-push or overwrite another contributor's work.
-8. Do not change deployment configuration or Pages visibility without approval.
-9. Never include PHI, PII, credentials, secrets, or confidential information.
-10. Pull the latest `origin/main` again before publishing.
-11. Stop if remote changes conflict. Do not delete another contributor’s work to resolve a conflict.
-12. Ask the repository owner for help if the same catalog or project file was changed by someone else.
-13. Confirm deployment after pushing changes that affect the published prototype.
+1. Pull the latest `main` branch before starting (`git pull origin main`).
+2. Run `git status` before and after changes.
+3. Work only inside the intended prototype folder.
+4. Keep every prototype self-contained.
+5. Coordinate before editing another contributor's project.
+6. Preview and test before committing.
+7. Commit only intended files and push directly to `main`.
+8. Never force-push or overwrite another contributor's work.
+9. Do not change deployment configuration or Pages visibility without approval.
+10. Never include PHI, PII, credentials, secrets, or confidential information.
+11. Pull the latest `origin/main` again before publishing.
+12. Stop if remote changes conflict. Do not delete another contributor’s work to resolve a conflict.
+13. If the same catalog or project file was changed by someone else, stop and diagnose safely before continuing.
+14. Run `node scripts/validate-prototypes.js` and `node scripts/build-prototype-catalog.js` before publishing.
+15. Confirm deployment under **Actions > Deploy GitHub Pages** after pushing changes that affect the published prototype.
