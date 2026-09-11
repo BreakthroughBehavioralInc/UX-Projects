@@ -33,12 +33,13 @@ Use this overview first. Each step links to detailed instructions later in this 
 
 > **CURRENT DEPLOYMENT LIMITATION**
 >
-> The current workflow publishes only the **UX Prototype Playground**. Adding another folder under `Prototypes/` does **not** automatically make that project live. A repository maintainer must update the deployment workflow before additional prototypes receive their own live URLs.
+> The current workflow publishes only the **UX Prototype Playground** from `Prototypes/Provider/UX-Prototype-Playground`. Adding another project under `Patient` or `Provider` does **not** automatically make that project live. A repository maintainer must update the deployment workflow before additional prototypes receive their own live URLs.
 
 **Table of contents**
 
 - [Designer Quick Start](#designer-quick-start)
 - [Repository Structure](#repository-structure)
+  - [Choosing a Prototype Category](#choosing-a-prototype-category)
 - [Before You Begin](#before-you-begin)
 - [Recommended Workflow: Use Cursor](#recommended-workflow-use-cursor)
   - [1. Clone the Repository](#1-clone-the-repository)
@@ -73,31 +74,38 @@ UX-Projects/
 │   └── workflows/
 │       └── deploy-pages.yml           # GitHub Pages deployment workflow
 └── Prototypes/
-    └── UX-Prototype-Playground/       # Example static prototype (currently deployed)
-        ├── index.html
-        ├── about.html
-        ├── projects.html
-        ├── contact.html
-        ├── css/
-        │   └── styles.css
-        ├── js/
-        │   └── app.js
-        ├── assets/
-        │   ├── images/
-        │   ├── icons/
-        │   └── illustrations/
-        ├── data/
-        │   └── projects.json
-        └── README.md
+    ├── Patient/                       # Patient-facing prototype projects
+    │   └── .gitkeep
+    └── Provider/                      # Provider-facing prototype projects
+        └── UX-Prototype-Playground/   # Example static prototype (currently deployed)
+            ├── index.html
+            ├── about.html
+            ├── projects.html
+            ├── contact.html
+            ├── css/
+            │   └── styles.css
+            ├── js/
+            │   └── app.js
+            ├── assets/
+            │   ├── images/
+            │   ├── icons/
+            │   └── illustrations/
+            ├── data/
+            │   └── projects.json
+            └── README.md
 ```
 
 ### Folder purposes
 
 | Path | Purpose |
 |------|---------|
-| `Prototypes/` | Contains all UX prototype projects. Each prototype lives in its own folder. |
+| `Prototypes/Patient/` | Contains patient-facing and patient-experience prototypes. |
+| `Prototypes/Provider/` | Contains provider-facing, clinician-facing, and care-team workflow prototypes. |
+| `Prototypes/Provider/UX-Prototype-Playground/` | Reference static prototype currently deployed to GitHub Pages. |
 | `.github/workflows/` | Contains automation, including the GitHub Pages deployment workflow. |
 | `README.md` | Repository-level instructions for designers and reviewers. |
+
+Each individual prototype must remain self-contained inside its category folder.
 
 ### Expected structure for a new prototype
 
@@ -105,33 +113,52 @@ Each new prototype should follow this pattern:
 
 ```
 Prototypes/
-└── project-name/
-    ├── index.html
-    ├── css/
-    │   └── styles.css
-    ├── js/
-    │   └── app.js
-    ├── assets/
-    │   ├── images/
-    │   └── icons/
-    └── README.md
+└── <category>/
+    └── <project-name>/
+        ├── index.html
+        ├── css/
+        │   └── styles.css
+        ├── js/
+        │   └── app.js
+        ├── assets/
+        │   ├── images/
+        │   └── icons/
+        └── README.md
 ```
+
+The `<category>` folder must be either `Patient` or `Provider`.
 
 Additional HTML pages, data files, or asset subfolders are allowed when needed, as long as they stay inside the prototype folder.
 
+### Choosing a Prototype Category
+
+**Patient**
+
+Use for patient-facing experiences, patient portals, scheduling, billing, collections, patient communications, account management, onboarding, and other experiences primarily used by patients or members.
+
+**Provider**
+
+Use for provider-facing, clinician-facing, nurse-facing, clinical-operations, care-team, administrative-provider, and provider-portal experiences.
+
+If a prototype includes both patient and provider experiences, place it under the category representing the prototype's primary audience and explain the cross-audience scope in the project-level README.
+
+Do not duplicate one project across both category folders.
+
 ### Naming and organization rules
 
-- Each prototype must have its own **uniquely named folder** inside `Prototypes/`.
+- Each prototype must have its own **uniquely named folder** inside `Prototypes/Patient/` or `Prototypes/Provider/`.
 - Every deployed prototype must include an `index.html` entry point.
 - Keep all project-specific code and assets inside that prototype's folder.
+- Do **not** create uncategorized prototype folders directly under `Prototypes/`.
 - Do **not** place unrelated files in the repository root.
 - Prefer **kebab-case** folder names without spaces.
 
 Examples:
 
-- `clinical-ops-messaging`
-- `patient-portal-rebrand`
-- `patient-collections-concept`
+- `Prototypes/Patient/patient-portal-rebrand/`
+- `Prototypes/Patient/patient-collections-concept/`
+- `Prototypes/Provider/clinical-ops-messaging/`
+- `Prototypes/Provider/provider-portal-workflow/`
 
 ---
 
@@ -144,6 +171,7 @@ Use this checklist before creating or updating a prototype:
 - [ ] You have permission to contribute or push changes
 - [ ] Cursor is installed and you are signed in
 - [ ] Git is installed on your computer (required for clone, pull, commit, and push)
+- [ ] You have chosen a prototype category (`Patient` or `Provider`)
 - [ ] You have chosen a unique prototype folder name
 - [ ] Your prototype uses fictional or sanitized content only
 - [ ] You are **not** including PHI, PII, production data, credentials, secrets, or confidential information
@@ -225,25 +253,33 @@ Examples:
 Create a new folder at:
 
 ```
-Prototypes/<unique-project-name>/
+Prototypes/<category>/<unique-project-name>/
 ```
+
+The `<category>` must be exactly `Patient` or `Provider`.
 
 You can create this folder manually in Cursor's file explorer, or ask Cursor to generate the prototype for you.
 
-Review the example project at `Prototypes/UX-Prototype-Playground/` before starting. It shows a working multi-page static prototype with CSS, JavaScript, assets, and a project-level README.
+Review the example project at `Prototypes/Provider/UX-Prototype-Playground/` before starting. It shows a working multi-page static prototype with CSS, JavaScript, assets, and a project-level README.
 
 **Copy-and-paste Cursor prompt**
 
 ```text
 Create a new static UX prototype inside:
 
-Prototypes/<project-name>/
+Prototypes/<category>/<project-name>/
 
-Before creating files, inspect the UX-Projects repository structure and existing prototypes. Do not modify or delete any other prototype.
+Category:
+Patient or Provider
+
+Project name:
+<project-name>
+
+Before creating files, inspect the UX-Projects repository structure and existing prototypes. Do not modify or delete any other prototype. Stop if the category is not exactly Patient or Provider.
 
 Requirements:
 - Create index.html as the entry point.
-- Keep all project files inside Prototypes/<project-name>/.
+- Keep all project files inside Prototypes/<category>/<project-name>/.
 - Use css/, js/, and assets/ subfolders.
 - Use only HTML, CSS, and vanilla JavaScript unless I explicitly approve another framework.
 - Use relative file paths that work on GitHub Pages.
@@ -280,7 +316,7 @@ This repository does not currently include a shared npm script or Makefile for p
 From the prototype folder:
 
 ```bash
-cd Prototypes/<project-name>
+cd Prototypes/<category>/<project-name>
 python3 -m http.server 8000
 ```
 
@@ -289,7 +325,7 @@ Then open [http://localhost:8000/](http://localhost:8000/)
 If you run the server from the repository root instead, open:
 
 ```
-http://localhost:8000/Prototypes/<project-name>/
+http://localhost:8000/Prototypes/<category>/<project-name>/
 ```
 
 **Option B: Cursor or VS Code Live Server**
@@ -336,7 +372,7 @@ A **commit** saves a snapshot of your approved changes. A **push** uploads your 
 Stage only the files you intend to contribute:
 
 ```bash
-git add Prototypes/<project-name>
+git add Prototypes/<category>/<project-name>
 git commit -m "Add <project-name> UX prototype"
 git push -u origin <branch-name>
 ```
@@ -382,11 +418,14 @@ After pushing your branch:
 ## Prototype
 <Name>
 
+## Category
+Patient / Provider
+
 ## Purpose
 <Why this prototype was created>
 
 ## Location
-Prototypes/<project-name>/
+Prototypes/<category>/<project-name>/
 
 ## What changed
 - <change>
@@ -418,14 +457,15 @@ Deployment is handled by the GitHub Actions workflow at `.github/workflows/deplo
 | Workflow name | Deploy GitHub Pages |
 | Trigger | Push to `main`, or manual **Run workflow** |
 | Branch that triggers deployment | `main` |
-| Published folder | `Prototypes/UX-Prototype-Playground` |
+| Published folder | `Prototypes/Provider/UX-Prototype-Playground` |
 | Deployment method | GitHub Actions uploads that folder as the Pages site artifact |
 
 **What this means for designers**
 
 - Merging to `main` can trigger an automatic redeployment.
-- The workflow currently publishes **one prototype folder only**: `Prototypes/UX-Prototype-Playground`.
-- Adding a new folder under `Prototypes/` does **not** automatically publish that new prototype.
+- The workflow currently publishes **one prototype folder only**: `Prototypes/Provider/UX-Prototype-Playground`.
+- The existing live URL remains the same, but the Playground now lives under the Provider category in the repository.
+- Adding a new project under `Patient` or `Provider` does **not** automatically publish that new prototype.
 - To publish a different prototype, a repository maintainer must update `.github/workflows/deploy-pages.yml` and coordinate that change through the normal review process.
 
 **How to monitor deployment**
@@ -449,7 +489,7 @@ Deployment is handled by the GitHub Actions workflow at `.github/workflows/deplo
 The intended shared model for this repository is to publish the entire `Prototypes/` directory so each prototype can have its own path:
 
 ```
-https://bookish-barnacle-2ywmpk2.pages.github.io/<project-name>/
+https://bookish-barnacle-2ywmpk2.pages.github.io/<category>/<project-name>/
 ```
 
 This future URL pattern is **not active yet**.
@@ -470,16 +510,16 @@ The current live site is:
 
 [Open the current UX Prototype Playground](https://bookish-barnacle-2ywmpk2.pages.github.io/)
 
-Because the workflow publishes the **contents** of `Prototypes/UX-Prototype-Playground` as the site root, that link serves `index.html` from `Prototypes/UX-Prototype-Playground/`.
+Because the workflow publishes the **contents** of `Prototypes/Provider/UX-Prototype-Playground` as the site root, that link serves `index.html` from the Playground's Provider category folder.
 
 **Important limitations**
 
-- Other folders inside `Prototypes/` are stored in the repository but are **not** currently published to GitHub Pages.
+- Other projects under `Patient` or `Provider` are stored in the repository but are **not** currently published to GitHub Pages.
 - If the workflow is later changed to publish a different single prototype folder, the base URL will stay the same but the live content will change.
 - If the workflow is later changed to publish the entire `Prototypes/` directory, project URLs would follow this pattern:
 
 ```
-https://bookish-barnacle-2ywmpk2.pages.github.io/<project-name>/
+https://bookish-barnacle-2ywmpk2.pages.github.io/<category>/<project-name>/
 ```
 
 That pattern is **not** active today unless the deployment workflow is updated.
@@ -547,14 +587,21 @@ Before making changes:
 3. Stop and report if there are uncommitted local changes before proceeding.
 4. Create a uniquely named branch: ux/<designer-name>/<project-name>
 
+Category:
+Patient or Provider
+
+Project name:
+<project-name>
+
 Task:
 Create or update only this prototype folder:
-Prototypes/<project-name>/
+Prototypes/<category>/<project-name>/
 
 Requirements:
+- Stop if the category is not exactly Patient or Provider.
 - Preserve all other projects and do not delete or overwrite another designer's work.
 - Use index.html as the entry point.
-- Keep all files inside Prototypes/<project-name>/.
+- Keep all files inside Prototypes/<category>/<project-name>/.
 - Use relative paths compatible with GitHub Pages.
 - Use only HTML, CSS, and vanilla JavaScript unless I explicitly approve another framework.
 - Do not add secrets, credentials, API keys, PHI, PII, production data, or confidential information.
@@ -594,7 +641,7 @@ git checkout -b ux/<designer-name>/<project-name>
 
 Then:
 
-1. Create `Prototypes/<project-name>/`
+1. Create `Prototypes/<category>/<project-name>/`
 2. Add `index.html` and supporting files
 3. Preview and test locally
 4. Run `git status` and `git diff`
@@ -744,7 +791,7 @@ git pull origin main
 
 ## Project-Level README Template
 
-Place this file at `Prototypes/<project-name>/README.md`:
+Place this file at `Prototypes/<category>/<project-name>/README.md`:
 
 ```markdown
 # <Prototype Name>
@@ -755,11 +802,17 @@ Place this file at `Prototypes/<project-name>/README.md`:
 ## Owner
 <Designer or team>
 
+## Category
+Patient / Provider
+
 ## Status
 Draft / In Review / Approved / Archived
 
 ## Audience
 <Who should review it?>
+
+## Primary Audience
+<Patients, providers, nurses, care teams, administrators, or another audience>
 
 ## Entry Point
 index.html
@@ -782,11 +835,15 @@ This prototype uses fictional or sanitized data and is not a production applicat
 
 1. Pull before starting.
 2. Use a unique branch.
-3. Keep each prototype self-contained.
-4. Review all changes before committing.
-5. Use descriptive commit messages.
-6. Open a pull request.
-7. Do not change visibility or deployment configuration without approval.
-8. Do not include sensitive information.
-9. Confirm deployment succeeds when your work affects the published prototype.
-10. Archive or label outdated prototypes instead of silently deleting them.
+3. Place every prototype under `Patient` or `Provider`.
+4. Do not create uncategorized prototype folders directly under `Prototypes/`.
+5. Do not duplicate the same prototype under both categories.
+6. Keep each prototype self-contained.
+7. Document cross-audience experiences in the project-level README.
+8. Review all changes before committing.
+9. Use descriptive commit messages.
+10. Open a pull request.
+11. Do not change visibility or deployment configuration without approval.
+12. Do not include sensitive information.
+13. Confirm deployment succeeds when your work affects the published prototype.
+14. Archive or label outdated prototypes instead of silently deleting them.

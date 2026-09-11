@@ -72,7 +72,7 @@ Because this is a static site with no build step, you can open it directly — b
 ### Option 1: Python (recommended)
 
 ```bash
-cd Prototypes/UX-Prototype-Playground
+cd Prototypes/Provider/UX-Prototype-Playground
 python3 -m http.server 8080
 ```
 
@@ -81,7 +81,7 @@ Open [http://localhost:8080](http://localhost:8080)
 ### Option 2: Node.js
 
 ```bash
-npx serve Prototypes/UX-Prototype-Playground
+npx serve Prototypes/Provider/UX-Prototype-Playground
 ```
 
 ### Option 3: VS Code / Cursor
@@ -97,9 +97,9 @@ Use the **Live Server** extension and open `index.html`.
 1. Push this repository to GitHub
 2. Go to **Settings → Pages**
 3. Under **Source**, select your branch (e.g. `main`)
-4. Set the folder to `/Prototypes/UX-Prototype-Playground` (or move the project to root)
+4. Set the folder to `/Prototypes/Provider/UX-Prototype-Playground` (or move the project to root)
 5. Save — your site will be available at:
-   `https://<org>.github.io/<repo>/Prototypes/UX-Prototype-Playground/`
+   `https://<org>.github.io/<repo>/Prototypes/Provider/UX-Prototype-Playground/`
 
 ### GitHub Pages (Root Site)
 
