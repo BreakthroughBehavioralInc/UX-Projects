@@ -1,0 +1,12 @@
+{
+  "name": "UX Prototype Playground",
+  "project": "UX Prototype Playground",
+  "category": "Provider",
+  "owner": "UX Design",
+  "status": "Testing",
+  "description": "Reference prototype used to test UX concepts, hosting, navigation, responsive design, and interactive behaviors.",
+  "version": "1.0",
+  "lastUpdated": "2026-09-11",
+  "entryPoint": "index.html",
+  "tags": ["playground", "reference", "testing"]
+}

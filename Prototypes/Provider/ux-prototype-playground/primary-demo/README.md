@@ -23,7 +23,7 @@ Use it to:
 ## Folder Structure
 
 ```
-UX-Prototype-Playground/
+Prototypes/Provider/ux-prototype-playground/primary-demo/
 ├── index.html              # Home page — hero, stats, UX generator
 ├── about.html              # Team profiles — The UX Avengers
 ├── projects.html           # Project showcase with search and modals
@@ -72,7 +72,7 @@ Because this is a static site with no build step, you can open it directly — b
 ### Option 1: Python (recommended)
 
 ```bash
-cd Prototypes/Provider/UX-Prototype-Playground
+cd Prototypes/Provider/ux-prototype-playground/primary-demo
 python3 -m http.server 8080
 ```
 
@@ -81,7 +81,7 @@ Open [http://localhost:8080](http://localhost:8080)
 ### Option 2: Node.js
 
 ```bash
-npx serve Prototypes/Provider/UX-Prototype-Playground
+npx serve Prototypes/Provider/ux-prototype-playground/primary-demo
 ```
 
 ### Option 3: VS Code / Cursor
@@ -97,15 +97,15 @@ Use the **Live Server** extension and open `index.html`.
 1. Push this repository to GitHub
 2. Go to **Settings → Pages**
 3. Under **Source**, select your branch (e.g. `main`)
-4. Set the folder to `/Prototypes/Provider/UX-Prototype-Playground` (or move the project to root)
-5. Save — your site will be available at:
-   `https://<org>.github.io/<repo>/Prototypes/Provider/UX-Prototype-Playground/`
+4. Publish the entire `Prototypes/` directory through the repository deployment workflow
+5. Save — the prototype will be available at:
+   `https://<org>.github.io/<repo>/Provider/ux-prototype-playground/primary-demo/`
 
 ### GitHub Pages (Root Site)
 
 If you want the playground at the repo root URL:
 
-1. Move contents of `UX-Prototype-Playground/` to the repository root, **or**
+1. Move contents of `primary-demo/` to the repository root, **or**
 2. Configure Pages to serve from `/docs` and copy the project there
 
 ### Custom Domain (optional)
@@ -147,7 +147,7 @@ Create an SVG placeholder at `assets/images/project-my-new.svg` (copy an existin
 For interactive prototypes with multiple pages:
 
 ```
-UX-Prototype-Playground/
+Prototypes/Provider/ux-prototype-playground/primary-demo/
 └── prototypes/
     └── my-new-project/
         ├── index.html

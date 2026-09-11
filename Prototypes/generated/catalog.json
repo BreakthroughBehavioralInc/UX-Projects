@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-09-11T19:03:55.136Z",
+  "count": 1,
+  "prototypes": [
+    {
+      "name": "UX Prototype Playground",
+      "project": "UX Prototype Playground",
+      "category": "Provider",
+      "owner": "UX Design",
+      "status": "Testing",
+      "description": "Reference prototype used to test UX concepts, hosting, navigation, responsive design, and interactive behaviors.",
+      "version": "1.0",
+      "lastUpdated": "2026-09-11",
+      "tags": [
+        "playground",
+        "reference",
+        "testing"
+      ],
+      "url": "./Provider/ux-prototype-playground/primary-demo/"
+    }
+  ]
+}

@@ -24,10 +24,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate prototypes
+        run: node scripts/validate-prototypes.js
+
+      - name: Build prototype catalog
+        run: node scripts/build-prototype-catalog.js
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Prototypes/Provider/UX-Prototype-Playground
+          path: Prototypes
 
       - name: Deploy to GitHub Pages
         id: deployment

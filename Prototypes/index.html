@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UX Prototype Hub - Internal searchable catalog of Patient and Provider UX prototypes.">
+  <title>UX Prototype Hub</title>
+  <link rel="stylesheet" href="./css/hub.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">UX</span>
+        <div>
+          <h1>UX Prototype Hub</h1>
+          <p class="brand-tagline">Internal catalog for Patient and Provider prototype review</p>
+        </div>
+      </div>
+      <p class="privacy-notice" role="note">
+        Private internal review environment. GitHub sign-in and repository access required.
+      </p>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="summary-panel" aria-labelledby="summary-heading">
+      <h2 id="summary-heading" class="visually-hidden">Catalog summary</h2>
+      <div class="summary-grid" id="summary-grid">
+        <div class="summary-card">
+          <span class="summary-value" id="summary-total">0</span>
+          <span class="summary-label">Visible prototypes</span>
+        </div>
+        <div class="summary-card">
+          <span class="summary-value" id="summary-patient">0</span>
+          <span class="summary-label">Patient</span>
+        </div>
+        <div class="summary-card">
+          <span class="summary-value" id="summary-provider">0</span>
+          <span class="summary-label">Provider</span>
+        </div>
+        <div class="summary-card">
+          <span class="summary-value" id="summary-projects">0</span>
+          <span class="summary-label">Projects</span>
+        </div>
+        <div class="summary-card">
+          <span class="summary-value" id="summary-owners">0</span>
+          <span class="summary-label">Designers</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls-panel" aria-labelledby="controls-heading">
+      <h2 id="controls-heading" class="visually-hidden">Search and filters</h2>
+
+      <div class="controls-row">
+        <label class="control-group search-group" for="search-input">
+          <span class="control-label">Search</span>
+          <input type="search" id="search-input" placeholder="Search name, project, owner, description, tags..." autocomplete="off">
+        </label>
+
+        <label class="control-group" for="filter-category">
+          <span class="control-label">Category</span>
+          <select id="filter-category">
+            <option value="All">All</option>
+            <option value="Patient">Patient</option>
+            <option value="Provider">Provider</option>
+          </select>
+        </label>
+
+        <label class="control-group" for="filter-status">
+          <span class="control-label">Status</span>
+          <select id="filter-status">
+            <option value="Active">Active (hide Archived)</option>
+            <option value="All">All statuses</option>
+            <option value="Draft">Draft</option>
+            <option value="In Review">In Review</option>
+            <option value="Testing">Testing</option>
+            <option value="Approved">Approved</option>
+            <option value="Archived">Archived</option>
+          </select>
+        </label>
+
+        <label class="control-group" for="filter-project">
+          <span class="control-label">Project</span>
+          <select id="filter-project">
+            <option value="All">All projects</option>
+          </select>
+        </label>
+
+        <label class="control-group" for="filter-owner">
+          <span class="control-label">Owner</span>
+          <select id="filter-owner">
+            <option value="All">All owners</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="controls-row">
+        <label class="control-group" for="sort-by">
+          <span class="control-label">Sort by</span>
+          <select id="sort-by">
+            <option value="recent">Recently updated</option>
+            <option value="name">Prototype name</option>
+            <option value="project">Project</option>
+            <option value="owner">Owner</option>
+            <option value="status">Status</option>
+          </select>
+        </label>
+
+        <fieldset class="control-group grouping-fieldset">
+          <legend class="control-label">Group by</legend>
+          <div class="radio-row">
+            <label><input type="radio" name="group-by" value="all" checked> Show all</label>
+            <label><input type="radio" name="group-by" value="project"> Project</label>
+            <label><input type="radio" name="group-by" value="owner"> Designer</label>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+
+    <section class="results-panel" aria-live="polite" aria-busy="true">
+      <div id="catalog-error" class="state-message error-state" hidden role="alert">
+        <h2>Catalog could not be loaded</h2>
+        <p>The prototype catalog is unavailable. Run the catalog builder locally or check the deployment workflow.</p>
+      </div>
+
+      <div id="catalog-empty" class="state-message empty-state" hidden>
+        <h2>No prototypes available</h2>
+        <p>Add a prototype with a valid <code>prototype.json</code> file under Patient or Provider.</p>
+      </div>
+
+      <div id="catalog-no-results" class="state-message empty-state" hidden>
+        <h2>No results match your filters</h2>
+        <p>Try a different search term or reset the filters.</p>
+      </div>
+
+      <div id="catalog-results"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>UX Prototype Hub uses fictional or sanitized data. Not a production application.</p>
+    </div>
+  </footer>
+
+  <script src="./js/hub.js"></script>
+</body>
+</html>
