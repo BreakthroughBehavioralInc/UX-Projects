@@ -58,23 +58,43 @@ If access or pushing fails, contact the repository owner.
 
 ## Add a Prototype
 
-1. Open **UX-Projects** in Cursor.
-2. Start a new Cursor chat.
-3. Enter:
+Use the same skill for both situations: you already have a prototype, or you need Cursor to create one.
 
-   `@add-prototype`
+```text
+@add-prototype
 
-4. Provide:
-   - Patient or Provider
-   - Project name
-   - Prototype title
-   - Owner
-5. Cursor finds or creates the prototype, handles the technical setup, and shows a local preview.
-6. Review the preview.
-7. Tell Cursor to publish only when the prototype is ready.
-8. Open the prototype from **Product Repository** after deployment.
+Category: Patient or Provider
+Project: <project name>
+Prototype title: <prototype title>
+Owner: <person or team>
+```
 
-**Example**
+Owner may be a Designer, a Product Manager, or a Product or Design team. A job title is not required. Status defaults to **Draft**.
+
+Contributors do not manually edit `prototype.json` or `generated/catalog.json`. Contributors do not manually create Product Repository cards.
+
+### I already have a prototype
+
+Already have a prototype? Open the existing project and UX-Projects in Cursor, start a new Cursor chat, and run `@add-prototype`. Cursor will locate the existing prototype, show the source and destination folders, copy the approved files into Product Repository, add the information needed for indexing, validate the prototype, and show a local preview. The original project folder remains unchanged.
+
+```text
+@add-prototype
+
+Category: <Patient or Provider>
+Project: <project name>
+Prototype title: <prototype title>
+Owner: <person or team>
+```
+
+- Cursor attempts to find the existing prototype automatically.
+- If Cursor finds multiple possible prototypes, the contributor selects the correct one.
+- Cursor copies files by default and leaves the original folder unchanged.
+- Cursor does not publish until the contributor approves the preview.
+- The contributor does not manually create metadata or a Product Repository card.
+
+### I need Cursor to create a prototype
+
+If no existing prototype is available, use the same `@add-prototype` skill. After the four initial details, Cursor asks for one short description of what the prototype should demonstrate. Cursor then creates the initial prototype, validates it, and shows a local preview before publishing.
 
 ```text
 @add-prototype
@@ -85,55 +105,9 @@ Prototype title: Nurse Workflow
 Owner: Eddie De La Torre
 ```
 
-Owner may be a Designer, a Product Manager, or a Product or Design team. A job title is not required.
-
-**How this works**
-
-- Status defaults to **Draft**.
-- Cursor attempts to detect an existing prototype automatically.
-- If creating something new, Cursor asks for one short description.
-- Cursor handles folders and technical information.
-- Contributors do not manually edit `prototype.json` or `generated/catalog.json`.
-- Cursor previews the prototype locally.
-- Cursor waits for approval before committing or publishing.
-
-**What Cursor handles for you**
-
-- Repository folders and file organization
-- Technical metadata required by Product Repository
-- Validation and catalog rebuild
-- Local preview setup
-- Commit, push, and deployment confirmation after your approval
-
-**What you do not need to do manually**
-
-- Create Product Repository cards
-- Edit `prototype.json`
-- Edit `Prototypes/generated/catalog.json`
-- Run Node scripts or manage GitHub Actions
-
-A valid prototype appears automatically as a searchable card after successful validation, push, and deployment. **Archived** prototypes remain accessible by direct link but are hidden from the default Product Repository view.
-
 ### Add a Prototype (Fallback)
 
 If the Cursor skill is unavailable, paste the instruction from [.cursor/skills/add-prototype/designer-input-template.md](.cursor/skills/add-prototype/designer-input-template.md) into chat.
-
----
-
-## What You Need to Provide
-
-When you ask Cursor to add or update a prototype, have this information ready:
-
-| Item | What to provide |
-|------|-----------------|
-| **Category** | `Patient` or `Provider` — the primary audience |
-| **Project** | The initiative, product, or workstream name (for example, `Clinical Ops Messaging`) |
-| **Prototype title** | The name of this specific concept, workflow, or variation |
-| **Owner** | A Designer, Product Manager, or Product or Design team. A job title is not required. |
-
-Optional, only if helpful: status (defaults to **Draft**), a short description, or where an existing prototype already lives. Cursor tries to detect an existing prototype automatically. If it is creating something new, it asks for one short description.
-
-Cursor will create folders, technical metadata, and Product Repository catalog entries. **You do not need to edit metadata files yourself.**
 
 ---
 
@@ -147,6 +121,8 @@ Cursor will create folders, technical metadata, and Product Repository catalog e
 6. **Open the live Product Repository** — Find your prototype card and use **Open Prototype** for the live link.
 
 **Direct-to-main workflow:** Changes go to the `main` branch. There are no feature branches or pull requests in the standard contributor workflow.
+
+Always pull the latest `main` before starting and again before publishing. Check `git status`. Stop on unexpected local changes. Do not overwrite another contributor’s prototype. Stop if `main` changes while you are working. Never force-push. Do not resolve a conflict by deleting another contributor’s work. Ask the repository owner for help if the same catalog or project file was changed by someone else.
 
 ---
 
@@ -216,6 +192,31 @@ The site is **Private**. Sign in to GitHub with an account that has access to th
 6. Open a new Cursor chat and invoke `@add-prototype`.
 7. Contact the repository owner.
 
+### Cursor cannot find my existing prototype
+
+1. Confirm the existing prototype folder is open in the same Cursor workspace.
+2. Confirm the prototype contains an identifiable entry page such as `index.html`.
+3. Tell Cursor which open folder contains the prototype if detection is ambiguous.
+4. Do not manually copy files into random Product Repository folders.
+5. Ask Cursor to show the source and destination before importing.
+
+### Cursor found multiple prototypes
+
+1. Review the folder options Cursor lists.
+2. Select the correct source folder.
+3. Confirm the proposed Product Repository destination.
+4. Do not continue until the correct source is selected.
+
+### My imported prototype does not appear in Product Repository
+
+1. Confirm validation passed.
+2. Confirm the prototype contains `index.html`.
+3. Confirm the catalog builder included the prototype.
+4. Confirm deployment succeeded.
+5. Confirm the prototype is not `Archived`.
+6. Review the Product Repository error state.
+7. Contact the repository owner if the issue remains.
+
 ### My prototype card does not appear
 
 1. Confirm the deployment succeeded in **Actions > Deploy GitHub Pages**.
@@ -244,11 +245,11 @@ Check folder names, capitalization, and that the latest deployment completed suc
 
 ---
 
-## How the Automation Works
+## How Automatic Indexing Works
 
 Contributors do not manually create cards in **Product Repository**. Cursor organizes the prototype and creates the technical information required by Product Repository.
 
-After approved changes are pushed to `main`, the deployment workflow validates the prototypes, rebuilds the catalog, and publishes the updated Product Repository. A valid new prototype then appears automatically as a searchable and filterable card.
+After approved changes are pushed to `main`, the deployment workflow validates the prototypes, rebuilds the catalog, and publishes the updated Product Repository. A valid prototype then appears automatically as a searchable and filterable card. Catalog totals change as prototypes are added; do not treat any count as a fixed requirement.
 
 If a prototype does not appear:
 
@@ -260,6 +261,27 @@ If a prototype does not appear:
 6. Contact the repository owner if the issue remains.
 
 **Do not manually edit `Prototypes/generated/catalog.json`.** Cursor or the deployment workflow rebuilds it automatically.
+
+---
+
+# Technical Reference for Maintainers
+
+The sections below are for maintainers and advanced contributors. Product and Design contributors can rely on the **Add Prototype** skill (`@add-prototype`) without reading these details.
+
+**Table of contents**
+
+- [Live URLs](#live-urls)
+- [Repository Structure](#repository-structure)
+- [Contributor Quick Start (Technical)](#contributor-quick-start-technical)
+- [prototype.json Metadata](#prototypejson-metadata)
+- [Local Preview and Validation](#local-preview-and-validation)
+- [Commit and Push](#commit-and-push)
+- [Deployment](#deployment)
+- [Updating and Archiving Prototypes](#updating-and-archiving-prototypes)
+- [Manual Workflow (Fallback)](#manual-workflow-fallback)
+- [Governance and Safety](#governance-and-safety)
+- [Project-Level README Template](#project-level-readme-template)
+- [Working Agreements](#working-agreements)
 
 ---
 
@@ -288,26 +310,6 @@ UX Prototype Playground (example):
 ```
 https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/ux-prototype-playground/primary-demo/
 ```
-
----
-
-# Technical Reference for Maintainers
-
-The sections below are for maintainers and advanced contributors. Product and Design contributors can rely on the **Add Prototype** skill (`@add-prototype`) without reading these details.
-
-**Table of contents**
-
-- [Repository Structure](#repository-structure)
-- [Contributor Quick Start (Technical)](#contributor-quick-start-technical)
-- [prototype.json Metadata](#prototypejson-metadata)
-- [Local Preview and Validation](#local-preview-and-validation)
-- [Commit and Push](#commit-and-push)
-- [Deployment](#deployment)
-- [Updating and Archiving Prototypes](#updating-and-archiving-prototypes)
-- [Manual Workflow (Fallback)](#manual-workflow-fallback)
-- [Governance and Safety](#governance-and-safety)
-- [Project-Level README Template](#project-level-readme-template)
-- [Working Agreements](#working-agreements)
 
 ---
 
@@ -560,4 +562,7 @@ This prototype uses fictional or sanitized data and is not a production applicat
 7. Never force-push or overwrite another contributor's work.
 8. Do not change deployment configuration or Pages visibility without approval.
 9. Never include PHI, PII, credentials, secrets, or confidential information.
-10. Confirm deployment after pushing changes that affect the published prototype.
+10. Pull the latest `origin/main` again before publishing.
+11. Stop if remote changes conflict. Do not delete another contributor’s work to resolve a conflict.
+12. Ask the repository owner for help if the same catalog or project file was changed by someone else.
+13. Confirm deployment after pushing changes that affect the published prototype.
