@@ -61,7 +61,8 @@ function scanTextFiles(dir, files = []) {
   fs.readdirSync(dir, { withFileTypes: true }).forEach((entry) => {
     const fullPath = path.join(dir, entry.name)
     if (entry.isDirectory()) {
-      if (entry.name === 'generated' || entry.name === 'node_modules') return
+      const COMPILED_DIRS = new Set(['generated', 'node_modules', 'assets', 'sb-addons', 'sb-manager', 'sb-common-assets'])
+      if (COMPILED_DIRS.has(entry.name)) return
       scanTextFiles(fullPath, files)
       return
     }

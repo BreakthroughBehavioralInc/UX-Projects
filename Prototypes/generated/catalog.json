@@ -1,7 +1,26 @@
 {
-  "generatedAt": "2026-09-11T19:36:10.082Z",
-  "count": 1,
+  "generatedAt": "2026-09-11T20:13:25.620Z",
+  "count": 2,
   "prototypes": [
+    {
+      "name": "KR 2.2 – Reduce AHT V1",
+      "project": "KR 2.2 – Reduce AHT",
+      "category": "Provider",
+      "owner": "AlfredoCMDL",
+      "status": "In Review",
+      "description": "Sierra AI handoff panel for CSA agents. Surfaces verified caller context, suggested service routing, and AI-generated talking points at the moment of call transfer — targeting AHT reduction via faster agent orientation.",
+      "version": "1.0.0",
+      "lastUpdated": "2026-09-11",
+      "tags": [
+        "csa",
+        "sierra-ai",
+        "handoff",
+        "aht",
+        "call-center",
+        "provider-ops"
+      ],
+      "url": "./Provider/kr-2-2-reduce-aht/v1/"
+    },
     {
       "name": "UX Prototype Playground",
       "project": "UX Prototype Playground",

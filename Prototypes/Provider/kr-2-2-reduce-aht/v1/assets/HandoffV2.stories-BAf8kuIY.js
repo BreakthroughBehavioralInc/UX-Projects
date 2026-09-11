@@ -1,0 +1,8 @@
+import{j as e}from"./jsx-runtime-DFAAy_2V.js";import{u,S as h}from"./ScenarioBar-D0_BiNUC.js";import{a as g,b as y}from"./HandoffLayoutsMvp-CL72UvT6.js";import"./index-Bc2G9s8g.js";import"./data-BokXvPG8.js";import"./HandoffPanel-BDUjxq_U.js";import"./index-BO6cjGmN.js";import"./CsaLegacyShell-JT6OTssD.js";const x={right:"Right rail",left:"Left rail"};function m({layoutKey:t}){const{scenarioId:f,setScenarioId:p,scenario:o}=u();return e.jsxs("div",{className:"flex h-[100dvh] flex-col overflow-hidden",children:[e.jsx(h,{scenarioId:f,onScenarioChange:p,layoutLabel:`${x[t]} · v2`}),e.jsx("div",{className:"min-h-0 flex-1",children:t==="left"?e.jsx(g,{scenario:o,activeCall:!0}):e.jsx(y,{scenario:o})})]})}const w={title:"1 · MVP/v2",parameters:{layout:"fullscreen",docs:{description:{component:["**v2** — iterates on the Fast-Follow savepoint.","","The **Fast-Follow** story in this same folder is the frozen","pre-v2 reference. Changes are applied here only."].join(`
+`)}}}},r={name:"Right rail",render:()=>e.jsx(m,{layoutKey:"right"})},a={name:"Left rail",render:()=>e.jsx(m,{layoutKey:"left"})};var s,i,n;r.parameters={...r.parameters,docs:{...(s=r.parameters)==null?void 0:s.docs,source:{originalSource:`{
+  name: "Right rail",
+  render: () => <HandoffV2Playground layoutKey="right" />
+}`,...(n=(i=r.parameters)==null?void 0:i.docs)==null?void 0:n.source}}};var l,c,d;a.parameters={...a.parameters,docs:{...(l=a.parameters)==null?void 0:l.docs,source:{originalSource:`{
+  name: "Left rail",
+  render: () => <HandoffV2Playground layoutKey="left" />
+}`,...(d=(c=a.parameters)==null?void 0:c.docs)==null?void 0:d.source}}};const C=["RightRail","LeftRail"];export{a as LeftRail,r as RightRail,C as __namedExportsOrder,w as default};
