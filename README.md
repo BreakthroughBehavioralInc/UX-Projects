@@ -27,23 +27,40 @@ The Sandbox supports:
 ## Add a Prototype
 
 1. Open **UX-Projects** in Cursor.
-2. Invoke the **Add Prototype to UX Design Sandbox** workflow (`@add-prototype-to-ux-design-sandbox` in chat).
-3. Provide Patient or Provider, project name, prototype title, owner, status, and purpose.
-4. Review the local Sandbox and prototype previews.
-5. Tell Cursor to publish the approved prototype.
-6. Open the new prototype from **UX Design Sandbox**.
+2. Start a new Cursor chat.
+3. Enter:
+
+   `@add-prototype`
+
+4. Provide:
+   - Patient or Provider
+   - Project name
+   - Prototype title
+   - Owner
+5. Cursor finds or creates the prototype, handles the technical setup, and shows a local preview.
+6. Review the preview.
+7. Tell Cursor to publish only when the prototype is ready.
+8. Open the prototype from **UX Design Sandbox** after deployment.
 
 **Example**
 
 ```text
+@add-prototype
+
 Category: Provider
 Project: Clinical Ops Messaging
 Prototype title: Nurse Workflow
 Owner: Eddie De La Torre
-Status: In Review
-Purpose: Explore nurse-to-provider messaging and escalation.
-Source: Use the prototype in my current folder.
 ```
+
+**How this works**
+
+- Status defaults to **Draft**.
+- Cursor attempts to detect an existing prototype automatically.
+- If creating something new, Cursor asks for one short description.
+- Cursor handles technical metadata and catalog updates.
+- Designers do not manually edit `prototype.json` or `generated/catalog.json`.
+- Cursor waits for approval before publishing.
 
 **What Cursor handles for you**
 
@@ -64,7 +81,7 @@ A valid prototype appears automatically as a searchable card after successful va
 
 ### Add a Prototype (Fallback)
 
-If the Cursor skill is unavailable, paste the full instruction from [.cursor/skills/add-prototype-to-ux-design-sandbox/designer-input-template.md](.cursor/skills/add-prototype-to-ux-design-sandbox/designer-input-template.md) into chat.
+If the Cursor skill is unavailable, paste the instruction from [.cursor/skills/add-prototype/designer-input-template.md](.cursor/skills/add-prototype/designer-input-template.md) into chat.
 
 ---
 
@@ -75,14 +92,11 @@ When you ask Cursor to add or update a prototype, have this information ready:
 | Item | What to provide |
 |------|-----------------|
 | **Category** | `Patient` or `Provider` — the primary audience |
-| **Project** | The initiative or workstream name (for example, `patient-portal-rebrand`) |
+| **Project** | The initiative or workstream name (for example, `Clinical Ops Messaging`) |
 | **Prototype title** | The name of this specific concept or variation |
 | **Owner** | Your name or design team |
-| **Status** | `Draft`, `In Review`, `Testing`, `Approved`, or `Archived` |
-| **Purpose** | What the prototype is testing or demonstrating |
-| **Required screens** | Pages or flows to include |
-| **Required interactions** | Buttons, forms, navigation, or other behavior |
-| **Source folder** | Path to existing design files, or say **Create a new prototype** |
+
+Optional, only if helpful: status (defaults to **Draft**), a short description, or where an existing prototype already lives. Cursor tries to detect an existing prototype automatically. If it is creating something new, it asks for one short description.
 
 Cursor will create folders, technical metadata, and Sandbox catalog entries. **You do not need to edit metadata files yourself.**
 
@@ -214,7 +228,7 @@ https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/ux-prototype-playgroun
 
 # Technical Reference for Maintainers
 
-The sections below are for maintainers and advanced contributors. UX designers can rely on the **Add Prototype to UX Design Sandbox** skill without reading these details.
+The sections below are for maintainers and advanced contributors. UX designers can rely on the **Add Prototype** skill (`@add-prototype`) without reading these details.
 
 **Table of contents**
 
@@ -240,7 +254,7 @@ UX-Projects/
 ├── .gitignore
 ├── .cursor/
 │   └── skills/
-│       └── add-prototype-to-ux-design-sandbox/
+│       └── add-prototype/
 ├── scripts/
 │   ├── build-prototype-catalog.js
 │   └── validate-prototypes.js
@@ -273,6 +287,8 @@ Each prototype folder contains:
 ---
 
 ## Designer Quick Start (Technical)
+
+Designers should use `@add-prototype` rather than this checklist. The steps below are for maintainers when the skill cannot be used.
 
 1. Open the local `UX-Projects` folder in Cursor.
 2. Confirm the current branch is `main`.
