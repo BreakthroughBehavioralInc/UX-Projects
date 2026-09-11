@@ -16,20 +16,19 @@ It is intended to help UX designers store, review, and share prototype work in o
 
 ## Designer Quick Start
 
-Use this overview first. Each step links to detailed instructions later in this guide.
-
-1. [Get access to the repository](#before-you-begin)
-2. [Clone the repository once](#1-clone-the-repository)
-3. [Open UX-Projects in Cursor](#1-clone-the-repository)
-4. [Pull the latest changes from main](#2-synchronize-before-starting)
-5. [Create a unique working branch](#2-synchronize-before-starting)
-6. [Create the prototype folder](#3-create-the-prototype-folder)
-7. [Preview and test locally](#4-preview-locally)
-8. [Review the changed files](#5-review-changes-before-committing)
-9. [Commit and push the working branch](#6-commit-and-push)
-10. [Open a pull request](#7-open-a-pull-request)
-11. [Merge only after approval and successful checks](#7-open-a-pull-request)
-12. [Confirm deployment and open the prototype URL](#9-find-the-live-prototype-url)
+1. Get access to the UX-Projects repository.
+2. Clone the repository once.
+3. Open the local UX-Projects folder in Cursor.
+4. Confirm you are on `main`.
+5. Check for uncommitted changes.
+6. Pull the latest `main` branch.
+7. Choose `Patient` or `Provider`.
+8. Create or update the prototype inside the correct category.
+9. Preview and test the prototype locally.
+10. Review all changed files.
+11. Commit directly to `main` with a descriptive message.
+12. Push `main` to GitHub.
+13. Confirm the GitHub Pages deployment.
 
 > **CURRENT DEPLOYMENT LIMITATION**
 >
@@ -48,10 +47,9 @@ Use this overview first. Each step links to detailed instructions later in this 
   - [4. Preview Locally](#4-preview-locally)
   - [5. Review Changes Before Committing](#5-review-changes-before-committing)
   - [6. Commit and Push](#6-commit-and-push)
-  - [7. Open a Pull Request](#7-open-a-pull-request)
-  - [8. Deployment](#8-deployment)
-  - [9. Find the Live Prototype URL](#9-find-the-live-prototype-url)
-  - [10. Update an Existing Prototype](#10-update-an-existing-prototype)
+  - [7. Deployment](#7-deployment)
+  - [8. Find the Live Prototype URL](#8-find-the-live-prototype-url)
+  - [9. Update an Existing Prototype](#9-update-an-existing-prototype)
 - [Fast Path: Copy-and-Paste Cursor Prompt](#fast-path-copy-and-paste-cursor-prompt)
 - [Manual Workflow (Fallback)](#manual-workflow-fallback)
 - [Updating From GitHub Without Losing Work](#updating-from-github-without-losing-work)
@@ -221,7 +219,7 @@ After the first clone, open your existing local `UX-Projects` folder in Cursor f
 
 Before creating or editing a prototype, update your local copy so you do not overwrite another designer's recent work.
 
-The default branch in this repository is **`main`**.
+This repository uses **`main`** directly for all prototype work.
 
 Always check your current state first:
 
@@ -231,22 +229,10 @@ git checkout main
 git pull origin main
 ```
 
-If `git status` shows uncommitted changes, stop and use Cursor to review them before continuing. Do not pull until you understand what will happen to those changes.
-
-Then create a separate **branch** for your work. A branch is a separate line of work that keeps your changes isolated until they are reviewed.
-
-```bash
-git checkout -b ux/<designer-name>/<short-project-name>
-```
-
-Examples:
-
-- `ux/jordan/patient-portal-concept`
-- `ux/taylor/messaging-workflow`
-
-> **IMPORTANT**
->
-> Do not edit `main` directly unless your team rules require it. Using a separate branch and pull request is the safer default.
+- If `git status` shows uncommitted changes, stop and review them in Cursor before pulling.
+- Do not automatically stash, reset, discard, or overwrite changes.
+- If the pull creates a conflict, stop and ask the repository owner for help.
+- Never force-push.
 
 ### 3. Create the Prototype Folder
 
@@ -367,14 +353,19 @@ In Cursor, you can also use the **Source Control** panel to review changed files
 
 ### 6. Commit and Push
 
-A **commit** saves a snapshot of your approved changes. A **push** uploads your branch to GitHub so others can review it.
+A **commit** saves a snapshot of your approved changes. A **push** uploads those changes to GitHub on `main`.
+
+Review your changes first:
+
+```bash
+git status
+git diff
+```
 
 Stage only the files you intend to contribute:
 
 ```bash
 git add Prototypes/<category>/<project-name>
-git commit -m "Add <project-name> UX prototype"
-git push -u origin <branch-name>
 ```
 
 If you also updated the root `README.md` or other approved documentation intentionally:
@@ -383,7 +374,17 @@ If you also updated the root `README.md` or other approved documentation intenti
 git add README.md
 ```
 
-Then include it in the same commit or a separate commit as appropriate.
+Commit with a clear message:
+
+```bash
+git commit -m "<clear description of the prototype change>"
+```
+
+Push directly to `main`:
+
+```bash
+git push origin main
+```
 
 In Cursor, you can stage, commit, and push from the **Source Control** panel instead of using terminal commands.
 
@@ -392,59 +393,11 @@ In Cursor, you can stage, commit, and push from the **Source Control** panel ins
 > Avoid these unsafe actions:
 >
 > - Running broad commands such as `git add .` without reviewing `git status`
-> - Force-pushing shared branches
-> - Resetting branches other people may be using
+> - Force-pushing
 > - Deleting another designer's prototype folder
 > - Committing the entire repository without review
 
-### 7. Open a Pull Request
-
-A **pull request** (PR) is a request to merge your branch into the shared repository after review.
-
-After pushing your branch:
-
-1. Open GitHub in your browser.
-2. Locate the recently pushed branch notification.
-3. Select **Compare & pull request**.
-4. Write a clear title and summary.
-5. Describe what was added or changed.
-6. Include your local testing results.
-7. Request review from the appropriate teammate or maintainer.
-8. Merge only after required approvals and checks pass.
-
-**Pull request description template**
-
-```markdown
-## Prototype
-<Name>
-
-## Category
-Patient / Provider
-
-## Purpose
-<Why this prototype was created>
-
-## Location
-Prototypes/<category>/<project-name>/
-
-## What changed
-- <change>
-- <change>
-
-## Testing completed
-- [ ] Desktop
-- [ ] Mobile
-- [ ] Keyboard navigation
-- [ ] Images and links
-- [ ] JavaScript interactions
-- [ ] No console errors
-- [ ] No PHI, PII, credentials, secrets, production data, or confidential information
-
-## Review requested
-<Questions or areas where feedback is needed>
-```
-
-### 8. Deployment
+### 7. Deployment
 
 **Deployment** is the process that publishes approved changes to the live GitHub Pages site.
 
@@ -462,7 +415,7 @@ Deployment is handled by the GitHub Actions workflow at `.github/workflows/deplo
 
 **What this means for designers**
 
-- Merging to `main` can trigger an automatic redeployment.
+- Pushing to `main` can trigger an automatic redeployment.
 - The workflow currently publishes **one prototype folder only**: `Prototypes/Provider/UX-Prototype-Playground`.
 - The existing live URL remains the same, but the Playground now lives under the Provider category in the repository.
 - Adding a new project under `Patient` or `Provider` does **not** automatically publish that new prototype.
@@ -499,12 +452,11 @@ Enabling that model would require:
 1. A landing page at `Prototypes/index.html`
 2. Updating `deploy-pages.yml` to publish `Prototypes/`
 3. Testing existing relative paths
-4. Reviewing the workflow change through a pull request
-5. Confirming repository-owner approval
+4. Confirming repository-owner approval before changing the workflow
 
 Do not make these changes without maintainer coordination.
 
-### 9. Find the Live Prototype URL
+### 8. Find the Live Prototype URL
 
 The current live site is:
 
@@ -533,7 +485,7 @@ That pattern is **not** active today unless the deployment workflow is updated.
 
 You can confirm the current Pages URL and visibility in GitHub under **Settings > Pages**.
 
-### 10. Update an Existing Prototype
+### 9. Update an Existing Prototype
 
 Use this safe update flow:
 
@@ -541,30 +493,18 @@ Use this safe update flow:
 git status
 git checkout main
 git pull origin main
-git checkout -b ux/<designer-name>/update-<project-name>
 ```
 
-If you are continuing work on an existing feature branch instead of creating a new one:
-
-```bash
-git status
-git checkout main
-git pull origin main
-git checkout <your-branch>
-git merge main
-```
-
-If `git status` shows uncommitted changes, stop and use Cursor to review them before switching branches, stashing, committing, or discarding anything.
+If `git status` shows uncommitted changes, stop and use Cursor to review them before pulling, stashing, committing, or discarding anything.
 
 Then:
 
-1. Edit only the intended prototype folder.
+1. Edit only the intended prototype folder under `Prototypes/Patient/` or `Prototypes/Provider/`.
 2. Preview locally.
 3. Run `git status` and `git diff`.
 4. Commit with a descriptive message.
-5. Push the branch.
-6. Open a pull request.
-7. After merge, confirm the deployment in **Actions** if your change affects the currently published prototype.
+5. Push `main` to GitHub.
+6. Confirm the deployment in **Actions** if your change affects the currently published prototype.
 
 Example commit message:
 
@@ -582,10 +522,11 @@ Use this prompt when you already have the repository cloned locally:
 I am working in the UX-Projects repository.
 
 Before making changes:
-1. Inspect the repository structure, existing prototypes, and .github/workflows/deploy-pages.yml.
-2. Pull the latest changes safely from main.
-3. Stop and report if there are uncommitted local changes before proceeding.
-4. Create a uniquely named branch: ux/<designer-name>/<project-name>
+1. Confirm the repository is UX-Projects.
+2. Confirm the current branch is main.
+3. Run git status.
+4. Stop if uncommitted changes exist.
+5. Pull the latest origin/main.
 
 Category:
 Patient or Provider
@@ -604,15 +545,17 @@ Requirements:
 - Keep all files inside Prototypes/<category>/<project-name>/.
 - Use relative paths compatible with GitHub Pages.
 - Use only HTML, CSS, and vanilla JavaScript unless I explicitly approve another framework.
-- Do not add secrets, credentials, API keys, PHI, PII, production data, or confidential information.
-- Use fictional or sanitized content.
-- Preview or validate the site locally.
-- Check for broken links, missing images, console errors, and accessibility issues.
-- Show me a summary of changed files.
-- Ask me to review the prototype before committing.
-- Commit and push only after I explicitly tell you to proceed.
-- Never force-push, delete branches, expose secrets, or change Pages visibility.
-- Never modify deploy-pages.yml unless I specifically instruct you to do so and you explain the impact first.
+- Preview and validate the prototype locally.
+- Check links, images, JavaScript, accessibility, and console errors.
+- Show me all changed files.
+- Wait for my approval before committing.
+- Commit directly to main only after I explicitly approve.
+- Push main to GitHub after committing.
+- Confirm deployment status after pushing.
+- Never force-push.
+- Never change GitHub Pages visibility.
+- Never modify deploy-pages.yml without explicit approval.
+- Never add PHI, PII, credentials, secrets, production data, or confidential information.
 
 Prototype purpose:
 <prototype-purpose>
@@ -636,19 +579,25 @@ cd UX-Projects
 git status
 git checkout main
 git pull origin main
-git checkout -b ux/<designer-name>/<project-name>
 ```
 
-Then:
+After making and testing changes:
 
-1. Create `Prototypes/<category>/<project-name>/`
-2. Add `index.html` and supporting files
-3. Preview and test locally
-4. Run `git status` and `git diff`
-5. Stage only the intended folder
-6. Commit and push the branch
-7. Open a pull request
-8. Monitor **Actions > Deploy GitHub Pages** after merge
+```bash
+git status
+git diff
+git add Prototypes/<category>/<project-name>
+git commit -m "<clear description>"
+git push origin main
+```
+
+Stop and ask for help if:
+
+- There are unexpected uncommitted changes
+- `main` cannot be pulled cleanly
+- A merge conflict appears
+- Another designer changed the same project
+- Unexpected files appear in `git status`
 
 ---
 
@@ -658,18 +607,15 @@ Then:
 - If uncommitted changes exist, stop and use Cursor to review them before stashing, committing, or discarding anything.
 - Never overwrite another designer's folder.
 - Coordinate when two designers are editing the same prototype.
-- Use separate branches for separate efforts.
 - Resolve merge conflicts carefully.
 - Ask a repository maintainer for help rather than force-pushing.
 
-Safe pattern when your working tree is clean and you need the latest updates on an existing feature branch:
+Safe pattern when your working tree is clean:
 
 ```bash
 git status
 git checkout main
 git pull origin main
-git checkout <your-branch>
-git merge main
 ```
 
 If you are unsure, stop and ask for help before using destructive commands.
@@ -693,22 +639,20 @@ Contact the repository owner or GitHub administrator.
 
 Possible causes:
 
-- The remote branch has newer changes you do not have locally
-- Branch protection requires a pull request instead of a direct push
-- You are pushing to the wrong branch
+- Someone else pushed newer changes to `main` that you do not have locally
+- You are not on `main`
+- You lack write permission
 
-If your working tree is clean, update your branch from `main`:
+If your working tree is clean, update from `main` and try again:
 
 ```bash
 git status
 git checkout main
 git pull origin main
-git checkout <your-branch>
-git merge main
-git push origin <your-branch>
+git push origin main
 ```
 
-If the problem continues, ask a maintainer.
+If the pull creates a conflict, stop and ask a maintainer for help. Do not force-push.
 
 ### GitHub Pages deployment failed
 
@@ -833,17 +777,19 @@ This prototype uses fictional or sanitized data and is not a production applicat
 
 ## Working Agreements
 
-1. Pull before starting.
-2. Use a unique branch.
-3. Place every prototype under `Patient` or `Provider`.
-4. Do not create uncategorized prototype folders directly under `Prototypes/`.
-5. Do not duplicate the same prototype under both categories.
-6. Keep each prototype self-contained.
-7. Document cross-audience experiences in the project-level README.
-8. Review all changes before committing.
-9. Use descriptive commit messages.
-10. Open a pull request.
-11. Do not change visibility or deployment configuration without approval.
-12. Do not include sensitive information.
-13. Confirm deployment succeeds when your work affects the published prototype.
-14. Archive or label outdated prototypes instead of silently deleting them.
+1. Pull the latest `main` branch before starting.
+2. Work only inside the intended Patient or Provider project folder.
+3. Keep every prototype self-contained.
+4. Do not create uncategorized projects directly under `Prototypes/`.
+5. Do not duplicate a prototype across Patient and Provider.
+6. Coordinate before editing another designer's project.
+7. Preview and test before committing.
+8. Review `git status` and `git diff` before committing.
+9. Use a clear commit message.
+10. Commit only intended files.
+11. Push directly to `main`.
+12. Never force-push.
+13. Never overwrite or delete another designer's work.
+14. Do not change deployment configuration or Pages visibility without approval.
+15. Never include PHI, PII, credentials, secrets, production data, or confidential information.
+16. Confirm deployment after pushing changes that affect the published prototype.
