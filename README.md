@@ -24,79 +24,47 @@ The Sandbox supports:
 
 ---
 
-## Add a Prototype with Cursor
+## Add a Prototype
 
-You do not need to understand JSON, catalog files, Node scripts, GitHub Actions, or deployment settings. **Cursor handles the technical setup for you.**
+1. Open **UX-Projects** in Cursor.
+2. Invoke the **Add Prototype to UX Design Sandbox** workflow (`@add-prototype-to-ux-design-sandbox` in chat).
+3. Provide Patient or Provider, project name, prototype title, owner, status, and purpose.
+4. Review the local Sandbox and prototype previews.
+5. Tell Cursor to publish the approved prototype.
+6. Open the new prototype from **UX Design Sandbox**.
 
-### How it works
-
-1. Open the local `UX-Projects` repository in Cursor.
-2. Paste the standard **Add a Prototype** instruction below.
-3. Provide the Patient or Provider category, project name, prototype title, owner, status, and purpose.
-4. If the prototype already exists, provide its local folder location.
-5. Let Cursor organize the files and perform the technical setup.
-6. Review the prototype and **UX Design Sandbox** locally.
-7. Tell Cursor to publish only after the preview is approved.
-8. After a successful deployment, open **UX Design Sandbox** and find the new prototype card.
-
-### Copy-and-paste instruction
+**Example**
 
 ```text
-Add a prototype to UX Design Sandbox.
-
-Category: <Patient or Provider>
-Project: <project name>
-Prototype title: <prototype title>
-Owner: <designer name>
-Status: <Draft, In Review, Testing, Approved, or Archived>
-Purpose: <what the prototype is testing>
-Required screens: <screens or pages>
-Required interactions: <interactions>
-Source folder: <local folder path, or say Create a new prototype>
-
-Handle the repository organization and technical setup for me.
-
-Before changing anything:
-
-1. Confirm this is the UX-Projects repository.
-2. Confirm the current branch is main.
-3. Check for unexpected local changes.
-4. Stop and explain the issue if unexpected changes exist.
-5. Pull the latest origin/main safely.
-
-Then:
-
-1. Confirm Category is exactly Patient or Provider.
-2. Create or use the correct project folder.
-3. Create a unique prototype folder.
-4. Keep all prototype files inside that folder.
-5. Create and maintain any technical information required by UX Design Sandbox.
-6. Do not require me to create or edit metadata manually.
-7. Preserve every other project and prototype.
-8. Validate the entry point, links, images, JavaScript, accessibility, and responsive layout.
-9. Rebuild the Sandbox catalog.
-10. Preview the prototype and UX Design Sandbox locally.
-11. Confirm the prototype appears as a card in the Sandbox.
-12. Show me all changed files.
-13. Wait for my approval before committing or pushing.
-
-After I approve:
-
-1. Commit only the intended files directly to main.
-2. Push main without force-pushing.
-3. Confirm the GitHub Pages deployment succeeds.
-4. Confirm the new prototype appears in UX Design Sandbox.
-5. Give me the final prototype link.
-
-Never:
-
-- Force-push
-- Change GitHub Pages visibility
-- Delete or overwrite another designer’s work
-- Modify another prototype without approval
-- Include PHI, PII, credentials, secrets, tokens, production data, or confidential information
-- Modify the deployment workflow without explicit approval
+Category: Provider
+Project: Clinical Ops Messaging
+Prototype title: Nurse Workflow
+Owner: Eddie De La Torre
+Status: In Review
+Purpose: Explore nurse-to-provider messaging and escalation.
+Source: Use the prototype in my current folder.
 ```
+
+**What Cursor handles for you**
+
+- Repository folders and file organization
+- Technical metadata required by the Sandbox
+- Validation and catalog rebuild
+- Local preview setup
+- Commit, push, and deployment confirmation after your approval
+
+**What you do not need to do manually**
+
+- Create Sandbox cards
+- Edit `prototype.json`
+- Edit `Prototypes/generated/catalog.json`
+- Run Node scripts or manage GitHub Actions
+
+A valid prototype appears automatically as a searchable card after successful validation, push, and deployment. **Archived** prototypes remain accessible by direct link but are hidden from the default Sandbox view.
+
+### Add a Prototype (Fallback)
+
+If the Cursor skill is unavailable, paste the full instruction from [.cursor/skills/add-prototype-to-ux-design-sandbox/designer-input-template.md](.cursor/skills/add-prototype-to-ux-design-sandbox/designer-input-template.md) into chat.
 
 ---
 
@@ -244,9 +212,9 @@ https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/ux-prototype-playgroun
 
 ---
 
-# Technical Reference (Maintainers)
+# Technical Reference for Maintainers
 
-The sections below are for maintainers and advanced contributors. UX designers can rely on Cursor and the workflow above without reading these details.
+The sections below are for maintainers and advanced contributors. UX designers can rely on the **Add Prototype to UX Design Sandbox** skill without reading these details.
 
 **Table of contents**
 
@@ -270,6 +238,9 @@ The sections below are for maintainers and advanced contributors. UX designers c
 UX-Projects/
 ├── README.md
 ├── .gitignore
+├── .cursor/
+│   └── skills/
+│       └── add-prototype-to-ux-design-sandbox/
 ├── scripts/
 │   ├── build-prototype-catalog.js
 │   └── validate-prototypes.js

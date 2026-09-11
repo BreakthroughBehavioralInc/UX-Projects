@@ -47,7 +47,7 @@
         </div>
         <div class="summary-card">
           <span class="summary-value" id="summary-owners" aria-live="polite">—</span>
-          <span class="summary-label">Designers</span>
+          <span class="summary-label">Owners</span>
         </div>
       </div>
     </section>
@@ -58,7 +58,7 @@
       <div class="controls-row">
         <label class="control-group search-group" for="search-input">
           <span class="control-label">Search</span>
-          <input type="search" id="search-input" placeholder="Search name, project, owner, description, tags..." autocomplete="off">
+          <input type="search" id="search-input" placeholder="Search prototypes, projects, owners, or tags" autocomplete="off">
         </label>
 
         <label class="control-group" for="filter-category">
@@ -73,7 +73,7 @@
         <label class="control-group" for="filter-status">
           <span class="control-label">Status</span>
           <select id="filter-status">
-            <option value="Active">Active (hide Archived)</option>
+            <option value="Active">Active only</option>
             <option value="All">All statuses</option>
             <option value="Draft">Draft</option>
             <option value="In Review">In Review</option>
@@ -115,7 +115,7 @@
           <div class="radio-row">
             <label><input type="radio" name="group-by" value="all" checked> Show all</label>
             <label><input type="radio" name="group-by" value="project"> Project</label>
-            <label><input type="radio" name="group-by" value="owner"> Designer</label>
+            <label><input type="radio" name="group-by" value="owner"> Owner</label>
           </div>
         </fieldset>
       </div>
