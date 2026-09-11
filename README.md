@@ -46,9 +46,9 @@ If access or publishing fails, tell Cursor what happened and ask it to diagnose 
 ### Before using `@add-prototype`
 
 - [ ] You can sign in to the organization’s GitHub environment
-- [ ] You can open the UX-Projects repository
+- [ ] You have the latest version of UX-Projects
 - [ ] You have Write access to UX-Projects
-- [ ] You opened UX-Projects in Cursor
+- [ ] You opened the complete UX-Projects folder in Cursor
 - [ ] You started a new Cursor chat so `@add-prototype` is available
 
 ---
@@ -102,9 +102,72 @@ Prototype title: Nurse Workflow
 Owner: <your name or team>
 ```
 
-### Add a Prototype (Fallback)
+---
 
-If the Cursor skill is unavailable, paste the instruction from [.cursor/skills/add-prototype/designer-input-template.md](.cursor/skills/add-prototype/designer-input-template.md) into chat.
+## Use the Add Prototype Skill
+
+The Add Prototype skill is already included with UX-Projects. You do not need to install it separately.
+
+1. Make sure you have the latest UX-Projects repository files. Ask Cursor to update your local copy if you are unsure.
+2. Open the **complete** UX-Projects folder in Cursor — not just a single prototype subfolder.
+3. Start a **new** Cursor chat.
+4. Invoke `@add-prototype`.
+5. Provide only these four details:
+
+- **Category**
+- **Project**
+- **Prototype title**
+- **Owner**
+
+Example:
+
+```text
+@add-prototype
+
+Category: Patient or Provider
+Project: <project name>
+Prototype title: <prototype title>
+Owner: <your name or team>
+```
+
+## If `@add-prototype` Does Not Appear
+
+1. Confirm that the complete `UX-Projects` folder is open in Cursor, not only an individual prototype folder.
+2. Start a new Cursor chat.
+3. Type `@` and search for **Add Prototype**.
+4. If the skill still does not appear, paste this into Cursor:
+
+```text
+Please check whether the local UX-Projects repository has the latest version of the Add Prototype skill.
+
+Do not delete, reset, overwrite, commit, or push anything.
+
+Please:
+
+1. Confirm the complete UX-Projects repository is open.
+2. Check for unexpected local changes.
+3. Check whether the local repository is current.
+4. Check whether this file exists:
+   .cursor/skills/add-prototype/SKILL.md
+5. Explain what you found in plain language.
+6. Recommend the safest next step.
+7. Show me the proposed action before making any changes.
+```
+
+## Copy-and-Paste Fallback
+
+If `@add-prototype` still does not work after the steps above, paste this into a new Cursor chat:
+
+```text
+@add-prototype
+
+Category: <Patient or Provider>
+Project: <project name>
+Prototype title: <prototype title>
+Owner: <your name or team>
+```
+
+You can also copy the full template from [.cursor/skills/add-prototype/designer-input-template.md](.cursor/skills/add-prototype/designer-input-template.md).
 
 ---
 
