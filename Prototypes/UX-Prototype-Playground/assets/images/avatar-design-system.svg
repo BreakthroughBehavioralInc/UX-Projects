@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Design System Guardian avatar">
+  <rect width="120" height="120" rx="60" fill="#ec4899"/>
+  <circle cx="60" cy="45" r="22" fill="#fbcfe8"/>
+  <ellipse cx="60" cy="95" rx="35" ry="25" fill="#fbcfe8"/>
+  <circle cx="52" cy="42" r="4" fill="#831843"/>
+  <circle cx="68" cy="42" r="4" fill="#831843"/>
+  <rect x="50" y="54" width="20" height="8" rx="2" fill="#831843"/>
+  <text x="60" y="115" text-anchor="middle" font-size="20">=á</text>
+</svg>

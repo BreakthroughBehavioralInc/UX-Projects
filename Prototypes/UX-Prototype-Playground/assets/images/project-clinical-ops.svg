@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Clinical Ops Messaging project">
+  <rect width="400" height="240" fill="#eef2ff"/>
+  <rect x="40" y="40" width="320" height="160" rx="12" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+  <rect x="60" y="60" width="120" height="12" rx="6" fill="#6366f1"/>
+  <rect x="60" y="85" width="200" height="8" rx="4" fill="#e0e7ff"/>
+  <rect x="60" y="105" width="180" height="8" rx="4" fill="#e0e7ff"/>
+  <rect x="60" y="140" width="80" height="32" rx="8" fill="#6366f1"/>
+  <circle cx="320" cy="80" r="24" fill="#22c55e"/>
+  <text x="200" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#6366f1" font-weight="600">Clinical Ops Messaging</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Accessibility Hero avatar">
+  <rect width="120" height="120" rx="60" fill="#22c55e"/>
+  <circle cx="60" cy="45" r="22" fill="#bbf7d0"/>
+  <ellipse cx="60" cy="95" rx="35" ry="25" fill="#bbf7d0"/>
+  <circle cx="52" cy="42" r="4" fill="#14532d"/>
+  <circle cx="68" cy="42" r="4" fill="#14532d"/>
+  <path d="M48 58 Q60 52 72 58" fill="none" stroke="#14532d" stroke-width="2"/>
+  <text x="60" y="115" text-anchor="middle" font-size="20"></text>
+</svg>

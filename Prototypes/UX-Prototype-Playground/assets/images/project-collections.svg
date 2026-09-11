@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Patient Collections project">
+  <rect width="400" height="240" fill="#f0fdf4"/>
+  <rect x="60" y="50" width="280" height="140" rx="12" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+  <text x="200" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="36" fill="#22c55e">$</text>
+  <rect x="90" y="130" width="220" height="10" rx="5" fill="#dcfce7"/>
+  <rect x="90" y="150" width="160" height="10" rx="5" fill="#dcfce7"/>
+  <rect x="130" y="170" width="140" height="28" rx="8" fill="#22c55e"/>
+  <text x="200" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#22c55e" font-weight="600">Patient Collections</text>
+</svg>

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "clinical-ops-messaging",
+    "title": "Clinical Ops Messaging",
+    "description": "Unified messaging workflows for clinical operations teams — reducing inbox chaos and making handoffs actually make sense.",
+    "longDescription": "Clinical operations teams were drowning in fragmented communication channels. This prototype explores a centralized messaging hub with role-based views, priority tagging, and smart routing that respects clinical urgency without adding noise.",
+    "tags": ["Healthcare", "Messaging", "Workflow"],
+    "status": "In Review",
+    "statusClass": "status-review",
+    "image": "assets/images/project-clinical-ops.svg",
+    "stakeholders": ["Clinical Ops", "IT", "Compliance"],
+    "timeline": "Q2 2026",
+    "impact": "Estimated 40% reduction in missed handoffs during pilot simulations."
+  },
+  {
+    "id": "patient-portal-rebranding",
+    "title": "Patient Portal Rebranding",
+    "description": "A warmer, clearer patient portal experience — because 'Your account has been locked' shouldn't feel like a breakup letter.",
+    "longDescription": "This rebrand prototype applies the new Evernorth visual language to the patient portal, focusing on navigation clarity, trust-building microcopy, and a dashboard that answers 'What do I need to do today?' in under three seconds.",
+    "tags": ["Patient Portal", "Rebrand", "Navigation"],
+    "status": "In Progress",
+    "statusClass": "status-progress",
+    "image": "assets/images/project-patient-portal.svg",
+    "stakeholders": ["Marketing", "Patient Experience", "Engineering"],
+    "timeline": "Q3 2026",
+    "impact": "Desirability testing showed 87% preference over current portal layout."
+  },
+  {
+    "id": "patient-collections",
+    "title": "Patient Collections",
+    "description": "Compassionate billing experiences that help patients understand costs without triggering existential dread.",
+    "longDescription": "Healthcare billing is stressful. This prototype reimagines patient collections with plain-language explanations, flexible payment paths, and proactive cost transparency — because surprise bills help no one except anxiety.",
+    "tags": ["Billing", "Patient Experience", "Compliance"],
+    "status": "Discovery",
+    "statusClass": "status-discovery",
+    "image": "assets/images/project-collections.svg",
+    "stakeholders": ["Revenue Cycle", "Legal", "Patient Advocacy"],
+    "timeline": "Q4 2026",
+    "impact": "Early concept testing reduced 'I don't understand this bill' confusion by 62%."
+  },
+  {
+    "id": "email-rebranding",
+    "title": "Email Rebranding",
+    "description": "Email templates that look like they were designed by humans, not sent from a fax machine in 2003.",
+    "longDescription": "A comprehensive email template system aligned with the new brand — responsive layouts, accessible typography, and modular components that marketing can actually use without breaking everything.",
+    "tags": ["Email", "Rebrand", "Design System"],
+    "status": "Shipped",
+    "statusClass": "status-shipped",
+    "image": "assets/images/project-email.svg",
+    "stakeholders": ["Marketing", "Brand", "CRM Team"],
+    "timeline": "Q1 2026",
+    "impact": "Click-through rates improved 23% in A/B testing against legacy templates."
+  },
+  {
+    "id": "provider-portal",
+    "title": "Provider Portal",
+    "description": "A provider dashboard that respects clinicians' time — dense when needed, calm when possible.",
+    "longDescription": "Providers need information fast. This prototype consolidates key workflows — prior auth, patient lookup, messaging — into a scannable dashboard with keyboard shortcuts and customizable widgets for different specialties.",
+    "tags": ["Provider Portal", "Dashboard", "Clinical"],
+    "status": "In Progress",
+    "statusClass": "status-progress",
+    "image": "assets/images/project-provider-portal.svg",
+    "stakeholders": ["Clinical Leadership", "Provider Experience", "Engineering"],
+    "timeline": "Q3 2026",
+    "impact": "Task completion time reduced by 18% in moderated usability sessions."
+  }
+]

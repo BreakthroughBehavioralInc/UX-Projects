@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Stakeholder Whisperer avatar">
+  <rect width="120" height="120" rx="60" fill="#f97316"/>
+  <circle cx="60" cy="45" r="22" fill="#fed7aa"/>
+  <ellipse cx="60" cy="95" rx="35" ry="25" fill="#fed7aa"/>
+  <circle cx="52" cy="42" r="4" fill="#7c2d12"/>
+  <circle cx="68" cy="42" r="4" fill="#7c2d12"/>
+  <path d="M48 56 Q60 62 72 56" fill="none" stroke="#7c2d12" stroke-width="2"/>
+  <text x="60" y="115" text-anchor="middle" font-size="20">></text>
+</svg>

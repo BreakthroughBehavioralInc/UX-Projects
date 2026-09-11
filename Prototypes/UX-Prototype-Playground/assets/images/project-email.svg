@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Email Rebranding project">
+  <rect width="400" height="240" fill="#fff7ed"/>
+  <rect x="70" y="60" width="260" height="120" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="2"/>
+  <polygon points="70,60 200,140 330,60" fill="#f97316" opacity="0.3"/>
+  <line x1="70" y1="60" x2="330" y2="60" stroke="#f97316" stroke-width="2"/>
+  <rect x="100" y="100" width="200" height="8" rx="4" fill="#ffedd5"/>
+  <rect x="100" y="120" width="160" height="8" rx="4" fill="#ffedd5"/>
+  <text x="200" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#f97316" font-weight="600">Email Rebranding</text>
+</svg>

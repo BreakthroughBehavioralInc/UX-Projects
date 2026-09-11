@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Provider Portal project">
+  <rect width="400" height="240" fill="#eff6ff"/>
+  <rect x="30" y="40" width="80" height="160" rx="8" fill="#1e40af"/>
+  <rect x="130" y="40" width="240" height="30" rx="6" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <rect x="130" y="85" width="110" height="55" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <rect x="260" y="85" width="110" height="55" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <rect x="130" y="155" width="240" height="45" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="200" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#1e40af" font-weight="600">Provider Portal</text>
+</svg>

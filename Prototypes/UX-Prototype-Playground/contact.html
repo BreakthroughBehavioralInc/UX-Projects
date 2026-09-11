@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Submit a stakeholder request to The UX Avengers prototype team.">
+  <title>Contact | The UX Avengers</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link" aria-label="The UX Avengers home">
+        <img src="assets/icons/logo.svg" alt="">
+        <span>The UX Avengers</span>
+      </a>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <span class="icon-moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="icon-sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Stakeholder Request</h1>
+        <p>Need a prototype review, workshop, or UX consultation? Tell us what you need — we'll assemble the right Avenger for the job.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-info">
+            <h2 id="contact-heading">How It Works</h2>
+            <p>Submit your request below and The UX Avengers will review it faster than you can schedule a recurring "quick sync" that somehow lasts 90 minutes.</p>
+            <ul class="contact-perks">
+              <li>Prototype reviews within 5 business days</li>
+              <li>Workshop facilitation for alignment sessions</li>
+              <li>Accessibility audits with actionable feedback</li>
+              <li>Design system guidance and component reviews</li>
+              <li>Zero judgment for "just one more iteration"</li>
+            </ul>
+          </div>
+
+          <div class="contact-form-wrap">
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Stakeholder">
+                <span id="name-error" class="error-message" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="jane.stakeholder@company.com">
+                <span id="email-error" class="error-message" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="project">Project</label>
+                <select id="project" name="project">
+                  <option value="">Select a project</option>
+                  <option value="clinical-ops">Clinical Ops Messaging</option>
+                  <option value="patient-portal">Patient Portal Rebranding</option>
+                  <option value="collections">Patient Collections</option>
+                  <option value="email">Email Rebranding</option>
+                  <option value="provider-portal">Provider Portal</option>
+                  <option value="new">New Project / Other</option>
+                </select>
+                <span id="project-error" class="error-message" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="request-type">Request Type</label>
+                <select id="request-type" name="request-type">
+                  <option value="">Select request type</option>
+                  <option value="review">Prototype Review</option>
+                  <option value="workshop">Workshop / Alignment Session</option>
+                  <option value="accessibility">Accessibility Audit</option>
+                  <option value="consultation">UX Consultation</option>
+                  <option value="feedback">General Feedback</option>
+                </select>
+                <span id="request-type-error" class="error-message" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Tell us about your request, timeline, and any context that would help us prepare..."></textarea>
+                <span id="message-error" class="error-message" role="alert"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+            </form>
+
+            <div id="form-success" class="form-success" role="alert">
+              Thank you. The UX Avengers have received your request.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icons/logo.svg" alt="">
+        <div>
+          <div>The UX Avengers</div>
+          <div class="footer-tagline">Fighting stakeholder confusion one workflow at a time.</div>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2026 The UX Avengers. All prototypes reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
