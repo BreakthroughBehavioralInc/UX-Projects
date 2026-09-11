@@ -1,14 +1,18 @@
 # UX Projects
 
-## What is UX Design Sandbox?
+## What is Product Repository?
 
-**UX Design Sandbox** is the shared home for interactive UX prototypes. It gives designers one searchable place to publish Patient and Provider concepts, review them with stakeholders, and open each prototype from a stable link.
+**Product Repository** is a shared internal workspace for Patient and Provider prototypes, product concepts, workflow explorations, and stakeholder-review experiences.
 
-Each prototype lives in its own folder. **UX Prototype Playground** is the included example prototype inside the Sandbox — it is not the Sandbox itself.
+It supports approved contributions from Designers, Product Managers, and Product teams.
 
-The Sandbox supports:
+Product Repository is intended for prototype and concept work. It is not a production application repository or a general-purpose file-storage location.
 
-- Multiple UX designers working at the same time
+**Product Repository** is the central catalog of Patient and Provider prototype work. **UX Prototype Playground** is the included example prototype inside Product Repository — it is not Product Repository itself.
+
+Product Repository supports:
+
+- Designers, Product Managers, and other approved Product contributors working at the same time
 - Patient and Provider projects
 - Several prototype concepts under one project
 - Search, filters, and stable URLs for every prototype
@@ -16,27 +20,30 @@ The Sandbox supports:
 > **IMPORTANT: Live site access and content rules**
 >
 > - GitHub Pages visibility is **Private**. Viewers must sign in to GitHub and have access to this repository.
-> - Designers must **not** change the site to Public or change repository visibility without repository-owner and organizational approval.
+> - Contributors must **not** change the site to Public or change repository visibility without repository-owner and organizational approval.
 > - Do **not** add confidential, proprietary, production, patient, member, provider, employee, PHI, PII, credentials, API keys, or other sensitive company information without organizational approval.
 > - Prototype content must use fictional or properly sanitized data only.
 > - Forms must not collect or transmit real information without an approved backend and security review.
 > - A custom HTML login page does **not** secure a public static site.
+> - Product Repository is a prototype review environment, not a production application.
 
 ---
 
 ## Access Requirements
 
-UX Design Sandbox is hosted through a **Private** GitHub Pages site. Viewers must sign in to GitHub and have authorized access.
+Product Repository is hosted through a **Private** GitHub Pages site. Viewers must sign in to GitHub and have authorized access.
 
-Viewing the Sandbox and contributing prototypes are different permission levels. Being able to open the live site does **not** automatically allow someone to add or publish prototypes.
+Viewing Product Repository and contributing to **UX-Projects** are separate permissions. Being able to open the live site does **not** automatically allow someone to add or publish prototypes.
 
-Designers who need to add, edit, or publish prototypes must have **Write** access to the **UX-Projects** repository. Write access lets designers pull the repository, add prototype files, commit approved changes, and push updates.
+Contributors who add or publish prototypes must have **Write** access to the **UX-Projects** repository. Write access lets contributors pull the repository, add prototype files, commit approved changes, and push updates.
 
-Designers do **not** need Maintain or Admin access for the standard Add Prototype workflow.
+Contributors do **not** need Maintain or Admin access for the standard Add Prototype workflow.
 
-If a designer can view the Sandbox but cannot push changes, the repository owner should verify that the designer has Write access.
+If a contributor can view Product Repository but cannot push changes, the repository owner should verify that the contributor has Write access.
 
-When repository access is granted, designers should use their exact GitHub username. If a designer cannot be found when selecting **Add people**, confirm the designer’s exact GitHub username and organization access before trying again.
+When repository access is granted, contributors should use their exact GitHub username. If a contributor cannot be found when selecting **Add people**, confirm the contributor’s exact GitHub username and organization access before trying again.
+
+If access or pushing fails, contact the repository owner.
 
 ### Before using `@add-prototype`
 
@@ -65,7 +72,7 @@ When repository access is granted, designers should use their exact GitHub usern
 5. Cursor finds or creates the prototype, handles the technical setup, and shows a local preview.
 6. Review the preview.
 7. Tell Cursor to publish only when the prototype is ready.
-8. Open the prototype from **UX Design Sandbox** after deployment.
+8. Open the prototype from **Product Repository** after deployment.
 
 **Example**
 
@@ -78,31 +85,34 @@ Prototype title: Nurse Workflow
 Owner: Eddie De La Torre
 ```
 
+Owner may be a Designer, a Product Manager, or a Product or Design team. A job title is not required.
+
 **How this works**
 
 - Status defaults to **Draft**.
 - Cursor attempts to detect an existing prototype automatically.
 - If creating something new, Cursor asks for one short description.
-- Cursor handles technical metadata and catalog updates.
-- Designers do not manually edit `prototype.json` or `generated/catalog.json`.
-- Cursor waits for approval before publishing.
+- Cursor handles folders and technical information.
+- Contributors do not manually edit `prototype.json` or `generated/catalog.json`.
+- Cursor previews the prototype locally.
+- Cursor waits for approval before committing or publishing.
 
 **What Cursor handles for you**
 
 - Repository folders and file organization
-- Technical metadata required by the Sandbox
+- Technical metadata required by Product Repository
 - Validation and catalog rebuild
 - Local preview setup
 - Commit, push, and deployment confirmation after your approval
 
 **What you do not need to do manually**
 
-- Create Sandbox cards
+- Create Product Repository cards
 - Edit `prototype.json`
 - Edit `Prototypes/generated/catalog.json`
 - Run Node scripts or manage GitHub Actions
 
-A valid prototype appears automatically as a searchable card after successful validation, push, and deployment. **Archived** prototypes remain accessible by direct link but are hidden from the default Sandbox view.
+A valid prototype appears automatically as a searchable card after successful validation, push, and deployment. **Archived** prototypes remain accessible by direct link but are hidden from the default Product Repository view.
 
 ### Add a Prototype (Fallback)
 
@@ -117,26 +127,26 @@ When you ask Cursor to add or update a prototype, have this information ready:
 | Item | What to provide |
 |------|-----------------|
 | **Category** | `Patient` or `Provider` — the primary audience |
-| **Project** | The initiative or workstream name (for example, `Clinical Ops Messaging`) |
-| **Prototype title** | The name of this specific concept or variation |
-| **Owner** | Your name or design team |
+| **Project** | The initiative, product, or workstream name (for example, `Clinical Ops Messaging`) |
+| **Prototype title** | The name of this specific concept, workflow, or variation |
+| **Owner** | A Designer, Product Manager, or Product or Design team. A job title is not required. |
 
 Optional, only if helpful: status (defaults to **Draft**), a short description, or where an existing prototype already lives. Cursor tries to detect an existing prototype automatically. If it is creating something new, it asks for one short description.
 
-Cursor will create folders, technical metadata, and Sandbox catalog entries. **You do not need to edit metadata files yourself.**
+Cursor will create folders, technical metadata, and Product Repository catalog entries. **You do not need to edit metadata files yourself.**
 
 ---
 
 ## Review and Publish
 
-1. **Preview locally** — Ask Cursor to start a local preview. Open your prototype and UX Design Sandbox in the browser.
-2. **Check the Sandbox card** — Confirm your prototype appears with the correct name, project, category, owner, and status.
+1. **Preview locally** — Ask Cursor to start a local preview. Open your prototype and Product Repository in the browser.
+2. **Check the Product Repository card** — Confirm your prototype appears with the correct name, project, category, owner, and status.
 3. **Test the prototype** — Review screens, links, images, interactions, accessibility, and mobile layout.
 4. **Approve before publish** — Tell Cursor explicitly when you are ready to commit and push.
 5. **Confirm deployment** — After push, ask Cursor to confirm the GitHub Pages deployment succeeded.
-6. **Open the live Sandbox** — Find your prototype card and use **Open Prototype** for the live link.
+6. **Open the live Product Repository** — Find your prototype card and use **Open Prototype** for the live link.
 
-**Direct-to-main workflow:** Changes go to the `main` branch. There are no feature branches or pull requests in the standard designer workflow.
+**Direct-to-main workflow:** Changes go to the `main` branch. There are no feature branches or pull requests in the standard contributor workflow.
 
 ---
 
@@ -147,6 +157,26 @@ Every prototype belongs to one category, one project, and one prototype folder:
 ```
 Category → Project → Prototype
 ```
+
+```
+Prototypes/
+├── Patient/
+│   └── <project-name>/
+│       └── <prototype-name>/
+└── Provider/
+    └── <project-name>/
+        └── <prototype-name>/
+```
+
+- **Patient** or **Provider** identifies the primary audience.
+- **Project** identifies the initiative, product, or workstream.
+- **Prototype** identifies one concept, workflow, or variation.
+- One project may contain multiple prototypes.
+- Designers and Product Managers may own or contribute prototype work.
+- Every prototype must remain self-contained.
+- Contributors should use `@add-prototype` instead of manually creating incomplete folder structures.
+
+Do not create a separate Product folder. Patient and Provider remain the only category folders.
 
 **Patient** — patient-facing experiences such as portals, scheduling, billing, collections, communications, and onboarding.
 
@@ -172,13 +202,13 @@ Rules:
 
 ## Troubleshooting
 
-### I cannot open the live Sandbox
+### I cannot open the live Product Repository
 
 The site is **Private**. Sign in to GitHub with an account that has access to this repository.
 
-### I can view the Sandbox but cannot add a prototype
+### I can view Product Repository but cannot add a prototype
 
-1. Viewing the Private Pages site and contributing to the repository are separate permissions.
+1. Viewing Product Repository and contributing to UX-Projects are separate permissions.
 2. Confirm your repository role is **Write**.
 3. Confirm you are signed into the correct GitHub account.
 4. Confirm the local repository is connected to the correct GitHub account.
@@ -192,21 +222,21 @@ The site is **Private**. Sign in to GitHub with an account that has access to th
 2. Ask Cursor to validate the prototype.
 3. Confirm the status is not `Archived` (archived prototypes are hidden by default).
 4. Confirm the prototype has a working `index.html` entry point.
-5. Review any visible error message in UX Design Sandbox.
+5. Review any visible error message in Product Repository.
 6. Contact the repository owner if the issue remains.
 
-### UX Design Sandbox shows zero prototypes
+### Product Repository shows zero prototypes
 
 1. Open browser developer tools.
 2. Check the **Console** for catalog-loading errors.
 3. Check the **Network** request for `generated/catalog.json`.
 4. Confirm the response is HTTP 200 and contains a `prototypes` array.
-5. Ask Cursor to validate the prototype and rebuild the Sandbox catalog.
-6. Reload UX Design Sandbox.
+5. Ask Cursor to validate the prototype and rebuild the Product Repository catalog.
+6. Reload Product Repository.
 
 ### Push rejected or permission denied
 
-Someone else may have pushed newer changes, or you may lack write access. Ask Cursor to pull the latest `main` safely and try again. Do not force-push.
+Someone else may have pushed newer changes, or you may lack write access. Ask Cursor to pull the latest `main` safely and try again. Do not force-push. Contact the repository owner if pushing still fails.
 
 ### Page returns 404
 
@@ -216,9 +246,9 @@ Check folder names, capitalization, and that the latest deployment completed suc
 
 ## How the Automation Works
 
-Designers do not manually create cards in **UX Design Sandbox**. Cursor organizes the prototype and creates the technical information required by the Sandbox.
+Contributors do not manually create cards in **Product Repository**. Cursor organizes the prototype and creates the technical information required by Product Repository.
 
-After approved changes are pushed to `main`, the deployment workflow validates the prototypes, rebuilds the catalog, and publishes the updated Sandbox. A valid new prototype then appears automatically as a searchable and filterable card.
+After approved changes are pushed to `main`, the deployment workflow validates the prototypes, rebuilds the catalog, and publishes the updated Product Repository. A valid new prototype then appears automatically as a searchable and filterable card.
 
 If a prototype does not appear:
 
@@ -226,7 +256,7 @@ If a prototype does not appear:
 2. Ask Cursor to validate the prototype.
 3. Confirm the prototype is not `Archived`.
 4. Confirm the prototype has a working `index.html` entry point.
-5. Review any visible Sandbox error message.
+5. Review any visible Product Repository error message.
 6. Contact the repository owner if the issue remains.
 
 **Do not manually edit `Prototypes/generated/catalog.json`.** Cursor or the deployment workflow rebuilds it automatically.
@@ -235,7 +265,7 @@ If a prototype does not appear:
 
 ## Live URLs
 
-UX Design Sandbox:
+Product Repository:
 
 ```
 https://bookish-barnacle-2ywmpk2.pages.github.io/
@@ -263,12 +293,12 @@ https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/ux-prototype-playgroun
 
 # Technical Reference for Maintainers
 
-The sections below are for maintainers and advanced contributors. UX designers can rely on the **Add Prototype** skill (`@add-prototype`) without reading these details.
+The sections below are for maintainers and advanced contributors. Product and Design contributors can rely on the **Add Prototype** skill (`@add-prototype`) without reading these details.
 
 **Table of contents**
 
 - [Repository Structure](#repository-structure)
-- [Designer Quick Start (Technical)](#designer-quick-start-technical)
+- [Contributor Quick Start (Technical)](#contributor-quick-start-technical)
 - [prototype.json Metadata](#prototypejson-metadata)
 - [Local Preview and Validation](#local-preview-and-validation)
 - [Commit and Push](#commit-and-push)
@@ -297,7 +327,7 @@ UX-Projects/
 │   └── workflows/
 │       └── deploy-pages.yml
 └── Prototypes/
-    ├── index.html                 # UX Design Sandbox landing page
+    ├── index.html                 # Product Repository landing page
     ├── css/
     │   └── hub.css
     ├── js/
@@ -321,9 +351,9 @@ Each prototype folder contains:
 
 ---
 
-## Designer Quick Start (Technical)
+## Contributor Quick Start (Technical)
 
-Designers should use `@add-prototype` rather than this checklist. The steps below are for maintainers when the skill cannot be used.
+Contributors should use `@add-prototype` rather than this checklist. The steps below are for maintainers when the skill cannot be used.
 
 1. Open the local `UX-Projects` folder in Cursor.
 2. Confirm the current branch is `main`.
@@ -334,12 +364,12 @@ Designers should use `@add-prototype` rather than this checklist. The steps belo
 7. Create a uniquely named prototype folder.
 8. Add prototype files and `prototype.json`.
 9. Run the validator and catalog builder.
-10. Preview UX Design Sandbox and the prototype locally.
+10. Preview Product Repository and the prototype locally.
 11. Review `git status` and `git diff`.
 12. Commit only intended files.
 13. Push `main`.
 14. Confirm the GitHub Pages deployment.
-15. Open the prototype from UX Design Sandbox.
+15. Open the prototype from Product Repository.
 
 ---
 
@@ -352,7 +382,7 @@ Every prototype must include `prototype.json` with these required fields:
   "name": "<human-readable prototype name>",
   "project": "<human-readable project name>",
   "category": "Patient or Provider",
-  "owner": "<designer or team>",
+  "owner": "<person or team>",
   "status": "Draft, In Review, Testing, Approved, or Archived",
   "description": "<short description>",
   "version": "<version>",
@@ -381,7 +411,7 @@ cd Prototypes
 python3 -m http.server 8000
 ```
 
-Open UX Design Sandbox:
+Open Product Repository:
 
 ```
 http://localhost:8000/
@@ -421,7 +451,7 @@ Deployment is handled by `.github/workflows/deploy-pages.yml`.
 | Pre-deploy steps | `validate-prototypes.js`, then `build-prototype-catalog.js` |
 | Pages visibility | **Private** |
 
-The base URL opens **UX Design Sandbox**. Archived prototypes remain accessible by direct URL but are hidden from the default Sandbox view.
+The base URL opens **Product Repository**. Archived prototypes remain accessible by direct URL but are hidden from the default Product Repository view.
 
 Monitor deployment under **Actions > Deploy GitHub Pages**.
 
@@ -437,7 +467,7 @@ To archive:
 2. Update `lastUpdated`.
 3. Rebuild the catalog, commit, and push.
 
-Archived prototypes remain accessible by direct URL, are excluded from the default Sandbox view, and appear when **Archived** or **All statuses** is selected.
+Archived prototypes remain accessible by direct URL, are excluded from the default Product Repository view, and appear when **Archived** or **All statuses** is selected.
 
 ---
 
@@ -463,7 +493,7 @@ git commit -m "<clear description>"
 git push origin main
 ```
 
-Stop and ask for help if there are unexpected changes, merge conflicts, or another designer edited the same prototype.
+Stop and ask for help if there are unexpected changes, merge conflicts, or another contributor edited the same prototype.
 
 ---
 
@@ -474,7 +504,7 @@ Stop and ask for help if there are unexpected changes, merge conflicts, or anoth
 - Use fictional or sanitized information only
 - Never include PHI, PII, credentials, secrets, tokens, or production exports
 - Do not change repository visibility or deployment settings without approval
-- Treat the live site as a review environment, not a production application
+- Treat Product Repository as a prototype review environment, not a production application
 
 ---
 
@@ -490,7 +520,7 @@ Stop and ask for help if there are unexpected changes, merge conflicts, or anoth
 Patient / Provider
 
 ## Owner
-<Designer or team>
+<Designer, Product Manager, or team>
 
 ## Status
 Draft / In Review / Testing / Approved / Archived
@@ -524,10 +554,10 @@ This prototype uses fictional or sanitized data and is not a production applicat
 1. Pull the latest `main` branch before starting.
 2. Work only inside the intended prototype folder.
 3. Keep every prototype self-contained.
-4. Coordinate before editing another designer's project.
+4. Coordinate before editing another contributor's project.
 5. Preview and test before committing.
 6. Commit only intended files and push directly to `main`.
-7. Never force-push or overwrite another designer's work.
+7. Never force-push or overwrite another contributor's work.
 8. Do not change deployment configuration or Pages visibility without approval.
 9. Never include PHI, PII, credentials, secrets, or confidential information.
 10. Confirm deployment after pushing changes that affect the published prototype.

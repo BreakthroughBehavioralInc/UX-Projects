@@ -8,7 +8,7 @@ Copy into Cursor chat when invoking **Add Prototype**:
 Category: <Patient or Provider>
 Project: <project name>
 Prototype title: <prototype title>
-Owner: <designer or team>
+Owner: <person or team>
 ```
 
 Optional details, only if helpful:

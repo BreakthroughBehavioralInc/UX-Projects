@@ -1,22 +1,22 @@
 ---
 name: add-prototype
-description: Adds an existing or new Patient or Provider prototype to UX Design Sandbox, handles the technical setup, validates it, previews it, and publishes only after approval.
+description: Adds an existing or new Patient or Provider prototype to Product Repository, handles the technical setup, validates it, previews it, and publishes only after approval.
 disable-model-invocation: true
 ---
 
 # Add Prototype
 
-Adds an existing or new Patient or Provider prototype to **UX Design Sandbox**. Handles technical setup, validation, preview, and publish-after-approval.
+Adds an existing or new Patient or Provider prototype to **Product Repository**. Handles technical setup, validation, preview, and publish-after-approval.
 
-Speak to designers in plain language. Do not ask them to run scripts, name folders, or edit metadata.
+Speak to contributors in plain language. Do not ask them to run scripts, name folders, or edit metadata.
 
 ## When to use
 
-Apply when the designer wants to add, import, update, or publish a prototype in UX Design Sandbox.
+Apply when a Designer, Product Manager, or other approved Product contributor wants to add, import, update, or publish a prototype in Product Repository.
 
 Do **not** use for unrelated repository work, deployment configuration, or modifying **UX Prototype Playground** unless explicitly requested.
 
-## Required designer inputs
+## Required contributor inputs
 
 Ask only for these four fields if they were not already provided:
 
@@ -29,7 +29,7 @@ Ask only for these four fields if they were not already provided:
 
 Do **not** initially require purpose, screens, interactions, source, folder names, paths, metadata, version, tags, entry point, deployment information, or git commands.
 
-Optional details, only if the designer offers them or they are needed to recover from a problem:
+Optional details, only if the contributor offers them or they are needed to recover from a problem:
 
 - Status (otherwise **Draft**)
 - Description (otherwise derive)
@@ -48,7 +48,7 @@ Do not present a technical questionnaire unless critical information is genuinel
 | description | Derive from existing prototype README/content when possible |
 | tags | Derive conservatively from category, project, and prototype title |
 
-Do not ask designers to create or edit `prototype.json`. Do not expose generated technical fields unless the designer requests them or validation failed.
+Do not ask contributors to create or edit `prototype.json`. Do not expose generated technical fields unless the contributor requests them or validation failed.
 
 ## Preflight (stop on failure)
 
@@ -65,24 +65,24 @@ Inspect the current Cursor workspace and repository **before** asking for a sour
 
 Treat a folder as a likely prototype if it contains an `index.html` (or a clearly self-contained HTML/CSS/JS prototype) and is **not**:
 
-- UX Design Sandbox itself (`Prototypes/index.html`, hub CSS/JS)
-- **UX Prototype Playground** unless the designer explicitly asked to update it
+- Product Repository itself (`Prototypes/index.html`, hub CSS/JS)
+- **UX Prototype Playground** unless the contributor explicitly asked to update it
 - `node_modules`, `.git`, scripts, or generated catalog files
 
 If one existing prototype is clearly present:
 
 1. Identify the likely folder.
 2. Inspect files, pages, screens, navigation, and interactions.
-3. Show the designer that folder in plain language.
+3. Show the contributor that folder in plain language.
 4. Ask for approval before copying or moving files.
 
-If several folders are plausible, list them in plain language and ask the designer to choose. **Do not guess.**
+If several folders are plausible, list them in plain language and ask the contributor to choose. **Do not guess.**
 
 Do not require a Source field when detection is reliable.
 
 ## New prototypes
 
-If no existing prototype is available and the designer wants Cursor to create one, ask only:
+If no existing prototype is available and the contributor wants Cursor to create one, ask only:
 
 > Briefly describe what you want the prototype to demonstrate.
 
@@ -90,11 +90,11 @@ Accept a conversational answer such as:
 
 > I need a messaging workflow where a nurse can contact a provider and escalate an urgent message.
 
-From that response, derive screens, basic interactions, initial description, suggested tags, and folder structure. Use HTML, CSS, and vanilla JavaScript unless the designer explicitly approves another stack.
+From that response, derive screens, basic interactions, initial description, suggested tags, and folder structure. Use HTML, CSS, and vanilla JavaScript unless the contributor explicitly approves another stack.
 
 ## Simple plan (wait for approval)
 
-Before creating or moving files, show only:
+Before creating or moving files, show the contributor only:
 
 - Category
 - Project
@@ -113,7 +113,7 @@ Prototype: Nurse Workflow
 Owner: Eddie De La Torre
 Destination: Prototypes/Provider/clinical-ops-messaging/nurse-workflow/
 
-I found an existing prototype in the current workspace. I will organize it in the destination above, create the Sandbox information, validate it, and show you a local preview before publishing.
+I found an existing prototype in the current workspace. I will organize it in the destination above, create the Product Repository information, validate it, and show you a local preview before publishing.
 ```
 
 Then wait for approval.
@@ -124,7 +124,7 @@ Then wait for approval.
 2. Convert **Project** to lowercase kebab-case (`Clinical Ops Messaging` → `clinical-ops-messaging`).
 3. Convert **Prototype title** to lowercase kebab-case (`Nurse Workflow` → `nurse-workflow`).
 4. Destination: `Prototypes/<category>/<project-slug>/<prototype-slug>/`
-5. **Stop before overwriting** an existing prototype unless the designer explicitly approves updating that exact prototype.
+5. **Stop before overwriting** an existing prototype unless the contributor explicitly approves updating that exact prototype.
 
 Target structure:
 
@@ -142,7 +142,7 @@ Keep prototype files inside that folder. Preserve other projects and prototypes.
 
 ## Technical metadata (agent-owned)
 
-Create and maintain `prototype.json`. Designers never edit it.
+Create and maintain `prototype.json`. Contributors never edit it.
 
 ```json
 {
@@ -163,7 +163,7 @@ Create or update the project-level `README.md` using the template in the root RE
 
 ## After plan approval (behind the scenes)
 
-Handle without asking the designer to run commands:
+Handle without asking the contributor to run commands:
 
 1. Folder-name conversion
 2. Duplicate-path checks
@@ -176,9 +176,9 @@ Handle without asking the designer to run commands:
 9. Link, image, CSS, and JavaScript validation
 10. Keyboard, focus, contrast, and mobile-layout spot-checks
 11. Catalog rebuild
-12. Local Sandbox preview
+12. Local Product Repository preview
 13. Local prototype preview
-14. Confirmation the Sandbox card appears (unless status is Archived and the default filter is Active only)
+14. Confirmation the Product Repository card appears (unless status is Archived and the default filter is Active only)
 15. Changed-file summary
 
 Run:
@@ -199,7 +199,7 @@ python3 -m http.server 8000
 
 Stop after local validation and show:
 
-- Sandbox preview: `http://localhost:8000/`
+- Product Repository preview: `http://localhost:8000/`
 - Prototype preview: `http://localhost:8000/<Category>/<project-slug>/<prototype-slug>/`
 - Destination folder
 - Files added or changed
@@ -218,23 +218,23 @@ Stop after local validation and show:
 6. Push `main` to origin without force-pushing.
 7. Monitor **Deploy GitHub Pages**.
 8. If deployment fails, report the exact failed step. **Do not** modify files automatically.
-9. After success, confirm UX Design Sandbox loads, the card appears, and the prototype path loads.
+9. After success, confirm Product Repository loads, the card appears, and the prototype path loads.
 10. Return the final live prototype link.
 
 ## Never
 
 - Force-push, reset shared work, or discard unexpected changes
-- Delete or overwrite another designer's work without explicit approval
+- Delete or overwrite another contributor's work without explicit approval
 - Change GitHub Pages visibility or make Pages Public
 - Modify `.github/workflows/deploy-pages.yml` without explicit approval
-- Ask the designer to manually edit `prototype.json` or `Prototypes/generated/catalog.json`
+- Ask the contributor to manually edit `prototype.json` or `Prototypes/generated/catalog.json`
 - Add PHI, PII, credentials, secrets, tokens, API keys, production data, or confidential information
 - Present a static HTML login as secure
 - Submit or transmit real form data without an approved backend and security review
 
-## Preserve Sandbox behavior
+## Preserve Product Repository behavior
 
-Do not change approved UX Design Sandbox implementation unless explicitly requested:
+Do not change approved Product Repository implementation unless explicitly requested:
 
 - Catalog loading, lazy DOM binding, normalization
 - Loading, error, and empty states

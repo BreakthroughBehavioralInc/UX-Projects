@@ -59,7 +59,7 @@
 
     const missing = required.filter((key) => !elements[key])
     if (missing.length > 0) {
-      console.error('UX Design Sandbox: missing required DOM elements:', missing.join(', '))
+      console.error('Product Repository: missing required DOM elements:', missing.join(', '))
       return false
     }
 
@@ -331,7 +331,7 @@
         state.loadState = 'loaded'
         renderSummary()
         renderResults()
-        console.warn('UX Design Sandbox: catalog loaded but contains no prototypes.')
+        console.warn('Product Repository: catalog loaded but contains no prototypes.')
         return
       }
 
@@ -349,8 +349,8 @@
       state.loadState = 'loaded'
       applyFilters()
     } catch (error) {
-      console.error('UX Design Sandbox: failed to load catalog:', error)
-      showErrorState('Unable to load UX Design Sandbox. Refresh the page or contact the repository owner.')
+      console.error('Product Repository: failed to load catalog:', error)
+      showErrorState('Unable to load Product Repository. Refresh the page or contact the repository owner.')
     } finally {
       elements.resultsPanel.setAttribute('aria-busy', 'false')
     }
