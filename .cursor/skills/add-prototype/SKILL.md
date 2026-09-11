@@ -1,12 +1,12 @@
 ---
 name: add-prototype
-description: Adds an existing or new Patient or Provider prototype to Product Repository, handles the technical setup, validates it, previews it, and publishes only after approval.
+description: Adds an existing or new Patient or Provider prototype to Prototype Hub, handles the technical setup, validates it, previews it, and publishes only after approval.
 disable-model-invocation: true
 ---
 
 # Add Prototype
 
-Adds an existing or new Patient or Provider prototype to **Product Repository**. Handles technical setup, validation, preview, and publish-after-approval.
+Adds an existing or new Patient or Provider prototype to **Prototype Hub**. Handles technical setup, validation, preview, and publish-after-approval.
 
 Speak to contributors in plain language. Do not ask them to run scripts, name folders, or edit metadata. Do not begin with a technical questionnaire.
 
@@ -86,14 +86,14 @@ Inspect for likely entry points:
 
 Ignore unrelated folders:
 
-- Product Repository hub files (`Prototypes/index.html`, hub CSS/JS, generated catalog)
+- Prototype Hub hub files (`Prototypes/index.html`, hub CSS/JS, generated catalog)
 - Already published prototypes under `Prototypes/Patient/` or `Prototypes/Provider/` unless the contributor explicitly selected one
 - `node_modules`, `.git`, scripts, build output unrelated to the selected prototype, temporary files, and operating-system files
 
 ### One likely prototype
 
 1. Show the detected source folder.
-2. Show the proposed Product Repository destination.
+2. Show the proposed Prototype Hub destination.
 3. State clearly that the default action is **Copy**, not Move.
 4. Explain that the original source folder will remain unchanged.
 5. Wait for approval before copying anything.
@@ -109,11 +109,11 @@ Owner: Amanda Buckley
 Existing prototype found:
 <source folder>
 
-Product Repository destination:
+Prototype Hub destination:
 Prototypes/Provider/clinical-ops-messaging/nurse-workflow/
 
 Action:
-Copy the prototype into Product Repository. The original folder will remain unchanged.
+Copy the prototype into Prototype Hub. The original folder will remain unchanged.
 ```
 
 Then wait for approval.
@@ -142,7 +142,7 @@ When importing:
 2. Preserve the original source folder.
 3. Never delete source files.
 4. Never alter the source project without explicit approval.
-5. Never overwrite an existing Product Repository prototype.
+5. Never overwrite an existing Prototype Hub prototype.
 6. **Stop** if the destination path already exists. Report duplicate project or prototype names.
 7. Create `Prototypes/<category>/<project-name>/<prototype-name>/`.
 8. Keep all imported prototype files inside that folder.
@@ -158,7 +158,7 @@ When importing:
 
 ## Import validation
 
-After copying into Product Repository, validate:
+After copying into Prototype Hub, validate:
 
 - Entry point loads
 - HTML pages load
@@ -235,9 +235,9 @@ Create and maintain `prototype.json`. Contributors never edit it.
 
 ## Automatic indexing (both scenarios)
 
-Contributors must not manually create Product Repository cards or edit `Prototypes/generated/catalog.json`.
+Contributors must not manually create Prototype Hub cards or edit `Prototypes/generated/catalog.json`.
 
-1. Create and maintain the technical information required by Product Repository.
+1. Create and maintain the technical information required by Prototype Hub.
 2. Run `node scripts/validate-prototypes.js`.
 3. Run `node scripts/build-prototype-catalog.js`.
 4. Confirm the new or imported prototype appears **exactly once** in the generated catalog.
@@ -248,7 +248,7 @@ Contributors must not manually create Product Repository cards or edit `Prototyp
    python3 -m http.server 8000
    ```
 
-6. Confirm the prototype appears as a card in Product Repository (`http://localhost:8000/`).
+6. Confirm the prototype appears as a card in Prototype Hub (`http://localhost:8000/`).
 7. Confirm search finds it.
 8. Confirm the correct Patient or Provider filter finds it.
 9. Confirm the project and owner filters include it.
@@ -263,8 +263,8 @@ Before publishing, show:
 
 - Whether the prototype was **imported** or **newly created**
 - Original source folder, if imported
-- Product Repository destination
-- Product Repository local preview
+- Prototype Hub destination
+- Prototype Hub local preview
 - Prototype local preview
 - Files copied
 - Files created
@@ -288,7 +288,7 @@ Before publishing, show:
 8. Push `main` to origin without force-pushing.
 9. Monitor **Deploy GitHub Pages**.
 10. If deployment fails, report the exact failed step. **Do not** modify files automatically.
-11. After success, confirm Product Repository loads, the card appears, and the prototype path loads.
+11. After success, confirm Prototype Hub loads, the card appears, and the prototype path loads.
 12. Return the final live prototype link.
 
 ## Never
@@ -306,9 +306,9 @@ Before publishing, show:
 - Create a separate Product category folder
 - Modify **UX Prototype Playground**, **KR 2.2 – Reduce AHT V1**, or other published prototypes unless the contributor explicitly selected that exact prototype to update
 
-## Preserve Product Repository behavior
+## Preserve Prototype Hub behavior
 
-Do not change approved Product Repository implementation unless explicitly requested:
+Do not change approved Prototype Hub implementation unless explicitly requested:
 
 - Catalog loading, lazy DOM binding, normalization
 - Loading, error, and empty states
@@ -316,7 +316,7 @@ Do not change approved Product Repository implementation unless explicitly reque
 - **UX Prototype Playground** name, path, and content
 - Other published prototype paths and content
 - GitHub Pages workflow and Private visibility
-- Product Repository title, **Patient & Provider Prototype Review** subtitle, and UX header badge
+- Prototype Hub title, **Patient & Provider Prototype Review** subtitle, and UX header badge
 
 ## Fallback
 

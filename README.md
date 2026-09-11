@@ -1,16 +1,16 @@
 # UX Projects
 
-## What is Product Repository?
+## What is Prototype Hub?
 
-**Product Repository** is a shared internal workspace for Patient and Provider prototypes, product concepts, workflow explorations, and stakeholder-review experiences.
+**Prototype Hub** is a shared internal workspace for Patient and Provider prototypes, product concepts, workflow explorations, and stakeholder-review experiences.
 
 It supports approved contributions from Designers, Product Managers, and Product teams.
 
-Product Repository is intended for prototype and concept work. It is not a production application repository or a general-purpose file-storage location.
+Prototype Hub is intended for prototype and concept work. It is not a production application repository or a general-purpose file-storage location.
 
-**Product Repository** is the central catalog of Patient and Provider prototype work. **UX Prototype Playground** is the included example prototype inside Product Repository — it is not Product Repository itself.
+**Prototype Hub** is the central catalog of Patient and Provider prototype work — a compact internal enterprise dashboard for discovering, reviewing, and opening prototypes. **UX Prototype Playground** is the included example prototype inside Prototype Hub — it is not Prototype Hub itself.
 
-Product Repository supports:
+Prototype Hub supports:
 
 - Designers, Product Managers, and other approved Product contributors working at the same time
 - Patient and Provider projects
@@ -25,21 +25,21 @@ Product Repository supports:
 > - Prototype content must use fictional or properly sanitized data only.
 > - Forms must not collect or transmit real information without an approved backend and security review.
 > - A custom HTML login page does **not** secure a public static site.
-> - Product Repository is a prototype review environment, not a production application.
+> - Prototype Hub is a prototype review environment, not a production application.
 
 ---
 
 ## Access Requirements
 
-Product Repository is hosted through a **Private** GitHub Pages site. Viewers must sign in to GitHub and have authorized access.
+Prototype Hub is hosted through a **Private** GitHub Pages site. Viewers must sign in to GitHub and have authorized access.
 
-Viewing Product Repository and contributing to **UX-Projects** are separate permissions. Being able to open the live site does **not** automatically allow someone to add or publish prototypes.
+Viewing Prototype Hub and contributing to **UX-Projects** are separate permissions. Being able to open the live site does **not** automatically allow someone to add or publish prototypes.
 
 Contributors who add or publish prototypes must have **Write** access to the **UX-Projects** repository. Write access lets contributors pull the repository, add prototype files, commit approved changes, and push updates.
 
 Contributors do **not** need Maintain or Admin access for the standard Add Prototype workflow.
 
-If a contributor can view Product Repository but cannot push changes, the repository owner should verify that the contributor has Write access.
+If a contributor can view Prototype Hub but cannot push changes, the repository owner should verify that the contributor has Write access.
 
 When repository access is granted, contributors should use their exact GitHub username. If a contributor cannot be found when selecting **Add people**, confirm the contributor’s exact GitHub username and organization access before trying again.
 
@@ -71,11 +71,11 @@ Owner: <your name or team>
 
 Owner may be a Designer, a Product Manager, or a Product or Design team. A job title is not required. Status defaults to **Draft**.
 
-Contributors do not manually edit `prototype.json` or `generated/catalog.json`. Contributors do not manually create Product Repository cards.
+Contributors do not manually edit `prototype.json` or `generated/catalog.json`. Contributors do not manually create Prototype Hub cards.
 
 ### I already have a prototype
 
-Already have a prototype? Open the existing project and UX-Projects in Cursor, start a new Cursor chat, and run `@add-prototype`. Cursor will locate the existing prototype, show the source and destination folders, copy the approved files into Product Repository, add the information needed for indexing, validate the prototype, and show a local preview. The original project folder remains unchanged.
+Already have a prototype? Open the existing project and UX-Projects in Cursor, start a new Cursor chat, and run `@add-prototype`. Cursor will locate the existing prototype, show the source and destination folders, copy the approved files into Prototype Hub, add the information needed for indexing, validate the prototype, and show a local preview. The original project folder remains unchanged.
 
 ```text
 @add-prototype
@@ -90,7 +90,7 @@ Owner: <your name or team>
 - If Cursor finds multiple possible prototypes, the contributor selects the correct one.
 - Cursor copies files by default and leaves the original folder unchanged.
 - Cursor does not publish until the contributor approves the preview.
-- The contributor does not manually create metadata or a Product Repository card.
+- The contributor does not manually create metadata or a Prototype Hub card.
 
 ### I need Cursor to create a prototype
 
@@ -113,12 +113,12 @@ If the Cursor skill is unavailable, paste the instruction from [.cursor/skills/a
 
 ## Review and Publish
 
-1. **Preview locally** — Ask Cursor to start a local preview. Open your prototype and Product Repository in the browser.
-2. **Check the Product Repository card** — Confirm your prototype appears with the correct name, project, category, owner, and status.
+1. **Preview locally** — Ask Cursor to start a local preview. Open your prototype and Prototype Hub in the browser.
+2. **Check the Prototype Hub card** — Confirm your prototype appears with the correct name, project, category, owner, and status.
 3. **Test the prototype** — Review screens, links, images, interactions, accessibility, and mobile layout.
 4. **Approve before publish** — Tell Cursor explicitly when you are ready to commit and push.
 5. **Confirm deployment** — After push, ask Cursor to confirm the GitHub Pages deployment succeeded.
-6. **Open the live Product Repository** — Find your prototype card and use **Open Prototype** for the live link.
+6. **Open the live Prototype Hub** — Find your prototype card and use **Open Prototype** for the live link.
 
 **Direct-to-main workflow:** Changes go to the `main` branch. There are no feature branches or pull requests in the standard contributor workflow.
 
@@ -178,13 +178,13 @@ Rules:
 
 ## Troubleshooting
 
-### I cannot open the live Product Repository
+### I cannot open the live Prototype Hub
 
 The site is **Private**. Sign in to GitHub with an account that has access to this repository.
 
-### I can view Product Repository but cannot add a prototype
+### I can view Prototype Hub but cannot add a prototype
 
-1. Viewing Product Repository and contributing to UX-Projects are separate permissions.
+1. Viewing Prototype Hub and contributing to UX-Projects are separate permissions.
 2. Confirm your repository role is **Write**.
 3. Confirm you are signed into the correct GitHub account.
 4. Confirm the local repository is connected to the correct GitHub account.
@@ -197,24 +197,24 @@ The site is **Private**. Sign in to GitHub with an account that has access to th
 1. Confirm the existing prototype folder is open in the same Cursor workspace.
 2. Confirm the prototype contains an identifiable entry page such as `index.html`.
 3. Tell Cursor which open folder contains the prototype if detection is ambiguous.
-4. Do not manually copy files into random Product Repository folders.
+4. Do not manually copy files into random Prototype Hub folders.
 5. Ask Cursor to show the source and destination before importing.
 
 ### Cursor found multiple prototypes
 
 1. Review the folder options Cursor lists.
 2. Select the correct source folder.
-3. Confirm the proposed Product Repository destination.
+3. Confirm the proposed Prototype Hub destination.
 4. Do not continue until the correct source is selected.
 
-### My imported prototype does not appear in Product Repository
+### My imported prototype does not appear in Prototype Hub
 
 1. Confirm validation passed.
 2. Confirm the prototype contains `index.html`.
 3. Confirm the catalog builder included the prototype.
 4. Confirm deployment succeeded.
 5. Confirm the prototype is not `Archived`.
-6. Review the Product Repository error state.
+6. Review the Prototype Hub error state.
 7. Contact the repository owner if the issue remains.
 
 ### My prototype card does not appear
@@ -223,17 +223,17 @@ The site is **Private**. Sign in to GitHub with an account that has access to th
 2. Ask Cursor to validate the prototype.
 3. Confirm the status is not `Archived` (archived prototypes are hidden by default).
 4. Confirm the prototype has a working `index.html` entry point.
-5. Review any visible error message in Product Repository.
+5. Review any visible error message in Prototype Hub.
 6. Contact the repository owner if the issue remains.
 
-### Product Repository shows zero prototypes
+### Prototype Hub shows zero prototypes
 
 1. Open browser developer tools.
 2. Check the **Console** for catalog-loading errors.
 3. Check the **Network** request for `generated/catalog.json`.
 4. Confirm the response is HTTP 200 and contains a `prototypes` array.
-5. Ask Cursor to validate the prototype and rebuild the Product Repository catalog.
-6. Reload Product Repository.
+5. Ask Cursor to validate the prototype and rebuild the Prototype Hub catalog.
+6. Reload Prototype Hub.
 
 ### Push rejected or permission denied
 
@@ -247,9 +247,9 @@ Check folder names, capitalization, and that the latest deployment completed suc
 
 ## How Automatic Indexing Works
 
-Contributors do not manually create cards in **Product Repository**. Cursor organizes the prototype and creates the technical information required by Product Repository.
+Contributors do not manually create cards in **Prototype Hub**. Cursor organizes the prototype and creates the technical information required by Prototype Hub.
 
-After approved changes are pushed to `main`, the deployment workflow validates the prototypes, rebuilds the catalog, and publishes the updated Product Repository. A valid prototype then appears automatically as a searchable and filterable card. Catalog totals change as prototypes are added; do not treat any count as a fixed requirement.
+After approved changes are pushed to `main`, the deployment workflow validates the prototypes, rebuilds the catalog, and publishes the updated Prototype Hub. A valid prototype then appears automatically as a searchable and filterable card. Catalog totals change as prototypes are added; do not treat any count as a fixed requirement.
 
 If a prototype does not appear:
 
@@ -257,7 +257,7 @@ If a prototype does not appear:
 2. Ask Cursor to validate the prototype.
 3. Confirm the prototype is not `Archived`.
 4. Confirm the prototype has a working `index.html` entry point.
-5. Review any visible Product Repository error message.
+5. Review any visible Prototype Hub error message.
 6. Contact the repository owner if the issue remains.
 
 **Do not manually edit `Prototypes/generated/catalog.json`.** Cursor or the deployment workflow rebuilds it automatically.
@@ -267,6 +267,8 @@ If a prototype does not appear:
 # Technical Reference for Maintainers
 
 The sections below are for maintainers and advanced contributors. Product and Design contributors can rely on the **Add Prototype** skill (`@add-prototype`) without reading these details.
+
+The Prototype Hub interface uses EverKit design-system tokens and patterns where they are available in the repository. Contributors should not introduce unrelated visual frameworks or hard-coded styles into the Hub.
 
 **Table of contents**
 
@@ -287,7 +289,7 @@ The sections below are for maintainers and advanced contributors. Product and De
 
 ## Live URLs
 
-Product Repository:
+Prototype Hub:
 
 ```
 https://bookish-barnacle-2ywmpk2.pages.github.io/
@@ -329,8 +331,9 @@ UX-Projects/
 │   └── workflows/
 │       └── deploy-pages.yml
 └── Prototypes/
-    ├── index.html                 # Product Repository landing page
+    ├── index.html                 # Prototype Hub landing page
     ├── css/
+    │   ├── everkit-tokens.css
     │   └── hub.css
     ├── js/
     │   └── hub.js
@@ -366,12 +369,12 @@ Contributors should use `@add-prototype` rather than this checklist. The steps b
 7. Create a uniquely named prototype folder.
 8. Add prototype files and `prototype.json`.
 9. Run the validator and catalog builder.
-10. Preview Product Repository and the prototype locally.
+10. Preview Prototype Hub and the prototype locally.
 11. Review `git status` and `git diff`.
 12. Commit only intended files.
 13. Push `main`.
 14. Confirm the GitHub Pages deployment.
-15. Open the prototype from Product Repository.
+15. Open the prototype from Prototype Hub.
 
 ---
 
@@ -413,7 +416,7 @@ cd Prototypes
 python3 -m http.server 8000
 ```
 
-Open Product Repository:
+Open Prototype Hub:
 
 ```
 http://localhost:8000/
@@ -453,7 +456,7 @@ Deployment is handled by `.github/workflows/deploy-pages.yml`.
 | Pre-deploy steps | `validate-prototypes.js`, then `build-prototype-catalog.js` |
 | Pages visibility | **Private** |
 
-The base URL opens **Product Repository**. Archived prototypes remain accessible by direct URL but are hidden from the default Product Repository view.
+The base URL opens **Prototype Hub**. Archived prototypes remain accessible by direct URL but are hidden from the default Prototype Hub view.
 
 Monitor deployment under **Actions > Deploy GitHub Pages**.
 
@@ -469,7 +472,7 @@ To archive:
 2. Update `lastUpdated`.
 3. Rebuild the catalog, commit, and push.
 
-Archived prototypes remain accessible by direct URL, are excluded from the default Product Repository view, and appear when **Archived** or **All statuses** is selected.
+Archived prototypes remain accessible by direct URL, are excluded from the default Prototype Hub view, and appear when **Archived** or **All statuses** is selected.
 
 ---
 
@@ -506,7 +509,7 @@ Stop and ask for help if there are unexpected changes, merge conflicts, or anoth
 - Use fictional or sanitized information only
 - Never include PHI, PII, credentials, secrets, tokens, or production exports
 - Do not change repository visibility or deployment settings without approval
-- Treat Product Repository as a prototype review environment, not a production application
+- Treat Prototype Hub as a prototype review environment, not a production application
 
 ---
 

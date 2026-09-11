@@ -1,0 +1,106 @@
+/*
+ * EverKit design tokens for Prototype Hub
+ * Source: verified values extracted from EverKit build output in
+ * Prototypes/Provider/kr-2-2-reduce-aht/v1/assets/preview-Ds67dtm-.css
+ * Do not invent token names beyond those verified in that source.
+ */
+
+:root {
+  /* Typography */
+  --everkit-font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+  --everkit-font-family-mono: "Roboto Mono Variable", "Roboto Mono", "Menlo", monospace;
+
+  --type-body-default-size: 1rem;
+  --type-body-default-line-height: 1.5rem;
+  --type-body-default-weight: 400;
+
+  --type-body-small-size: 0.875rem;
+  --type-body-small-line-height: 1.3125rem;
+  --type-body-small-weight: 400;
+
+  --type-title-small-size: 1rem;
+  --type-title-small-line-height: 1.5rem;
+  --type-title-small-weight: 700;
+
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+
+  /* Radius */
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
+
+  /* Neutral palette */
+  --color-neutral-0: #fff;
+  --color-neutral-10: #eaeaea;
+  --color-neutral-20: #d5d5d5;
+  --color-neutral-40: #ababab;
+  --color-neutral-60: #818181;
+  --color-neutral-70: #6c6c6c;
+  --color-neutral-80: #575757;
+  --color-neutral-90: #424242;
+
+  /* Brand */
+  --color-tempermint-05: #eaf4f6;
+  --color-tempermint-70: #035c67;
+  --color-tempermint-80: #00363d;
+
+  /* Surfaces */
+  --color-champagne-05: #f6f5f3;
+  --everkit-color-bg-default: var(--color-neutral-0);
+  --everkit-color-bg-subtle: var(--color-champagne-05);
+  --everkit-color-bg-hover: var(--color-tempermint-05);
+  --everkit-color-bg-brand: var(--color-tempermint-70);
+  --everkit-color-bg-brand-subtle: var(--color-tempermint-05);
+
+  /* Content */
+  --everkit-color-content-default: var(--color-neutral-90);
+  --everkit-color-content-subtle: var(--color-neutral-60);
+  --everkit-color-content-brand: var(--color-tempermint-70);
+  --everkit-color-content-disabled: var(--color-neutral-40);
+
+  /* Borders */
+  --everkit-color-border-default: var(--color-neutral-20);
+  --everkit-color-border-strong: var(--color-neutral-40);
+  --everkit-color-border-focus: var(--color-tempermint-70);
+
+  /* Buttons */
+  --everkit-color-btn-primary-bg: var(--color-tempermint-70);
+  --everkit-color-btn-primary-content: var(--color-neutral-0);
+  --everkit-color-btn-primary-bg-hover: var(--color-tempermint-80);
+  --everkit-color-btn-secondary-bg: transparent;
+  --everkit-color-btn-secondary-content: var(--color-tempermint-70);
+  --everkit-color-btn-secondary-border: var(--color-tempermint-70);
+
+  /* Badge / status semantic */
+  --everkit-color-badge-neutral-subtle-bg: var(--color-neutral-10);
+  --everkit-color-badge-neutral-subtle-content: var(--color-neutral-80);
+  --everkit-color-badge-info-subtle-bg: #ebf2ff;
+  --everkit-color-badge-info-subtle-content: #1a50a8;
+  --everkit-color-badge-success-subtle-bg: #f0fff7;
+  --everkit-color-badge-success-subtle-content: #005c2c;
+  --everkit-color-badge-warning-subtle-bg: #fcf5e5;
+  --everkit-color-badge-warning-subtle-content: #7e4e0b;
+  --everkit-color-badge-error-subtle-bg: #ffebeb;
+  --everkit-color-badge-error-subtle-content: #b83030;
+
+  /* Alert surfaces for states */
+  --everkit-color-alert-info-bg: #ebf2ff;
+  --everkit-color-alert-info-content: #1a50a8;
+  --everkit-color-alert-error-bg: #ffebeb;
+  --everkit-color-alert-error-content: #b83030;
+
+  /* Elevation */
+  --everkit-shadow-sm: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;
+}

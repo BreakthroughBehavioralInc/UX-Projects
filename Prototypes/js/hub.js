@@ -4,6 +4,7 @@
   const ARCHIVED = 'Archived'
   const ACTIVE_STATUSES = ['Draft', 'In Review', 'Testing', 'Approved']
   const CATALOG_URL = './generated/catalog.json'
+  const HUB_NAME = 'Prototype Hub'
 
   const state = {
     prototypes: [],
@@ -32,7 +33,10 @@
       errorState: document.getElementById('catalog-error'),
       emptyState: document.getElementById('catalog-empty'),
       noResultsState: document.getElementById('catalog-no-results'),
-      resultsPanel: document.querySelector('.results-panel')
+      resultsPanel: document.querySelector('.results-panel'),
+      resultsSummary: document.getElementById('results-summary'),
+      resultsMeta: document.getElementById('results-meta'),
+      clearFilters: document.getElementById('clear-filters')
     }
   }
 
@@ -54,12 +58,15 @@
       'errorState',
       'emptyState',
       'noResultsState',
-      'resultsPanel'
+      'resultsPanel',
+      'resultsSummary',
+      'resultsMeta',
+      'clearFilters'
     ]
 
     const missing = required.filter((key) => !elements[key])
     if (missing.length > 0) {
-      console.error('Product Repository: missing required DOM elements:', missing.join(', '))
+      console.error(`${HUB_NAME}: missing required DOM elements:`, missing.join(', '))
       return false
     }
 
@@ -71,7 +78,7 @@
   }
 
   function categoryClass(category) {
-    return category === 'Patient' ? 'pill-patient' : 'pill-provider'
+    return category === 'Patient' ? 'label-patient' : 'label-provider'
   }
 
   function normalizeCatalog(data) {
@@ -109,6 +116,13 @@
     return checked ? checked.value : 'all'
   }
 
+  function getGroupByLabel() {
+    const groupBy = getGroupBy()
+    if (groupBy === 'project') return 'Project'
+    if (groupBy === 'owner') return 'Owner'
+    return 'Show all'
+  }
+
   function matchesSearch(item, query) {
     if (!query) return true
     const haystack = [
@@ -133,6 +147,67 @@
     elements.summaryProvider.textContent = '—'
     elements.summaryProjects.textContent = '—'
     elements.summaryOwners.textContent = '—'
+    renderResultsToolbar()
+  }
+
+  function hasActiveFilters() {
+    return (
+      elements.searchInput.value.trim() !== '' ||
+      elements.filterCategory.value !== 'All' ||
+      elements.filterStatus.value !== 'Active' ||
+      elements.filterProject.value !== 'All' ||
+      elements.filterOwner.value !== 'All' ||
+      elements.sortBy.value !== 'recent' ||
+      getGroupBy() !== 'all'
+    )
+  }
+
+  function getActiveFilterSummary() {
+    const parts = []
+
+    if (elements.searchInput.value.trim()) {
+      parts.push(`Search: "${elements.searchInput.value.trim()}"`)
+    }
+    if (elements.filterCategory.value !== 'All') {
+      parts.push(`Category: ${elements.filterCategory.value}`)
+    }
+    if (elements.filterStatus.value !== 'Active') {
+      parts.push(`Status: ${elements.filterStatus.value}`)
+    }
+    if (elements.filterProject.value !== 'All') {
+      parts.push(`Project: ${elements.filterProject.value}`)
+    }
+    if (elements.filterOwner.value !== 'All') {
+      parts.push(`Owner: ${elements.filterOwner.value}`)
+    }
+
+    return parts.length > 0 ? parts.join(' · ') : 'No active filters'
+  }
+
+  function renderResultsToolbar() {
+    if (state.loadState !== 'loaded') {
+      elements.resultsSummary.textContent = 'Showing — prototypes'
+      elements.resultsMeta.textContent = 'Grouped by: Show all'
+      elements.clearFilters.disabled = true
+      return
+    }
+
+    const count = state.filtered.length
+    elements.resultsSummary.textContent = `Showing ${count} prototype${count === 1 ? '' : 's'}`
+    elements.resultsMeta.textContent = `Grouped by: ${getGroupByLabel()} · ${getActiveFilterSummary()}`
+    elements.clearFilters.disabled = !hasActiveFilters()
+  }
+
+  function clearFilters() {
+    elements.searchInput.value = ''
+    elements.filterCategory.value = 'All'
+    elements.filterStatus.value = 'Active'
+    elements.filterProject.value = 'All'
+    elements.filterOwner.value = 'All'
+    elements.sortBy.value = 'recent'
+    const allRadio = [...elements.groupRadios].find((radio) => radio.value === 'all')
+    if (allRadio) allRadio.checked = true
+    applyFilters()
   }
 
   function applyFilters() {
@@ -155,6 +230,7 @@
 
     sortFiltered()
     renderSummary()
+    renderResultsToolbar()
     renderResults()
   }
 
@@ -184,21 +260,34 @@
 
   function createCard(item) {
     const article = document.createElement('article')
-    article.className = 'prototype-card'
+    article.className = 'prototype-record'
     article.innerHTML = `
-      <div class="card-header">
+      <div class="record-header">
         <h3>${escapeHtml(item.name)}</h3>
-        <span class="pill ${categoryClass(item.category)}">${escapeHtml(item.category)}</span>
+        <span class="status-label ${statusClass(item.status)}">${escapeHtml(item.status)}</span>
       </div>
-      <p class="card-meta"><strong>Project:</strong> ${escapeHtml(item.project)}</p>
-      <p class="card-meta"><strong>Owner:</strong> ${escapeHtml(item.owner)}</p>
-      <span class="pill ${statusClass(item.status)}">${escapeHtml(item.status)}</span>
-      <p class="card-description">${escapeHtml(item.description)}</p>
-      <p class="card-meta"><strong>Version:</strong> ${escapeHtml(item.version)}</p>
-      <div class="card-tags">${(item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>
-      <div class="card-footer">
-        <span class="card-updated">Updated ${escapeHtml(item.lastUpdated)}</span>
-        <a class="btn" href="${escapeHtml(item.url)}">Open Prototype</a>
+      <div class="record-meta-row">
+        <span class="record-project">${escapeHtml(item.project)}</span>
+        <span class="label ${categoryClass(item.category)}">${escapeHtml(item.category)}</span>
+      </div>
+      <p class="record-description">${escapeHtml(item.description)}</p>
+      <dl class="record-details">
+        <div>
+          <dt>Owner</dt>
+          <dd>${escapeHtml(item.owner)}</dd>
+        </div>
+        <div>
+          <dt>Version</dt>
+          <dd>${escapeHtml(item.version)}</dd>
+        </div>
+        <div>
+          <dt>Updated</dt>
+          <dd>${escapeHtml(item.lastUpdated)}</dd>
+        </div>
+      </dl>
+      <div class="record-tags">${(item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>
+      <div class="record-actions">
+        <a class="btn-primary" href="${escapeHtml(item.url)}">Open Prototype</a>
       </div>
     `
     return article
@@ -227,7 +316,7 @@
       section.className = 'group-block'
       section.innerHTML = `<h2 class="group-title">${escapeHtml(groupName)}</h2>`
       const grid = document.createElement('div')
-      grid.className = 'cards-grid'
+      grid.className = 'records-grid'
       groups.get(groupName).forEach((item) => grid.appendChild(createCard(item)))
       section.appendChild(grid)
       fragment.appendChild(section)
@@ -284,7 +373,7 @@
     }
 
     const grid = document.createElement('div')
-    grid.className = 'cards-grid'
+    grid.className = 'records-grid'
     state.filtered.forEach((item) => grid.appendChild(createCard(item)))
     elements.results.appendChild(grid)
   }
@@ -297,6 +386,7 @@
     elements.filterOwner.addEventListener('change', applyFilters)
     elements.sortBy.addEventListener('change', applyFilters)
     elements.groupRadios.forEach((radio) => radio.addEventListener('change', applyFilters))
+    elements.clearFilters.addEventListener('click', clearFilters)
   }
 
   async function loadCatalog() {
@@ -330,8 +420,9 @@
       if (state.prototypes.length === 0) {
         state.loadState = 'loaded'
         renderSummary()
+        renderResultsToolbar()
         renderResults()
-        console.warn('Product Repository: catalog loaded but contains no prototypes.')
+        console.warn(`${HUB_NAME}: catalog loaded but contains no prototypes.`)
         return
       }
 
@@ -349,8 +440,8 @@
       state.loadState = 'loaded'
       applyFilters()
     } catch (error) {
-      console.error('Product Repository: failed to load catalog:', error)
-      showErrorState('Unable to load Product Repository. Refresh the page or contact the repository owner.')
+      console.error(`${HUB_NAME}: failed to load catalog:`, error)
+      showErrorState(`Unable to load ${HUB_NAME}. Refresh the page or contact the repository owner.`)
     } finally {
       elements.resultsPanel.setAttribute('aria-busy', 'false')
     }
