@@ -3,30 +3,67 @@
 
   const ARCHIVED = 'Archived'
   const ACTIVE_STATUSES = ['Draft', 'In Review', 'Testing', 'Approved']
+  const CATALOG_URL = './generated/catalog.json'
 
   const state = {
     prototypes: [],
-    filtered: []
+    filtered: [],
+    loadState: 'loading'
   }
 
-  const elements = {
-    summaryTotal: document.getElementById('summary-total'),
-    summaryPatient: document.getElementById('summary-patient'),
-    summaryProvider: document.getElementById('summary-provider'),
-    summaryProjects: document.getElementById('summary-projects'),
-    summaryOwners: document.getElementById('summary-owners'),
-    searchInput: document.getElementById('search-input'),
-    filterCategory: document.getElementById('filter-category'),
-    filterStatus: document.getElementById('filter-status'),
-    filterProject: document.getElementById('filter-project'),
-    filterOwner: document.getElementById('filter-owner'),
-    sortBy: document.getElementById('sort-by'),
-    groupRadios: document.querySelectorAll('input[name="group-by"]'),
-    results: document.getElementById('catalog-results'),
-    errorState: document.getElementById('catalog-error'),
-    emptyState: document.getElementById('catalog-empty'),
-    noResultsState: document.getElementById('catalog-no-results'),
-    resultsPanel: document.querySelector('.results-panel')
+  let elements = {}
+
+  function cacheElements() {
+    elements = {
+      summaryTotal: document.getElementById('summary-total'),
+      summaryPatient: document.getElementById('summary-patient'),
+      summaryProvider: document.getElementById('summary-provider'),
+      summaryProjects: document.getElementById('summary-projects'),
+      summaryOwners: document.getElementById('summary-owners'),
+      searchInput: document.getElementById('search-input'),
+      filterCategory: document.getElementById('filter-category'),
+      filterStatus: document.getElementById('filter-status'),
+      filterProject: document.getElementById('filter-project'),
+      filterOwner: document.getElementById('filter-owner'),
+      sortBy: document.getElementById('sort-by'),
+      groupRadios: document.querySelectorAll('input[name="group-by"]'),
+      results: document.getElementById('catalog-results'),
+      loadingState: document.getElementById('catalog-loading'),
+      errorState: document.getElementById('catalog-error'),
+      emptyState: document.getElementById('catalog-empty'),
+      noResultsState: document.getElementById('catalog-no-results'),
+      resultsPanel: document.querySelector('.results-panel')
+    }
+  }
+
+  function validateElements() {
+    const required = [
+      'summaryTotal',
+      'summaryPatient',
+      'summaryProvider',
+      'summaryProjects',
+      'summaryOwners',
+      'searchInput',
+      'filterCategory',
+      'filterStatus',
+      'filterProject',
+      'filterOwner',
+      'sortBy',
+      'results',
+      'loadingState',
+      'errorState',
+      'emptyState',
+      'noResultsState',
+      'resultsPanel'
+    ]
+
+    const missing = required.filter((key) => !elements[key])
+    if (missing.length > 0) {
+      console.error('UX Design Sandbox: missing required DOM elements:', missing.join(', '))
+      return false
+    }
+
+    return true
   }
 
   function statusClass(status) {
@@ -37,9 +74,25 @@
     return category === 'Patient' ? 'pill-patient' : 'pill-provider'
   }
 
-  function populateSelect(select, values) {
+  function normalizeCatalog(data) {
+    if (Array.isArray(data)) {
+      return data
+    }
+
+    if (data && Array.isArray(data.prototypes)) {
+      return data.prototypes
+    }
+
+    return []
+  }
+
+  function getCatalogFetchUrl() {
+    return new URL(CATALOG_URL, window.location.href).href
+  }
+
+  function populateSelect(select, values, allLabel) {
     const current = select.value
-    select.innerHTML = `<option value="All">All ${select.id.includes('project') ? 'projects' : 'owners'}</option>`
+    select.innerHTML = `<option value="All">${allLabel}</option>`
     values.forEach((value) => {
       const option = document.createElement('option')
       option.value = value
@@ -74,7 +127,17 @@
     return item.status === statusFilter
   }
 
+  function setSummaryPlaceholder() {
+    elements.summaryTotal.textContent = '—'
+    elements.summaryPatient.textContent = '—'
+    elements.summaryProvider.textContent = '—'
+    elements.summaryProjects.textContent = '—'
+    elements.summaryOwners.textContent = '—'
+  }
+
   function applyFilters() {
+    if (state.loadState !== 'loaded') return
+
     const query = elements.searchInput.value.trim().toLowerCase()
     const category = elements.filterCategory.value
     const status = elements.filterStatus.value
@@ -110,7 +173,7 @@
   function renderSummary() {
     const visible = state.filtered
     const projects = new Set(visible.map((item) => item.project))
-    const owners = new Set(visible.map((item) => item.owner))
+    const owners = new Set(visible.filter((item) => item.owner).map((item) => item.owner))
 
     elements.summaryTotal.textContent = String(visible.length)
     elements.summaryPatient.textContent = String(visible.filter((item) => item.category === 'Patient').length)
@@ -159,7 +222,7 @@
     })
 
     const fragment = document.createDocumentFragment()
-    [...groups.keys()].sort((a, b) => a.localeCompare(b)).forEach((groupName) => {
+    Array.from(groups.keys()).sort((a, b) => a.localeCompare(b)).forEach((groupName) => {
       const section = document.createElement('section')
       section.className = 'group-block'
       section.innerHTML = `<h2 class="group-title">${escapeHtml(groupName)}</h2>`
@@ -172,10 +235,31 @@
     return fragment
   }
 
-  function renderResults() {
+  function hideAllStates() {
+    elements.loadingState.hidden = true
     elements.errorState.hidden = true
     elements.emptyState.hidden = true
     elements.noResultsState.hidden = true
+  }
+
+  function showLoadingState() {
+    hideAllStates()
+    elements.loadingState.hidden = false
+    elements.results.innerHTML = ''
+    setSummaryPlaceholder()
+  }
+
+  function showErrorState(message) {
+    state.loadState = 'error'
+    hideAllStates()
+    elements.errorState.hidden = false
+    elements.errorState.querySelector('p').textContent = message
+    elements.results.innerHTML = ''
+    setSummaryPlaceholder()
+  }
+
+  function renderResults() {
+    hideAllStates()
     elements.results.innerHTML = ''
 
     if (state.prototypes.length === 0) {
@@ -216,27 +300,77 @@
   }
 
   async function loadCatalog() {
+    showLoadingState()
+
+    const catalogUrl = getCatalogFetchUrl()
+
     try {
-      const response = await fetch('./generated/catalog.json')
-      if (!response.ok) throw new Error(`HTTP ${response.status}`)
-      const data = await response.json()
-      state.prototypes = Array.isArray(data.prototypes) ? data.prototypes : []
+      const response = await fetch(catalogUrl, {
+        credentials: 'same-origin',
+        headers: {
+          Accept: 'application/json'
+        }
+      })
 
-      populateSelect(elements.filterProject, [...new Set(state.prototypes.map((item) => item.project))].sort())
-      populateSelect(elements.filterOwner, [...new Set(state.prototypes.map((item) => item.owner))].sort())
+      if (!response.ok) {
+        throw new Error(`Catalog request failed with HTTP ${response.status} (${catalogUrl})`)
+      }
 
+      const rawText = await response.text()
+      let data
+
+      try {
+        data = JSON.parse(rawText)
+      } catch (parseError) {
+        throw new Error(`Catalog response is not valid JSON (${catalogUrl})`)
+      }
+
+      state.prototypes = normalizeCatalog(data)
+
+      if (state.prototypes.length === 0) {
+        state.loadState = 'loaded'
+        renderSummary()
+        renderResults()
+        console.warn('UX Design Sandbox: catalog loaded but contains no prototypes.')
+        return
+      }
+
+      populateSelect(
+        elements.filterProject,
+        [...new Set(state.prototypes.map((item) => item.project))].sort(),
+        'All projects'
+      )
+      populateSelect(
+        elements.filterOwner,
+        [...new Set(state.prototypes.map((item) => item.owner))].sort(),
+        'All owners'
+      )
+
+      state.loadState = 'loaded'
       applyFilters()
     } catch (error) {
-      elements.errorState.hidden = false
-      elements.results.innerHTML = ''
-      console.error('Failed to load catalog:', error)
+      console.error('UX Design Sandbox: failed to load catalog:', error)
+      showErrorState('Unable to load UX Design Sandbox. Refresh the page or contact the repository owner.')
     } finally {
       elements.resultsPanel.setAttribute('aria-busy', 'false')
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function init() {
+    cacheElements()
+
+    if (!validateElements()) {
+      return
+    }
+
+    setSummaryPlaceholder()
     bindEvents()
     loadCatalog()
-  })
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init)
+  } else {
+    init()
+  }
 })()

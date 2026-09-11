@@ -1,8 +1,17 @@
 # UX Projects
 
-This repository is a shared **UX Prototype Hub** for interactive prototypes, design explorations, usability-testing concepts, and stakeholder-review experiences.
+## What is UX Design Sandbox?
 
-It supports multiple UX designers, concurrent Patient and Provider projects, multiple prototype concepts per project, searchable discovery, and stable URLs for every prototype.
+**UX Design Sandbox** is the shared home for interactive UX prototypes. It gives designers one searchable place to publish Patient and Provider concepts, review them with stakeholders, and open each prototype from a stable link.
+
+Each prototype lives in its own folder. **UX Prototype Playground** is the included example prototype inside the Sandbox — it is not the Sandbox itself.
+
+The Sandbox supports:
+
+- Multiple UX designers working at the same time
+- Patient and Provider projects
+- Several prototype concepts under one project
+- Search, filters, and stable URLs for every prototype
 
 > **IMPORTANT: Live site access and content rules**
 >
@@ -13,46 +22,242 @@ It supports multiple UX designers, concurrent Patient and Provider projects, mul
 > - Forms must not collect or transmit real information without an approved backend and security review.
 > - A custom HTML login page does **not** secure a public static site.
 
-## Designer Quick Start
+---
 
-1. Open the local `UX-Projects` folder in Cursor.
-2. Confirm the current branch is `main`.
-3. Run `git status`.
-4. Pull the latest `origin/main`.
-5. Choose `Patient` or `Provider`.
-6. Choose or create a project folder.
-7. Create a uniquely named prototype folder.
-8. Add prototype files and `prototype.json`.
-9. Run the validator and catalog builder.
-10. Preview the hub and prototype locally.
-11. Review `git status` and `git diff`.
-12. Commit only intended files.
-13. Push `main`.
-14. Confirm the GitHub Pages deployment.
-15. Open the prototype from the UX Prototype Hub.
+## Add a Prototype with Cursor
+
+You do not need to understand JSON, catalog files, Node scripts, GitHub Actions, or deployment settings. **Cursor handles the technical setup for you.**
+
+### How it works
+
+1. Open the local `UX-Projects` repository in Cursor.
+2. Paste the standard **Add a Prototype** instruction below.
+3. Provide the Patient or Provider category, project name, prototype title, owner, status, and purpose.
+4. If the prototype already exists, provide its local folder location.
+5. Let Cursor organize the files and perform the technical setup.
+6. Review the prototype and **UX Design Sandbox** locally.
+7. Tell Cursor to publish only after the preview is approved.
+8. After a successful deployment, open **UX Design Sandbox** and find the new prototype card.
+
+### Copy-and-paste instruction
+
+```text
+Add a prototype to UX Design Sandbox.
+
+Category: <Patient or Provider>
+Project: <project name>
+Prototype title: <prototype title>
+Owner: <designer name>
+Status: <Draft, In Review, Testing, Approved, or Archived>
+Purpose: <what the prototype is testing>
+Required screens: <screens or pages>
+Required interactions: <interactions>
+Source folder: <local folder path, or say Create a new prototype>
+
+Handle the repository organization and technical setup for me.
+
+Before changing anything:
+
+1. Confirm this is the UX-Projects repository.
+2. Confirm the current branch is main.
+3. Check for unexpected local changes.
+4. Stop and explain the issue if unexpected changes exist.
+5. Pull the latest origin/main safely.
+
+Then:
+
+1. Confirm Category is exactly Patient or Provider.
+2. Create or use the correct project folder.
+3. Create a unique prototype folder.
+4. Keep all prototype files inside that folder.
+5. Create and maintain any technical information required by UX Design Sandbox.
+6. Do not require me to create or edit metadata manually.
+7. Preserve every other project and prototype.
+8. Validate the entry point, links, images, JavaScript, accessibility, and responsive layout.
+9. Rebuild the Sandbox catalog.
+10. Preview the prototype and UX Design Sandbox locally.
+11. Confirm the prototype appears as a card in the Sandbox.
+12. Show me all changed files.
+13. Wait for my approval before committing or pushing.
+
+After I approve:
+
+1. Commit only the intended files directly to main.
+2. Push main without force-pushing.
+3. Confirm the GitHub Pages deployment succeeds.
+4. Confirm the new prototype appears in UX Design Sandbox.
+5. Give me the final prototype link.
+
+Never:
+
+- Force-push
+- Change GitHub Pages visibility
+- Delete or overwrite another designer’s work
+- Modify another prototype without approval
+- Include PHI, PII, credentials, secrets, tokens, production data, or confidential information
+- Modify the deployment workflow without explicit approval
+```
+
+---
+
+## What You Need to Provide
+
+When you ask Cursor to add or update a prototype, have this information ready:
+
+| Item | What to provide |
+|------|-----------------|
+| **Category** | `Patient` or `Provider` — the primary audience |
+| **Project** | The initiative or workstream name (for example, `patient-portal-rebrand`) |
+| **Prototype title** | The name of this specific concept or variation |
+| **Owner** | Your name or design team |
+| **Status** | `Draft`, `In Review`, `Testing`, `Approved`, or `Archived` |
+| **Purpose** | What the prototype is testing or demonstrating |
+| **Required screens** | Pages or flows to include |
+| **Required interactions** | Buttons, forms, navigation, or other behavior |
+| **Source folder** | Path to existing design files, or say **Create a new prototype** |
+
+Cursor will create folders, technical metadata, and Sandbox catalog entries. **You do not need to edit metadata files yourself.**
+
+---
+
+## Review and Publish
+
+1. **Preview locally** — Ask Cursor to start a local preview. Open your prototype and UX Design Sandbox in the browser.
+2. **Check the Sandbox card** — Confirm your prototype appears with the correct name, project, category, owner, and status.
+3. **Test the prototype** — Review screens, links, images, interactions, accessibility, and mobile layout.
+4. **Approve before publish** — Tell Cursor explicitly when you are ready to commit and push.
+5. **Confirm deployment** — After push, ask Cursor to confirm the GitHub Pages deployment succeeded.
+6. **Open the live Sandbox** — Find your prototype card and use **Open Prototype** for the live link.
+
+**Direct-to-main workflow:** Changes go to the `main` branch. There are no feature branches or pull requests in the standard designer workflow.
+
+---
+
+## Patient and Provider Organization
+
+Every prototype belongs to one category, one project, and one prototype folder:
+
+```
+Category → Project → Prototype
+```
+
+**Patient** — patient-facing experiences such as portals, scheduling, billing, collections, communications, and onboarding.
+
+**Provider** — provider-facing, clinician-facing, nurse-facing, clinical-operations, and care-team experiences.
+
+If a prototype serves both audiences, choose the **primary audience** and explain the cross-audience scope in the project README.
+
+**Naming:** Use lowercase kebab-case for folder names.
+
+Examples:
+
+- `Prototypes/Patient/patient-portal-rebrand/navigation-concept/`
+- `Prototypes/Provider/clinical-ops-messaging/nurse-workflow/`
+- `Prototypes/Provider/ux-prototype-playground/primary-demo/` (example: **UX Prototype Playground**)
+
+Rules:
+
+- Do not create prototype folders directly under `Patient` or `Provider` without a project folder.
+- Do not duplicate the same prototype in both categories.
+- Keep each prototype self-contained in its own folder.
+
+---
+
+## Troubleshooting
+
+### I cannot open the live Sandbox
+
+The site is **Private**. Sign in to GitHub with an account that has access to this repository.
+
+### My prototype card does not appear
+
+1. Confirm the deployment succeeded in **Actions > Deploy GitHub Pages**.
+2. Ask Cursor to validate the prototype.
+3. Confirm the status is not `Archived` (archived prototypes are hidden by default).
+4. Confirm the prototype has a working `index.html` entry point.
+5. Review any visible error message in UX Design Sandbox.
+6. Contact the repository owner if the issue remains.
+
+### UX Design Sandbox shows zero prototypes
+
+1. Open browser developer tools.
+2. Check the **Console** for catalog-loading errors.
+3. Check the **Network** request for `generated/catalog.json`.
+4. Confirm the response is HTTP 200 and contains a `prototypes` array.
+5. Ask Cursor to validate the prototype and rebuild the Sandbox catalog.
+6. Reload UX Design Sandbox.
+
+### Push rejected or permission denied
+
+Someone else may have pushed newer changes, or you may lack write access. Ask Cursor to pull the latest `main` safely and try again. Do not force-push.
+
+### Page returns 404
+
+Check folder names, capitalization, and that the latest deployment completed successfully.
+
+---
+
+## How the Automation Works
+
+Designers do not manually create cards in **UX Design Sandbox**. Cursor organizes the prototype and creates the technical information required by the Sandbox.
+
+After approved changes are pushed to `main`, the deployment workflow validates the prototypes, rebuilds the catalog, and publishes the updated Sandbox. A valid new prototype then appears automatically as a searchable and filterable card.
+
+If a prototype does not appear:
+
+1. Confirm the deployment succeeded.
+2. Ask Cursor to validate the prototype.
+3. Confirm the prototype is not `Archived`.
+4. Confirm the prototype has a working `index.html` entry point.
+5. Review any visible Sandbox error message.
+6. Contact the repository owner if the issue remains.
+
+**Do not manually edit `Prototypes/generated/catalog.json`.** Cursor or the deployment workflow rebuilds it automatically.
+
+---
+
+## Live URLs
+
+UX Design Sandbox:
+
+```
+https://bookish-barnacle-2ywmpk2.pages.github.io/
+```
+
+Patient prototype:
+
+```
+https://bookish-barnacle-2ywmpk2.pages.github.io/Patient/<project-name>/<prototype-name>/
+```
+
+Provider prototype:
+
+```
+https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/<project-name>/<prototype-name>/
+```
+
+UX Prototype Playground (example):
+
+```
+https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/ux-prototype-playground/primary-demo/
+```
+
+---
+
+# Technical Reference (Maintainers)
+
+The sections below are for maintainers and advanced contributors. UX designers can rely on Cursor and the workflow above without reading these details.
 
 **Table of contents**
 
-- [Designer Quick Start](#designer-quick-start)
 - [Repository Structure](#repository-structure)
-- [Choosing Patient or Provider](#choosing-patient-or-provider)
-- [Project and Prototype Naming](#project-and-prototype-naming)
-- [Before You Begin](#before-you-begin)
-- [Recommended Workflow: Use Cursor](#recommended-workflow-use-cursor)
-- [Creating a New Project](#creating-a-new-project)
-- [Adding Multiple Prototypes to a Project](#adding-multiple-prototypes-to-a-project)
+- [Designer Quick Start (Technical)](#designer-quick-start-technical)
 - [prototype.json Metadata](#prototypejson-metadata)
-- [Local Preview](#local-preview)
-- [Validation](#validation)
+- [Local Preview and Validation](#local-preview-and-validation)
 - [Commit and Push](#commit-and-push)
 - [Deployment](#deployment)
-- [Prototype URLs](#prototype-urls)
-- [Updating a Prototype](#updating-a-prototype)
-- [Archiving a Prototype](#archiving-a-prototype)
-- [Fast Path: Copy-and-Paste Cursor Prompt](#fast-path-copy-and-paste-cursor-prompt)
+- [Updating and Archiving Prototypes](#updating-and-archiving-prototypes)
 - [Manual Workflow (Fallback)](#manual-workflow-fallback)
-- [Updating From GitHub Without Losing Work](#updating-from-github-without-losing-work)
-- [Troubleshooting](#troubleshooting)
 - [Governance and Safety](#governance-and-safety)
 - [Project-Level README Template](#project-level-readme-template)
 - [Working Agreements](#working-agreements)
@@ -72,7 +277,7 @@ UX-Projects/
 │   └── workflows/
 │       └── deploy-pages.yml
 └── Prototypes/
-    ├── index.html                 # UX Prototype Hub landing page
+    ├── index.html                 # UX Design Sandbox landing page
     ├── css/
     │   └── hub.css
     ├── js/
@@ -82,153 +287,37 @@ UX-Projects/
     ├── Patient/
     │   └── <project-name>/
     │       └── <prototype-name>/
-    │           ├── index.html
-    │           ├── prototype.json
-    │           ├── README.md
-    │           ├── css/
-    │           ├── js/
-    │           └── assets/
     └── Provider/
         └── <project-name>/
             └── <prototype-name>/
-                ├── index.html
-                ├── prototype.json
-                ├── README.md
-                ├── css/
-                ├── js/
-                └── assets/
 ```
 
-### Hierarchy
-
-**Category → Project → Prototype**
-
-- **Category** identifies the primary audience (`Patient` or `Provider`).
-- **Project** identifies the initiative or workstream.
-- **Prototype** identifies one testable concept, workflow, or variation.
-
-A project may contain multiple prototypes. One designer may own multiple projects. Multiple designers may contribute separate projects.
-
-Rules:
-
-- Folder names must be unique within their parent folder.
-- Do not duplicate prototypes across categories.
-- Do not create prototype folders directly beneath `Patient` or `Provider` without a project folder.
-- Every prototype must remain self-contained.
-
----
-
-## Choosing Patient or Provider
-
-**Patient**
-
-Use for patient-facing experiences, patient portals, scheduling, billing, collections, patient communications, account management, onboarding, and other experiences primarily used by patients or members.
-
-**Provider**
-
-Use for provider-facing, clinician-facing, nurse-facing, clinical-operations, care-team, administrative-provider, and provider-portal experiences.
-
-If a prototype includes both patient and provider experiences, place it under the category representing the **primary audience** and explain the cross-audience scope in the project-level README.
-
-Do not duplicate one project across both category folders.
-
----
-
-## Project and Prototype Naming
-
-Use lowercase kebab-case for both project and prototype folder names.
-
-Examples:
-
-- `Prototypes/Patient/patient-portal-rebrand/navigation-concept/`
-- `Prototypes/Patient/patient-portal-rebrand/mobile-dashboard/`
-- `Prototypes/Patient/patient-collections/guest-pay/`
-- `Prototypes/Provider/clinical-ops-messaging/nurse-workflow/`
-- `Prototypes/Provider/clinical-ops-messaging/provider-inbox/`
-- `Prototypes/Provider/ux-prototype-playground/primary-demo/`
-
----
-
-## Before You Begin
-
-- [ ] Approved GitHub account with repository access
-- [ ] Cursor installed and signed in
-- [ ] Git installed locally
-- [ ] Chosen category (`Patient` or `Provider`)
-- [ ] Chosen project name and prototype name
-- [ ] Fictional or sanitized content only
-- [ ] No PHI, PII, production data, credentials, secrets, or confidential information
-- [ ] Coordinated with other designers if editing the same prototype
-
----
-
-## Recommended Workflow: Use Cursor
-
-Cursor is the recommended way to work in this repository. Use Cursor Source Control when possible, and use terminal commands when you need more control.
-
-### 1. Clone the Repository (first time only)
-
-```bash
-git clone https://github.com/BreakthroughBehavioralInc/UX-Projects.git
-cd UX-Projects
-cursor .
-```
-
-### 2. Synchronize Before Starting
-
-```bash
-git status
-git checkout main
-git pull origin main
-```
-
-- If `git status` shows uncommitted changes, stop and review them before pulling.
-- Do not automatically stash, reset, discard, or overwrite changes.
-- If the pull creates a conflict, stop and ask the repository owner for help.
-- Never force-push.
-
----
-
-## Creating a New Project
-
-Create a new project folder under the correct category:
-
-```
-Prototypes/<category>/<project-name>/
-```
-
-Then create the first prototype folder inside it:
-
-```
-Prototypes/<category>/<project-name>/<prototype-name>/
-```
-
-Every prototype folder must include:
+Each prototype folder contains:
 
 - `index.html`
 - `prototype.json`
 - `README.md`
-- Supporting `css/`, `js/`, and `assets/` folders as needed
+- `css/`, `js/`, and `assets/` as needed
 
 ---
 
-## Adding Multiple Prototypes to a Project
+## Designer Quick Start (Technical)
 
-Add additional prototype folders under the same project:
-
-```
-Prototypes/Provider/clinical-ops-messaging/nurse-workflow/
-Prototypes/Provider/clinical-ops-messaging/provider-inbox/
-```
-
-Each prototype must have its own:
-
-- Uniquely named folder
-- `prototype.json`
-- `index.html` entry point
-- Self-contained assets
-
-After adding prototypes, rebuild the catalog so the hub can discover them.
+1. Open the local `UX-Projects` folder in Cursor.
+2. Confirm the current branch is `main`.
+3. Run `git status`.
+4. Pull the latest `origin/main`.
+5. Choose `Patient` or `Provider`.
+6. Choose or create a project folder.
+7. Create a uniquely named prototype folder.
+8. Add prototype files and `prototype.json`.
+9. Run the validator and catalog builder.
+10. Preview UX Design Sandbox and the prototype locally.
+11. Review `git status` and `git diff`.
+12. Commit only intended files.
+13. Push `main`.
+14. Confirm the GitHub Pages deployment.
+15. Open the prototype from UX Design Sandbox.
 
 ---
 
@@ -256,46 +345,24 @@ Validation rules:
 - `category` must be `Patient` or `Provider`
 - `status` must be `Draft`, `In Review`, `Testing`, `Approved`, or `Archived`
 - `entryPoint` must exist
-- `name`, `project`, `owner`, `description`, `version`, and `lastUpdated` are required
-- `tags` must be an array
 - Folder names must use lowercase kebab-case
-- Duplicate category/project/prototype paths are not allowed
-- Duplicate live URLs are not allowed
+- Duplicate category/project/prototype paths and URLs are not allowed
 
 ---
 
-## Local Preview
-
-Run validation and build the catalog first:
+## Local Preview and Validation
 
 ```bash
 node scripts/validate-prototypes.js
 node scripts/build-prototype-catalog.js
-```
-
-Start a local server from the `Prototypes/` directory:
-
-```bash
 cd Prototypes
 python3 -m http.server 8000
 ```
 
-Open the hub:
+Open UX Design Sandbox:
 
 ```
 http://localhost:8000/
-```
-
-Open a specific prototype from the repository root:
-
-```
-http://localhost:8000/Prototypes/<category>/<project-name>/<prototype-name>/
-```
-
-Or from inside `Prototypes/`:
-
-```
-http://localhost:8000/<category>/<project-name>/<prototype-name>/
 ```
 
 Playground example:
@@ -306,57 +373,18 @@ http://localhost:8000/Provider/ux-prototype-playground/primary-demo/
 
 ---
 
-## Validation
-
-Before committing, run:
-
-```bash
-node scripts/validate-prototypes.js
-node scripts/build-prototype-catalog.js
-```
-
-The validator checks:
-
-- Required `prototype.json` fields
-- Supported category and status values
-- Valid `entryPoint`
-- Unique prototype paths and URLs
-- No obvious local file paths such as `C:\Users\`, `/Users/`, or `file://`
-- No obvious credential patterns
-- No empty project or prototype folders
-
-The build script generates `Prototypes/generated/catalog.json` for the hub.
-
----
-
 ## Commit and Push
-
-Review changes:
 
 ```bash
 git status
 git diff
-```
-
-Stage only intended files:
-
-```bash
 git add Prototypes/<category>/<project-name>/<prototype-name>
 git add Prototypes/generated/catalog.json
-```
-
-If documentation was intentionally updated:
-
-```bash
-git add README.md
-```
-
-Commit and push directly to `main`:
-
-```bash
-git commit -m "<clear description of the prototype change>"
+git commit -m "<clear description>"
 git push origin main
 ```
+
+Never force-push.
 
 ---
 
@@ -364,151 +392,30 @@ git push origin main
 
 Deployment is handled by `.github/workflows/deploy-pages.yml`.
 
-**Current deployment behavior**
-
-| Setting | Current value |
-|---------|---------------|
+| Setting | Value |
+|---------|-------|
 | Trigger | Push to `main`, or manual **Run workflow** |
 | Published folder | Entire `Prototypes/` directory |
 | Pre-deploy steps | `validate-prototypes.js`, then `build-prototype-catalog.js` |
 | Pages visibility | **Private** |
 
-**What this means**
-
-- Pushing to `main` can trigger an automatic redeployment.
-- The base URL now opens the **UX Prototype Hub**.
-- Each prototype receives a stable URL based on its category, project, and prototype folder names.
-- Archived prototypes remain accessible by direct URL but are hidden from the default hub view.
+The base URL opens **UX Design Sandbox**. Archived prototypes remain accessible by direct URL but are hidden from the default Sandbox view.
 
 Monitor deployment under **Actions > Deploy GitHub Pages**.
 
 ---
 
-## Prototype URLs
+## Updating and Archiving Prototypes
 
-Hub:
+To update a prototype, edit only the intended folder, update `prototype.json` (especially `lastUpdated` and `version`), rebuild the catalog, preview, commit, and push.
 
-```
-https://bookish-barnacle-2ywmpk2.pages.github.io/
-```
-
-Patient prototype:
-
-```
-https://bookish-barnacle-2ywmpk2.pages.github.io/Patient/<project-name>/<prototype-name>/
-```
-
-Provider prototype:
-
-```
-https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/<project-name>/<prototype-name>/
-```
-
-Playground:
-
-```
-https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/ux-prototype-playground/primary-demo/
-```
-
----
-
-## Updating a Prototype
-
-```bash
-git status
-git checkout main
-git pull origin main
-```
-
-Then:
-
-1. Edit only the intended prototype folder.
-2. Update `prototype.json`, especially `lastUpdated` and `version` when appropriate.
-3. Run validation and rebuild the catalog.
-4. Preview the hub and prototype locally.
-5. Review `git status` and `git diff`.
-6. Commit and push `main`.
-7. Confirm deployment in **Actions** if the change affects the published prototype.
-
----
-
-## Archiving a Prototype
-
-To archive a prototype:
+To archive:
 
 1. Set `"status": "Archived"` in `prototype.json`.
 2. Update `lastUpdated`.
-3. Rebuild the catalog.
-4. Commit and push.
+3. Rebuild the catalog, commit, and push.
 
-Archived prototypes:
-
-- Remain accessible through their direct URL
-- Are excluded from the default hub view
-- Appear when the user selects **Archived** or **All statuses**
-- Display an Archived status indicator on the hub card
-
----
-
-## Fast Path: Copy-and-Paste Cursor Prompt
-
-```text
-I am working in the UX-Projects repository.
-
-Before making changes:
-1. Confirm the repository is UX-Projects.
-2. Confirm the current branch is main.
-3. Run git status.
-4. Stop if uncommitted changes exist.
-5. Pull the latest origin/main.
-
-Category:
-Patient or Provider
-
-Project:
-<project-name>
-
-Prototype:
-<prototype-name>
-
-Owner:
-<designer-name>
-
-Status:
-Draft / In Review / Testing / Approved / Archived
-
-Purpose:
-<prototype-purpose>
-
-Required pages:
-<required-pages>
-
-Required interactions:
-<required-interactions>
-
-Requirements:
-- Stop if the category is not exactly Patient or Provider.
-- Verify unique project and prototype folder names.
-- Create or update only: Prototypes/<category>/<project-name>/<prototype-name>/
-- Create or update prototype.json with required metadata.
-- Preserve all other prototypes.
-- Use index.html as the entry point.
-- Use relative paths compatible with GitHub Pages.
-- Use only HTML, CSS, and vanilla JavaScript unless I explicitly approve another framework.
-- Run node scripts/validate-prototypes.js
-- Run node scripts/build-prototype-catalog.js
-- Preview the hub and prototype locally.
-- Check links, images, JavaScript, accessibility, and console errors.
-- Show me all changed files.
-- Wait for my approval before committing.
-- Commit directly to main only after I explicitly approve.
-- Push main to GitHub after committing.
-- Confirm deployment status after pushing.
-- Never force-push.
-- Never change GitHub Pages visibility.
-- Never modify deploy-pages.yml without explicit approval.
-- Never add PHI, PII, credentials, secrets, production data, or confidential information.
-```
+Archived prototypes remain accessible by direct URL, are excluded from the default Sandbox view, and appear when **Archived** or **All statuses** is selected.
 
 ---
 
@@ -517,12 +424,11 @@ Requirements:
 ```bash
 git clone https://github.com/BreakthroughBehavioralInc/UX-Projects.git
 cd UX-Projects
-git status
 git checkout main
 git pull origin main
 ```
 
-After making and testing changes:
+After changes:
 
 ```bash
 node scripts/validate-prototypes.js
@@ -535,111 +441,22 @@ git commit -m "<clear description>"
 git push origin main
 ```
 
-Stop and ask for help if:
-
-- There are unexpected uncommitted changes
-- `main` cannot be pulled cleanly
-- A merge conflict appears
-- Another designer changed the same prototype
-- Unexpected files appear in `git status`
-
----
-
-## Updating From GitHub Without Losing Work
-
-- Do not run `git pull` when uncommitted changes exist until you understand what will happen.
-- Stop and review unexpected changes in Cursor before stashing, committing, or discarding anything.
-- Never overwrite another designer's work.
-- Coordinate when two designers edit the same prototype.
-- Ask a repository maintainer for help rather than force-pushing.
-
-Safe pattern when your working tree is clean:
-
-```bash
-git status
-git checkout main
-git pull origin main
-```
-
----
-
-## Troubleshooting
-
-### Permission denied
-
-You may lack repository access, write permission, or required organization authorization.
-
-### Push rejected
-
-Someone else may have pushed newer changes to `main`.
-
-```bash
-git status
-git checkout main
-git pull origin main
-git push origin main
-```
-
-If the pull creates a conflict, stop and ask a maintainer for help. Do not force-push.
-
-### GitHub Pages deployment failed
-
-1. Open **Actions**
-2. Select **Deploy GitHub Pages**
-3. Open the failed run
-4. Read the failed step
-
-Common causes:
-
-- Invalid `prototype.json`
-- Missing entry point
-- Duplicate prototype path or URL
-- Catalog build failure
-
-### Catalog could not be loaded locally
-
-Run:
-
-```bash
-node scripts/build-prototype-catalog.js
-```
-
-Then reload the hub.
-
-### Page returns 404
-
-Check:
-
-- `index.html` exists in the prototype folder
-- Folder names use the correct capitalization
-- Relative links are correct
-- The latest deployment workflow completed successfully
-
-### Site asks for GitHub login
-
-The Pages site is **Private**. Only people with repository access can view it after signing in.
+Stop and ask for help if there are unexpected changes, merge conflicts, or another designer edited the same prototype.
 
 ---
 
 ## Governance and Safety
 
-> **SECURITY**
-
 - GitHub Pages remains **Private**
 - Viewers require GitHub authentication and repository access
 - Use fictional or sanitized information only
-- Never include PHI, PII, credentials, secrets, tokens, production exports, or unapproved proprietary content
+- Never include PHI, PII, credentials, secrets, tokens, or production exports
 - Do not change repository visibility or deployment settings without approval
-- Do not overwrite another designer's project
 - Treat the live site as a review environment, not a production application
-- Forms must not transmit real data
-- A custom HTML login page does **not** secure a public static site
 
 ---
 
 ## Project-Level README Template
-
-Place this file at `Prototypes/<category>/<project-name>/<prototype-name>/README.md`:
 
 ```markdown
 # <Prototype Name>
@@ -670,10 +487,8 @@ index.html
 
 ## Key Flows
 - <flow>
-- <flow>
 
 ## Testing Notes
-- <note>
 - <note>
 
 ## Data Notice
@@ -685,18 +500,12 @@ This prototype uses fictional or sanitized data and is not a production applicat
 ## Working Agreements
 
 1. Pull the latest `main` branch before starting.
-2. Work only inside the intended Patient or Provider project prototype folder.
+2. Work only inside the intended prototype folder.
 3. Keep every prototype self-contained.
-4. Do not create uncategorized projects directly under `Prototypes/`.
-5. Do not duplicate a prototype across Patient and Provider.
-6. Coordinate before editing another designer's project.
-7. Preview and test before committing.
-8. Review `git status` and `git diff` before committing.
-9. Use a clear commit message.
-10. Commit only intended files.
-11. Push directly to `main`.
-12. Never force-push.
-13. Never overwrite or delete another designer's work.
-14. Do not change deployment configuration or Pages visibility without approval.
-15. Never include PHI, PII, credentials, secrets, production data, or confidential information.
-16. Confirm deployment after pushing changes that affect the published prototype.
+4. Coordinate before editing another designer's project.
+5. Preview and test before committing.
+6. Commit only intended files and push directly to `main`.
+7. Never force-push or overwrite another designer's work.
+8. Do not change deployment configuration or Pages visibility without approval.
+9. Never include PHI, PII, credentials, secrets, or confidential information.
+10. Confirm deployment after pushing changes that affect the published prototype.

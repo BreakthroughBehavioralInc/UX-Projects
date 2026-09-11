@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="UX Prototype Hub - Internal searchable catalog of Patient and Provider UX prototypes.">
-  <title>UX Prototype Hub</title>
+  <meta name="description" content="UX Design Sandbox - Searchable catalog of Patient and Provider UX prototypes for internal review.">
+  <title>UX Design Sandbox</title>
   <link rel="stylesheet" href="./css/hub.css">
 </head>
 <body>
@@ -15,8 +15,8 @@
       <div class="brand">
         <span class="brand-mark" aria-hidden="true">UX</span>
         <div>
-          <h1>UX Prototype Hub</h1>
-          <p class="brand-tagline">Internal catalog for Patient and Provider prototype review</p>
+          <h1>UX Design Sandbox</h1>
+          <p class="brand-tagline">Patient &amp; Provider Prototype Review</p>
         </div>
       </div>
       <p class="privacy-notice" role="note">
@@ -27,26 +27,26 @@
 
   <main id="main-content" class="container">
     <section class="summary-panel" aria-labelledby="summary-heading">
-      <h2 id="summary-heading" class="visually-hidden">Catalog summary</h2>
+      <h2 id="summary-heading" class="visually-hidden">UX Design Sandbox summary</h2>
       <div class="summary-grid" id="summary-grid">
         <div class="summary-card">
-          <span class="summary-value" id="summary-total">0</span>
+          <span class="summary-value" id="summary-total" aria-live="polite">—</span>
           <span class="summary-label">Visible prototypes</span>
         </div>
         <div class="summary-card">
-          <span class="summary-value" id="summary-patient">0</span>
+          <span class="summary-value" id="summary-patient" aria-live="polite">—</span>
           <span class="summary-label">Patient</span>
         </div>
         <div class="summary-card">
-          <span class="summary-value" id="summary-provider">0</span>
+          <span class="summary-value" id="summary-provider" aria-live="polite">—</span>
           <span class="summary-label">Provider</span>
         </div>
         <div class="summary-card">
-          <span class="summary-value" id="summary-projects">0</span>
+          <span class="summary-value" id="summary-projects" aria-live="polite">—</span>
           <span class="summary-label">Projects</span>
         </div>
         <div class="summary-card">
-          <span class="summary-value" id="summary-owners">0</span>
+          <span class="summary-value" id="summary-owners" aria-live="polite">—</span>
           <span class="summary-label">Designers</span>
         </div>
       </div>
@@ -122,19 +122,24 @@
     </section>
 
     <section class="results-panel" aria-live="polite" aria-busy="true">
-      <div id="catalog-error" class="state-message error-state" hidden role="alert">
-        <h2>Catalog could not be loaded</h2>
-        <p>The prototype catalog is unavailable. Run the catalog builder locally or check the deployment workflow.</p>
+      <div id="catalog-loading" class="state-message loading-state" role="status" aria-label="Loading UX Design Sandbox">
+        <h2>Loading UX Design Sandbox...</h2>
+        <p>Fetching prototype cards.</p>
       </div>
 
-      <div id="catalog-empty" class="state-message empty-state" hidden>
+      <div id="catalog-error" class="state-message error-state" hidden role="alert" aria-label="UX Design Sandbox catalog error">
+        <h2>UX Design Sandbox could not be loaded</h2>
+        <p>Unable to load the prototype catalog. Refresh the page or contact the repository owner.</p>
+      </div>
+
+      <div id="catalog-empty" class="state-message empty-state" hidden aria-label="No prototypes in UX Design Sandbox">
         <h2>No prototypes available</h2>
-        <p>Add a prototype with a valid <code>prototype.json</code> file under Patient or Provider.</p>
+        <p>No prototypes are currently available in UX Design Sandbox.</p>
       </div>
 
       <div id="catalog-no-results" class="state-message empty-state" hidden>
         <h2>No results match your filters</h2>
-        <p>Try a different search term or reset the filters.</p>
+        <p>No prototypes match the selected filters.</p>
       </div>
 
       <div id="catalog-results"></div>
@@ -143,7 +148,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>UX Prototype Hub uses fictional or sanitized data. Not a production application.</p>
+      <p>UX Design Sandbox uses fictional or sanitized data. Not a production application.</p>
     </div>
   </footer>
 

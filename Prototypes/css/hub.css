@@ -26,6 +26,10 @@
   padding: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -243,6 +247,11 @@ input[type="radio"]:focus {
 
 .state-message h2 {
   margin-bottom: 0.5rem;
+}
+
+.loading-state {
+  border-color: rgba(79, 70, 229, 0.25);
+  background: #eef2ff;
 }
 
 .error-state {
