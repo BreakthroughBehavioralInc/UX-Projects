@@ -6,6 +6,8 @@
 
 Use this guide if you are a Designer, Product Manager, or other approved Product contributor adding or managing prototypes in **Prototype Hub**.
 
+**New to UX-Projects?** Start with [GETTING-STARTED.md](GETTING-STARTED.md).
+
 **Three Cursor skills handle routine work:**
 
 | Skill | Use when you want to… |
@@ -69,13 +71,7 @@ After you receive or update to the latest UX-Projects files, start a **new** Cur
 
 You do **not** need to run Git commands manually. The skills check whether the repository is current and safe before making changes, and check again for remote changes before publishing.
 
-### Confirm the complete repository is open
-
-In Cursor, the top-level folder should be **UX-Projects**. You should be able to see `README.md`, `Prototypes`, `.cursor`, and `scripts` in the file area.
-
-### If your existing prototype lives outside UX-Projects
-
-Add **both** the existing prototype folder and the complete UX-Projects repository to the same Cursor workspace. Do not manually move the prototype first. The skill shows the identified source and proposed destination before importing anything.
+First-time setup: see [Open UX-Projects in Cursor](GETTING-STARTED.md#2-open-ux-projects-in-cursor) in GETTING-STARTED.md.
 
 ### Optional readiness check
 
@@ -95,31 +91,9 @@ Check for:
 Explain the result in plain language and show me the safest next step.
 ```
 
-### If `@add-prototype` does not appear
+### If a skill does not appear
 
-1. Confirm the complete `UX-Projects` folder is open — not only an individual prototype folder.
-2. Start a new Cursor chat.
-3. Type `@` and search for **Add Prototype**.
-4. If the skill still does not appear, use `@prototype-help` or paste this diagnostic prompt:
-
-```text
-The Add Prototype skill is not appearing.
-
-Please follow the instructions in:
-.cursor/skills/add-prototype/SKILL.md
-
-Do not change, delete, reset, overwrite, commit, or publish anything yet.
-
-First:
-1. Confirm that the complete UX-Projects repository is open.
-2. Check whether my local repository has unexpected changes.
-3. Confirm whether the Add Prototype skill files are present.
-4. Confirm whether my local repository is current.
-5. Explain the problem in plain language.
-6. Show me the safest proposed solution before making changes.
-```
-
-If `SKILL.md` is also unavailable, Cursor must stop after diagnosis. It must not recreate the workflow from assumptions or publish anything.
+See [If a Skill Does Not Appear](GETTING-STARTED.md#7-if-a-skill-does-not-appear) in GETTING-STARTED.md.
 
 ---
 

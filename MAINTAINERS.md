@@ -54,6 +54,7 @@ https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/ux-prototype-playgroun
 ```
 UX-Projects/
 ├── README.md
+├── GETTING-STARTED.md
 ├── MAINTAINERS.md
 ├── .gitignore
 ├── .cursor/
