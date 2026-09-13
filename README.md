@@ -6,7 +6,7 @@
 
 Use this guide if you are a Designer, Product Manager, or other approved Product contributor adding or managing prototypes in **Prototype Hub**.
 
-**New to UX-Projects?** Start with [GETTING-STARTED.md](GETTING-STARTED.md).
+**New to UX-Projects?** Start with [GETTING-STARTED.md](GETTING-STARTED.md). If you do not have the repository on your computer yet, begin with **Phase 1: First-Time Setup**.
 
 **Three Cursor skills handle routine work:**
 
@@ -71,7 +71,7 @@ After you receive or update to the latest UX-Projects files, start a **new** Cur
 
 You do **not** need to run Git commands manually. The skills check whether the repository is current and safe before making changes, and check again for remote changes before publishing.
 
-First-time setup: see [Open UX-Projects in Cursor](GETTING-STARTED.md#2-open-ux-projects-in-cursor) in GETTING-STARTED.md.
+First-time setup: see [Phase 1: First-Time Setup](GETTING-STARTED.md#phase-1-first-time-setup) in GETTING-STARTED.md.
 
 ### Optional readiness check
 
@@ -93,7 +93,7 @@ Explain the result in plain language and show me the safest next step.
 
 ### If a skill does not appear
 
-See [If a Skill Does Not Appear](GETTING-STARTED.md#7-if-a-skill-does-not-appear) in GETTING-STARTED.md.
+See [If a skill does not appear](GETTING-STARTED.md#if-a-skill-does-not-appear) in GETTING-STARTED.md (complete Phase 1 first if you are new).
 
 ---
 
