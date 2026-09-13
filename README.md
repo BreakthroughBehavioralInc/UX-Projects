@@ -1,187 +1,259 @@
 # UX Projects
 
-## What is Prototype Hub?
+---
 
-**Prototype Hub** is a shared internal workspace for Patient and Provider prototypes, product concepts, workflow explorations, and stakeholder-review experiences.
+# Product and Design Contributors
 
-It supports approved contributions from Designers, Product Managers, and Product teams.
+Use this guide if you are a Designer, Product Manager, or other approved Product contributor adding or managing prototypes in **Prototype Hub**.
 
-Prototype Hub is intended for prototype and concept work. It is not a production application repository or a general-purpose file-storage location.
+**Three Cursor skills handle routine work:**
 
-**Prototype Hub** is the central catalog of Patient and Provider prototype work — a compact internal enterprise dashboard for discovering, reviewing, and opening prototypes. **UX Prototype Playground** is the included example prototype inside Prototype Hub — it is not Prototype Hub itself.
+| Skill | Use when you want to… |
+|-------|------------------------|
+| `@add-prototype` | Add an existing prototype or create a new one |
+| `@manage-prototype` | Update, preview, publish, archive, restore, or diagnose an existing prototype |
+| `@prototype-help` | Figure out what to do when you are unsure |
 
-Prototype Hub supports:
-
-- Designers, Product Managers, and other approved Product contributors working at the same time
-- Patient and Provider projects
-- Several prototype concepts under one project
-- Search, filters, and stable URLs for every prototype
-
-> **IMPORTANT: Live site access and content rules**
->
-> - GitHub Pages visibility is **Private**. Viewers must sign in to GitHub and have access to this repository.
-> - Contributors must **not** change the site to Public or change repository visibility without repository-owner and organizational approval.
-> - Do **not** add confidential, proprietary, production, patient, member, provider, employee, PHI, PII, credentials, API keys, or other sensitive company information without organizational approval.
-> - Prototype content must use fictional or properly sanitized data only.
-> - Forms must not collect or transmit real information without an approved backend and security review.
-> - A custom HTML login page does **not** secure a public static site.
-> - Prototype Hub is a prototype review environment, not a production application.
+All three skills are already included in UX-Projects. You do not install them separately.
 
 ---
 
-## Access Requirements
+## What Is Prototype Hub?
 
-Prototype Hub is hosted through a **Private** GitHub Pages site. Viewers must sign in to GitHub and have authorized access.
+Prototype Hub is the internal catalog for discovering, reviewing, and opening Patient and Provider prototypes. **UX Prototype Playground** is one example prototype in the Hub, not the Hub itself.
 
-Viewing Prototype Hub and contributing to **UX-Projects** are separate permissions. Being able to open the live site does **not** automatically allow someone to add or publish prototypes.
+This repository is for prototype and concept work. It is not a production application or general file-storage location.
 
-Contributors who add or publish prototypes must have **Write** access to the **UX-Projects** repository.
+Prototype Hub is hosted as a **Private** GitHub Pages site. Viewing the live site and publishing prototypes require different permissions (see [Before You Start](#before-you-start)).
 
-Contributors do **not** need Maintain or Admin access for the standard Add Prototype workflow.
+**Live Prototype Hub:** [bookish-barnacle-2ywmpk2.pages.github.io](https://bookish-barnacle-2ywmpk2.pages.github.io/)
 
-When repository access is granted, contributors should use their exact GitHub username. If a contributor cannot be found when selecting **Add people**, confirm the contributor’s exact GitHub username and organization access before trying again.
+---
 
-If access or publishing fails, tell Cursor what happened and ask it to diagnose the issue and recommend the next safe step.
+## Start Here
 
-### Before using `@add-prototype`
+1. Open the **complete** UX-Projects folder in Cursor and start a **new** chat.
+2. Paste this into chat:
 
-- [ ] You can sign in to the organization’s GitHub environment
-- [ ] You have the latest version of UX-Projects
-- [ ] You have Write access to UX-Projects
-- [ ] You opened the complete UX-Projects folder in Cursor
-- [ ] You started a new Cursor chat so `@add-prototype` is available
+```text
+@add-prototype
+
+Category: Patient or Provider
+Project: <project name>
+Prototype title: <prototype title>
+Owner: <your name or team>
+```
+
+Use this same skill whether you already have a prototype or want Cursor to create one.
+
+**If you already have a prototype:** Cursor finds it, shows the source and destination, and proposes copying it into Prototype Hub without changing your original files.
+
+**If you need a new prototype:** Cursor asks for one short description, then creates an initial prototype for your review.
+
+Owner may be a person or team. A job title is not required. Status defaults to **Draft**.
+
+Contributors do not manually edit `prototype.json`, `Prototypes/generated/catalog.json`, or Prototype Hub cards. Cursor prepares that information automatically.
+
+---
+
+## Before You Start
+
+You need:
+
+- Access to the organization’s GitHub environment
+- **Write** access to the UX-Projects repository (viewing Prototype Hub alone is not enough)
+- The **complete** UX-Projects repository open in Cursor
+- A **new** Cursor chat so the skills are available
+
+After you receive or update to the latest UX-Projects files, start a **new** Cursor chat so Cursor can discover `@add-prototype`, `@manage-prototype`, and `@prototype-help`. An open chat from before the update may not show the latest skills.
+
+You do **not** need to run Git commands manually. The skills check whether the repository is current and safe before making changes, and check again for remote changes before publishing.
+
+### Confirm the complete repository is open
+
+In Cursor, the top-level folder should be **UX-Projects**. You should be able to see `README.md`, `Prototypes`, `.cursor`, and `scripts` in the file area.
+
+### If your existing prototype lives outside UX-Projects
+
+Add **both** the existing prototype folder and the complete UX-Projects repository to the same Cursor workspace. Do not manually move the prototype first. The skill shows the identified source and proposed destination before importing anything.
+
+### Optional readiness check
+
+If you are unsure whether your local repository is ready, paste this into a new Cursor chat:
+
+```text
+Please check whether my local UX-Projects repository is ready to use.
+
+Do not change, delete, commit, or publish anything.
+
+Check for:
+1. The complete repository
+2. Unexpected local changes
+3. The latest approved repository version
+4. The Add Prototype, Manage Prototype, and Prototype Help skills
+
+Explain the result in plain language and show me the safest next step.
+```
+
+### If `@add-prototype` does not appear
+
+1. Confirm the complete `UX-Projects` folder is open — not only an individual prototype folder.
+2. Start a new Cursor chat.
+3. Type `@` and search for **Add Prototype**.
+4. If the skill still does not appear, use `@prototype-help` or paste this diagnostic prompt:
+
+```text
+The Add Prototype skill is not appearing.
+
+Please follow the instructions in:
+.cursor/skills/add-prototype/SKILL.md
+
+Do not change, delete, reset, overwrite, commit, or publish anything yet.
+
+First:
+1. Confirm that the complete UX-Projects repository is open.
+2. Check whether my local repository has unexpected changes.
+3. Confirm whether the Add Prototype skill files are present.
+4. Confirm whether my local repository is current.
+5. Explain the problem in plain language.
+6. Show me the safest proposed solution before making changes.
+```
+
+If `SKILL.md` is also unavailable, Cursor must stop after diagnosis. It must not recreate the workflow from assumptions or publish anything.
 
 ---
 
 ## Add a Prototype
 
-Use the same skill for both situations: you already have a prototype, or you need Cursor to create one.
+Use `@add-prototype` with the four fields shown in [Start Here](#start-here).
 
-```text
-@add-prototype
+**Import an existing prototype**
 
-Category: Patient or Provider
-Project: <project name>
-Prototype title: <prototype title>
-Owner: <your name or team>
-```
+- Cursor searches open workspace folders for a likely prototype (for example, a folder with `index.html`).
+- If more than one match exists, Cursor asks you to choose. It never guesses.
+- Cursor shows the source folder and Prototype Hub destination before copying anything.
+- Files are **copied**, not moved. Your original folder stays unchanged.
+- Nothing is published until you approve the preview.
 
-Owner may be a Designer, a Product Manager, or a Product or Design team. A job title is not required. Status defaults to **Draft**.
+**Create a new prototype**
 
-Contributors do not manually edit `prototype.json` or `generated/catalog.json`. Contributors do not manually create Prototype Hub cards.
-
-### I already have a prototype
-
-Already have a prototype? Open the existing project and UX-Projects in Cursor, start a new Cursor chat, and run `@add-prototype`. Cursor will locate the existing prototype, show the source and destination folders, copy the approved files into Prototype Hub, add the information needed for indexing, validate the prototype, and show a local preview. The original project folder remains unchanged.
-
-```text
-@add-prototype
-
-Category: <Patient or Provider>
-Project: <project name>
-Prototype title: <prototype title>
-Owner: <your name or team>
-```
-
-- Cursor attempts to find the existing prototype automatically.
-- If Cursor finds multiple possible prototypes, the contributor selects the correct one.
-- Cursor copies files by default and leaves the original folder unchanged.
-- Cursor does not publish until the contributor approves the preview.
-- The contributor does not manually create metadata or a Prototype Hub card.
-
-### I need Cursor to create a prototype
-
-If no existing prototype is available, use the same `@add-prototype` skill. After the four initial details, Cursor asks for one short description of what the prototype should demonstrate. Cursor then creates the initial prototype, validates it, and shows a local preview before publishing.
-
-```text
-@add-prototype
-
-Category: Provider
-Project: Clinical Ops Messaging
-Prototype title: Nurse Workflow
-Owner: <your name or team>
-```
+- After the four fields, Cursor asks: *Briefly describe what you want the prototype to demonstrate.*
+- Cursor creates the initial files, validates them, and shows a local preview.
+- Nothing is published until you approve the preview.
 
 ---
 
-## Use the Add Prototype Skill
+## What Cursor Will Do
 
-The Add Prototype skill is already included with UX-Projects. You do not need to install it separately.
+When you use `@add-prototype`, Cursor will:
 
-1. Make sure you have the latest UX-Projects repository files. Ask Cursor to update your local copy if you are unsure.
-2. Open the **complete** UX-Projects folder in Cursor — not just a single prototype subfolder.
-3. Start a **new** Cursor chat.
-4. Invoke `@add-prototype`.
-5. Provide only these four details:
+1. Check that the repository is safe to use (including whether it is current).
+2. Determine whether an existing prototype is available in the workspace.
+3. Ask for a short description only if a new prototype must be created.
+4. Show the proposed source and destination before copying or creating files.
+5. Create or copy only the required files.
+6. Add the technical information Prototype Hub needs (you do not edit this yourself).
+7. Validate the prototype.
+8. Start a local preview for the prototype and Prototype Hub.
+9. Wait for your approval after you review the preview.
+10. Check again for remote changes before publishing.
+11. Publish only the approved files, then confirm the live Prototype Hub and prototype links.
 
-- **Category**
-- **Project**
-- **Prototype title**
-- **Owner**
-
-Example:
-
-```text
-@add-prototype
-
-Category: Patient or Provider
-Project: <project name>
-Prototype title: <prototype title>
-Owner: <your name or team>
-```
-
-## If `@add-prototype` Does Not Appear
-
-1. Confirm that the complete `UX-Projects` folder is open in Cursor, not only an individual prototype folder.
-2. Start a new Cursor chat.
-3. Type `@` and search for **Add Prototype**.
-4. If the skill still does not appear, paste this into Cursor:
-
-```text
-Please check whether the local UX-Projects repository has the latest version of the Add Prototype skill.
-
-Do not delete, reset, overwrite, commit, or push anything.
-
-Please:
-
-1. Confirm the complete UX-Projects repository is open.
-2. Check for unexpected local changes.
-3. Check whether the local repository is current.
-4. Check whether this file exists:
-   .cursor/skills/add-prototype/SKILL.md
-5. Explain what you found in plain language.
-6. Recommend the safest next step.
-7. Show me the proposed action before making any changes.
-```
-
-## Copy-and-Paste Fallback
-
-If `@add-prototype` still does not work after the steps above, paste this into a new Cursor chat:
-
-```text
-@add-prototype
-
-Category: <Patient or Provider>
-Project: <project name>
-Prototype title: <prototype title>
-Owner: <your name or team>
-```
-
-You can also copy the full template from [.cursor/skills/add-prototype/designer-input-template.md](.cursor/skills/add-prototype/designer-input-template.md).
+The same readiness and safety checks apply at the start of the workflow and again immediately before publishing.
 
 ---
 
 ## Review and Publish
 
-1. **Preview locally** — Ask Cursor to start a local preview. Open your prototype and Prototype Hub in the browser.
-2. **Check the Prototype Hub card** — Confirm your prototype appears with the correct name, project, category, owner, and status.
-3. **Test the prototype** — Review screens, links, images, interactions, accessibility, and mobile layout.
-4. **Approve before publish** — Tell Cursor when you are ready to publish.
-5. **Confirm the live link** — Ask Cursor to confirm your prototype is live, then open it from Prototype Hub.
+Before you tell Cursor to publish, confirm:
+
+- Project and prototype names are correct
+- **Patient** or **Provider** is correct
+- Owner is correct
+- You opened and reviewed the prototype itself
+- Important links and interactions work
+- Desktop and mobile layouts look acceptable
+- Basic accessibility is reasonable (readable text, visible focus, usable controls)
+- All information is fictional or properly sanitized
+- The Prototype Hub card shows the correct details
+
+When the preview is ready, tell Cursor explicitly that you approve publishing.
+
+After publishing, ask Cursor to confirm your prototype is live and open it from Prototype Hub.
+
+**Contributor responsibilities**
+
+- Work only on the prototype selected in the Cursor plan.
+- Do not edit, move, or delete another contributor’s work.
+- If Cursor reports an unexpected change or conflict, stop and ask Cursor to explain the issue and recommend the next safe step.
+
+> **Cursor handles the technical checks.** The skills retrieve the latest repository version, check for unexpected changes, validate prototypes, update the catalog, review the files being published, and confirm deployment. You do not need to run Git commands manually.
 
 ---
 
-## Patient and Provider Organization
+## Manage an Existing Prototype
+
+Use `@manage-prototype` to update, preview, publish, archive, restore, or diagnose a prototype that is already in UX-Projects.
+
+```text
+@manage-prototype
+
+Prototype: <prototype name>
+Action: Update, Preview, Publish, Archive, Restore, or Diagnose
+```
+
+| Action | What it does |
+|--------|----------------|
+| **Update** | Change the selected prototype. Cursor asks what to change, updates only that prototype, validates, and previews before publishing. |
+| **Preview** | Open local prototype and Prototype Hub previews without changing content unless you ask. |
+| **Publish** | Validate and publish approved local changes after you review the proposed files. |
+| **Archive** | Hide the prototype from the default Hub view without deleting it. Requires your approval. |
+| **Restore** | Return an archived prototype to an active status. Requires your approval. |
+| **Diagnose** | Explain an issue in plain language and recommend the safest next step before making changes. |
+
+Cursor locates the prototype safely. If multiple prototypes match, it asks you to choose one. It does not modify unrelated files.
+
+---
+
+## Troubleshooting
+
+| Problem | What to try |
+|---------|-------------|
+| Cannot open live Prototype Hub | Sign in to GitHub with an account that has access to this repository. The site is **Private**. |
+| Can view Hub but cannot add a prototype | Confirm **Write** access to UX-Projects. Start a new chat and use `@add-prototype` or `@prototype-help`. |
+| Cursor cannot find my prototype | Add the prototype folder and UX-Projects to the same workspace. Tell Cursor which folder to use. |
+| Cursor found multiple prototypes | Select the correct source folder before continuing. |
+| Prototype does not appear in Hub | Reload Prototype Hub. Confirm status is not **Archived**. Use `@manage-prototype` with action **Diagnose**. |
+| Publishing failed | Describe the issue to Cursor. Do not run repository commands manually. |
+| Page returns 404 | Use `@manage-prototype` with action **Diagnose** or `@prototype-help`. |
+| Not sure what to do | Use `@prototype-help` (see below). |
+
+### When you are unsure
+
+```text
+@prototype-help
+
+I am trying to: <describe what you need>
+```
+
+`@prototype-help` inspects your workspace without changing files, explains the situation in plain language, tells you whether `@add-prototype` or `@manage-prototype` fits, and gives you the exact next prompt to paste.
+
+---
+
+## Important Data and Security Rules
+
+- GitHub Pages visibility is **Private**. Viewers must sign in to GitHub and have access to this repository.
+- Contributors must **not** change the site to Public or change repository visibility without organizational approval.
+- Do **not** add confidential, proprietary, production, patient, member, provider, employee, PHI, PII, credentials, API keys, or other sensitive company information without organizational approval.
+- Prototype content must use fictional or properly sanitized data only.
+- Forms must not collect or transmit real information without an approved backend and security review.
+- A custom HTML login page does **not** secure a public static site.
+- Prototype Hub is a prototype review environment, not a production application.
+- Cursor cannot replace missing repository access. You need **Write** access to publish.
+
+---
+
+## How Prototypes Are Organized
 
 Every prototype belongs to one category, one project, and one prototype folder:
 
@@ -199,423 +271,30 @@ Prototypes/
         └── <prototype-name>/
 ```
 
-- **Patient** or **Provider** identifies the primary audience.
-- **Project** identifies the initiative, product, or workstream.
-- **Prototype** identifies one concept, workflow, or variation.
+- **Patient** or **Provider** is the primary audience. Do not create a separate Product category folder.
+- **Project** is the initiative, product, or workstream.
+- **Prototype** is one concept, workflow, or variation.
+- Cursor generates valid folder names automatically. You do not need to name folders yourself.
 - One project may contain multiple prototypes.
-- Designers and Product Managers may own or contribute prototype work.
 - Every prototype must remain self-contained.
-- Contributors should use `@add-prototype` instead of manually creating incomplete folder structures.
-
-Do not create a separate Product folder. Patient and Provider remain the only category folders.
 
 **Patient** — patient-facing experiences such as portals, scheduling, billing, collections, communications, and onboarding.
 
 **Provider** — provider-facing, clinician-facing, nurse-facing, clinical-operations, and care-team experiences.
 
-If a prototype serves both audiences, choose the **primary audience** and explain the cross-audience scope in the project README.
+If a prototype serves both audiences, choose the **primary audience** and note the cross-audience scope in the project README.
 
-**Naming:** Use lowercase kebab-case for folder names.
+Example paths:
 
-Examples:
-
-- `Prototypes/Patient/patient-portal-rebrand/navigation-concept/`
 - `Prototypes/Provider/clinical-ops-messaging/nurse-workflow/`
-- `Prototypes/Provider/ux-prototype-playground/primary-demo/` (example: **UX Prototype Playground**)
+- `Prototypes/Provider/ux-prototype-playground/primary-demo/` (**UX Prototype Playground**)
 
-Rules:
-
-- Do not create prototype folders directly under `Patient` or `Provider` without a project folder.
-- Do not duplicate the same prototype in both categories.
-- Keep each prototype self-contained in its own folder.
+After you approve publishing, Cursor updates Prototype Hub automatically. You do not create catalog cards manually.
 
 ---
 
-## Troubleshooting
+# Maintainers and Advanced Contributors
 
-### I cannot open the live Prototype Hub
+Technical reference — repository structure, `prototype.json`, validation commands, catalog generation, Git workflow, deployment, and maintainer working agreements — is in **[MAINTAINERS.md](MAINTAINERS.md)**.
 
-The site is **Private**. Sign in to GitHub with an account that has access to this repository.
-
-### I can view Prototype Hub but cannot add a prototype
-
-1. Viewing Prototype Hub and contributing to UX-Projects are separate permissions.
-2. Confirm your repository role is **Write**.
-3. Confirm you are signed into the correct GitHub account.
-4. Open a new Cursor chat and invoke `@add-prototype`.
-5. Tell Cursor what happened and ask it to diagnose the issue and recommend the next safe step.
-
-### Cursor cannot find my existing prototype
-
-1. Confirm the existing prototype folder is open in the same Cursor workspace.
-2. Confirm the prototype contains an identifiable entry page such as `index.html`.
-3. Tell Cursor which open folder contains the prototype if detection is ambiguous.
-4. Do not manually copy files into random Prototype Hub folders.
-5. Ask Cursor to show the source and destination before importing.
-
-### Cursor found multiple prototypes
-
-1. Review the folder options Cursor lists.
-2. Select the correct source folder.
-3. Confirm the proposed Prototype Hub destination.
-4. Do not continue until the correct source is selected.
-
-### My imported prototype does not appear in Prototype Hub
-
-1. Confirm the prototype is not **Archived**.
-2. Reload Prototype Hub.
-3. Describe the issue to Cursor and ask it to validate the prototype and recommend the next safe step.
-
-### My prototype card does not appear
-
-1. Confirm the status is not **Archived** (archived prototypes are hidden by default).
-2. Review any visible error message in Prototype Hub.
-3. Describe the issue to Cursor and ask it to diagnose the problem and recommend the next safe step.
-
-### Prototype Hub shows zero prototypes
-
-1. Reload Prototype Hub.
-2. Describe the issue to Cursor and ask it to diagnose catalog loading and recommend the next safe step.
-
-### Publishing failed or permission was denied
-
-Tell Cursor what happened and ask it to diagnose the issue and recommend the next safe step. Do not run repository commands manually.
-
-### Page returns 404
-
-Describe the issue to Cursor and ask it to check the prototype path and live link.
-
----
-
-## How Automatic Indexing Works
-
-Contributors do not manually create cards in **Prototype Hub**. After you approve publishing, Cursor organizes the prototype, creates the technical information Prototype Hub needs, and updates the catalog for you.
-
-A valid prototype then appears automatically as a searchable and filterable card. Catalog totals change as prototypes are added; do not treat any count as a fixed requirement.
-
-If a prototype does not appear, describe the issue to Cursor and ask it to diagnose the problem and recommend the next safe step.
-
-**Do not manually edit `Prototypes/generated/catalog.json`.** Cursor handles catalog updates during the `@add-prototype` workflow.
-
----
-
-## Before You Publish
-
-1. Use `@add-prototype` to add an existing prototype or create a new one.
-2. Work only on the prototype selected in the Cursor plan.
-3. Review the local prototype and Prototype Hub previews before publishing.
-4. Do not edit, move, or delete another contributor’s work.
-5. Never include patient information, personal information, passwords, credentials, secrets, production data, or confidential information.
-6. If Cursor reports an unexpected change or conflict, stop the publishing process and ask Cursor to explain the issue and recommend the next safe step.
-
-> **Cursor handles the technical checks.** The `@add-prototype` skill retrieves the latest repository version, checks for unexpected changes, validates the prototype, updates the catalog, reviews the files being published, and confirms deployment. Contributors do not need to run Git commands manually.
-
----
-
-# Technical Reference for Maintainers
-
-The sections below are for maintainers and advanced contributors. Product and Design contributors can rely on the **Add Prototype** skill (`@add-prototype`) without reading these details.
-
-The Prototype Hub interface uses EverKit design-system tokens and patterns where they are available in the repository. Contributors should not introduce unrelated visual frameworks or hard-coded styles into the Hub.
-
-**Table of contents**
-
-- [Live URLs](#live-urls)
-- [Repository Structure](#repository-structure)
-- [Contributor Quick Start (Technical)](#contributor-quick-start-technical)
-- [prototype.json Metadata](#prototypejson-metadata)
-- [Local Preview and Validation](#local-preview-and-validation)
-- [Commit and Push](#commit-and-push)
-- [Deployment](#deployment)
-- [Updating and Archiving Prototypes](#updating-and-archiving-prototypes)
-- [Manual Workflow (Fallback)](#manual-workflow-fallback)
-- [Governance and Safety](#governance-and-safety)
-- [Project-Level README Template](#project-level-readme-template)
-- [Maintainer Working Agreements](#maintainer-working-agreements)
-
----
-
-## Live URLs
-
-Prototype Hub:
-
-```
-https://bookish-barnacle-2ywmpk2.pages.github.io/
-```
-
-Patient prototype:
-
-```
-https://bookish-barnacle-2ywmpk2.pages.github.io/Patient/<project-name>/<prototype-name>/
-```
-
-Provider prototype:
-
-```
-https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/<project-name>/<prototype-name>/
-```
-
-UX Prototype Playground (example):
-
-```
-https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/ux-prototype-playground/primary-demo/
-```
-
----
-
-## Repository Structure
-
-```
-UX-Projects/
-├── README.md
-├── .gitignore
-├── .cursor/
-│   └── skills/
-│       └── add-prototype/
-├── scripts/
-│   ├── build-prototype-catalog.js
-│   └── validate-prototypes.js
-├── .github/
-│   └── workflows/
-│       └── deploy-pages.yml
-└── Prototypes/
-    ├── index.html                 # Prototype Hub landing page
-    ├── css/
-    │   ├── everkit-tokens.css
-    │   └── hub.css
-    ├── js/
-    │   └── hub.js
-    ├── generated/
-    │   └── catalog.json           # Built by scripts/build-prototype-catalog.js
-    ├── Patient/
-    │   └── <project-name>/
-    │       └── <prototype-name>/
-    └── Provider/
-        └── <project-name>/
-            └── <prototype-name>/
-```
-
-Each prototype folder contains:
-
-- `index.html`
-- `prototype.json`
-- `README.md`
-- `css/`, `js/`, and `assets/` as needed
-
----
-
-## Contributor Quick Start (Technical)
-
-Contributors should use `@add-prototype` rather than this checklist. The steps below are for maintainers when the skill cannot be used.
-
-1. Open the local `UX-Projects` folder in Cursor.
-2. Confirm the current branch is `main`.
-3. Run `git status`.
-4. Pull the latest `origin/main`.
-5. Choose `Patient` or `Provider`.
-6. Choose or create a project folder.
-7. Create a uniquely named prototype folder.
-8. Add prototype files and `prototype.json`.
-9. Run the validator and catalog builder.
-10. Preview Prototype Hub and the prototype locally.
-11. Review `git status` and `git diff`.
-12. Commit only intended files.
-13. Push `main`.
-14. Confirm the GitHub Pages deployment.
-15. Open the prototype from Prototype Hub.
-
----
-
-## prototype.json Metadata
-
-Every prototype must include `prototype.json` with these required fields:
-
-```json
-{
-  "name": "<human-readable prototype name>",
-  "project": "<human-readable project name>",
-  "category": "Patient or Provider",
-  "owner": "<person or team>",
-  "status": "Draft, In Review, Testing, Approved, or Archived",
-  "description": "<short description>",
-  "version": "<version>",
-  "lastUpdated": "YYYY-MM-DD",
-  "entryPoint": "index.html",
-  "tags": ["tag-one", "tag-two"]
-}
-```
-
-Validation rules:
-
-- `category` must be `Patient` or `Provider`
-- `status` must be `Draft`, `In Review`, `Testing`, `Approved`, or `Archived`
-- `entryPoint` must exist
-- Folder names must use lowercase kebab-case
-- Duplicate category/project/prototype paths and URLs are not allowed
-
----
-
-## Local Preview and Validation
-
-```bash
-node scripts/validate-prototypes.js
-node scripts/build-prototype-catalog.js
-cd Prototypes
-python3 -m http.server 8000
-```
-
-Open Prototype Hub:
-
-```
-http://localhost:8000/
-```
-
-Playground example:
-
-```
-http://localhost:8000/Provider/ux-prototype-playground/primary-demo/
-```
-
----
-
-## Commit and Push
-
-```bash
-git status
-git diff
-git add Prototypes/<category>/<project-name>/<prototype-name>
-git add Prototypes/generated/catalog.json
-git commit -m "<clear description>"
-git push origin main
-```
-
-Never force-push.
-
----
-
-## Deployment
-
-Deployment is handled by `.github/workflows/deploy-pages.yml`.
-
-| Setting | Value |
-|---------|-------|
-| Trigger | Push to `main`, or manual **Run workflow** |
-| Published folder | Entire `Prototypes/` directory |
-| Pre-deploy steps | `validate-prototypes.js`, then `build-prototype-catalog.js` |
-| Pages visibility | **Private** |
-
-The base URL opens **Prototype Hub**. Archived prototypes remain accessible by direct URL but are hidden from the default Prototype Hub view.
-
-Monitor deployment under **Actions > Deploy GitHub Pages**.
-
----
-
-## Updating and Archiving Prototypes
-
-To update a prototype, edit only the intended folder, update `prototype.json` (especially `lastUpdated` and `version`), rebuild the catalog, preview, commit, and push.
-
-To archive:
-
-1. Set `"status": "Archived"` in `prototype.json`.
-2. Update `lastUpdated`.
-3. Rebuild the catalog, commit, and push.
-
-Archived prototypes remain accessible by direct URL, are excluded from the default Prototype Hub view, and appear when **Archived** or **All statuses** is selected.
-
----
-
-## Manual Workflow (Fallback)
-
-```bash
-git clone https://github.com/BreakthroughBehavioralInc/UX-Projects.git
-cd UX-Projects
-git checkout main
-git pull origin main
-```
-
-After changes:
-
-```bash
-node scripts/validate-prototypes.js
-node scripts/build-prototype-catalog.js
-git status
-git diff
-git add Prototypes/<category>/<project-name>/<prototype-name>
-git add Prototypes/generated/catalog.json
-git commit -m "<clear description>"
-git push origin main
-```
-
-Stop and ask for help if there are unexpected changes, merge conflicts, or another contributor edited the same prototype.
-
----
-
-## Governance and Safety
-
-- GitHub Pages remains **Private**
-- Viewers require GitHub authentication and repository access
-- Use fictional or sanitized information only
-- Never include PHI, PII, credentials, secrets, tokens, or production exports
-- Do not change repository visibility or deployment settings without approval
-- Treat Prototype Hub as a prototype review environment, not a production application
-
----
-
-## Project-Level README Template
-
-```markdown
-# <Prototype Name>
-
-## Project
-<Project Name>
-
-## Category
-Patient / Provider
-
-## Owner
-<Designer, Product Manager, or team>
-
-## Status
-Draft / In Review / Testing / Approved / Archived
-
-## Purpose
-<Purpose>
-
-## Primary Audience
-<Audience>
-
-## Entry Point
-index.html
-
-## Live Path
-/<category>/<project-name>/<prototype-name>/
-
-## Key Flows
-- <flow>
-
-## Testing Notes
-- <note>
-
-## Data Notice
-This prototype uses fictional or sanitized data and is not a production application.
-```
-
----
-
-## Maintainer Working Agreements
-
-1. Pull the latest `main` branch before starting (`git pull origin main`).
-2. Run `git status` before and after changes.
-3. Work only inside the intended prototype folder.
-4. Keep every prototype self-contained.
-5. Coordinate before editing another contributor's project.
-6. Preview and test before committing.
-7. Commit only intended files and push directly to `main`.
-8. Never force-push or overwrite another contributor's work.
-9. Do not change deployment configuration or Pages visibility without approval.
-10. Never include PHI, PII, credentials, secrets, or confidential information.
-11. Pull the latest `origin/main` again before publishing.
-12. Stop if remote changes conflict. Do not delete another contributor’s work to resolve a conflict.
-13. If the same catalog or project file was changed by someone else, stop and diagnose safely before continuing.
-14. Run `node scripts/validate-prototypes.js` and `node scripts/build-prototype-catalog.js` before publishing.
-15. Confirm deployment under **Actions > Deploy GitHub Pages** after pushing changes that affect the published prototype.
+Maintainers and advanced contributors may use the skills above for routine work. Use MAINTAINERS.md when a skill cannot be used or when direct repository maintenance is required.
