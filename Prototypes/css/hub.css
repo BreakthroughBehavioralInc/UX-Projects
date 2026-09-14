@@ -192,11 +192,42 @@ body {
 .toolbar-row-secondary {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-2) var(--spacing-3);
-  align-items: end;
-  margin-top: var(--spacing-3);
-  padding-top: var(--spacing-3);
+  gap: var(--spacing-2) var(--spacing-4);
+  align-items: center;
+  margin-top: var(--spacing-2);
+  padding-top: var(--spacing-2);
   border-top: 1px solid var(--everkit-color-border-default);
+}
+
+.toolbar-row-secondary .control-group {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.toolbar-row-secondary .control-group select {
+  width: auto;
+  min-width: 11rem;
+}
+
+.toolbar-row-secondary .grouping-fieldset {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: 0;
+  margin: 0;
+}
+
+.toolbar-row-secondary .grouping-fieldset legend {
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.toolbar-row-secondary .radio-row {
+  min-height: 0;
 }
 
 .control-group {
