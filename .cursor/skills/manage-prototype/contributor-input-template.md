@@ -111,6 +111,21 @@ The prototype card appears in Prototype Hub, but Open Prototype returns a 404.
 Inspect first without changing files. Explain the issue in plain language and show the safest proposed next step.
 ```
 
+## Category migration review (advanced)
+
+Routine Update does not change Category. Use this only when you are considering a category move.
+
+```text
+@manage-prototype
+
+Prototype: <prototype name>
+Action: Diagnose
+
+I am considering changing the category from <current category> to <new category>.
+
+Inspect the current folder, metadata, links, and potential impact. Do not move or change anything. Show a safe migration plan for review.
+```
+
 ## Other actions
 
 **Preview** — open local previews without publishing.

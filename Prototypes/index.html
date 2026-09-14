@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prototype Hub - Compact enterprise dashboard for Patient and Provider prototype review.">
+  <meta name="description" content="Prototype Hub - Compact enterprise dashboard for Patient, Provider, and CSA prototype review.">
   <title>Prototype Hub</title>
   <link rel="stylesheet" href="./css/hub.css">
 </head>
@@ -16,7 +16,7 @@
         <span class="brand-mark" aria-hidden="true">UX</span>
         <div class="hub-brand-text">
           <h1>Prototype Hub</h1>
-          <p class="brand-tagline">Patient &amp; Provider Prototype Review</p>
+          <p class="brand-tagline">Patient, Provider &amp; CSA Prototype Review</p>
         </div>
       </div>
       <p class="hub-access-notice" role="note">
@@ -28,7 +28,7 @@
   <main id="main-content" class="container">
     <section class="hub-context" aria-labelledby="hub-context-heading">
       <h2 id="hub-context-heading" class="visually-hidden">Prototype Hub overview</h2>
-      <p>Discover, filter, and open Patient and Provider prototypes from one internal dashboard.</p>
+      <p>Discover, filter, and open Patient, Provider, and CSA prototypes from one internal dashboard.</p>
     </section>
 
     <section class="metrics-panel" aria-labelledby="summary-heading">
@@ -45,6 +45,10 @@
         <div class="metric-item">
           <span class="metric-value" id="summary-provider" aria-live="polite">—</span>
           <span class="metric-label">Provider</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value" id="summary-csa" aria-live="polite">—</span>
+          <span class="metric-label">CSA</span>
         </div>
         <div class="metric-item">
           <span class="metric-value" id="summary-projects" aria-live="polite">—</span>
@@ -78,6 +82,7 @@
             <option value="All">All</option>
             <option value="Patient">Patient</option>
             <option value="Provider">Provider</option>
+            <option value="CSA">CSA</option>
           </select>
         </label>
 

@@ -4,8 +4,11 @@
 const fs = require('fs')
 const path = require('path')
 
-const ROOT = path.join(__dirname, '..', 'Prototypes')
-const CATEGORIES = ['Patient', 'Provider']
+const { CATEGORIES } = require('./prototype-categories')
+
+const ROOT = process.env.PROTOTYPES_ROOT
+  ? path.resolve(process.env.PROTOTYPES_ROOT)
+  : path.join(__dirname, '..', 'Prototypes')
 const VALID_STATUSES = ['Draft', 'In Review', 'Testing', 'Approved', 'Archived']
 const KEBAB = /^[a-z0-9]+(-[a-z0-9]+)*$/
 const LOCAL_PATH_PATTERNS = [
@@ -144,7 +147,7 @@ function validateStructure() {
         })
 
         if (!CATEGORIES.includes(meta.category)) {
-          error(`Invalid category in ${metaPath}`)
+          error(`Invalid category "${meta.category}" in ${metaPath}. Must be one of: ${CATEGORIES.join(', ')}`)
         }
 
         if (meta.category !== category) {

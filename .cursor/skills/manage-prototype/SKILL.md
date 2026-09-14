@@ -1,6 +1,6 @@
 ---
 name: manage-prototype
-description: Updates, previews, publishes, archives, restores, or diagnoses an existing Patient or Provider prototype in Prototype Hub without modifying unrelated work.
+description: Updates, previews, publishes, archives, restores, or diagnoses an existing Patient, Provider, or CSA prototype in Prototype Hub without modifying unrelated work.
 disable-model-invocation: true
 ---
 
@@ -27,7 +27,7 @@ Optional follow-up details depend on the action (for example, a short descriptio
 
 ## Defaults (agent-owned)
 
-- Locate prototypes by matching name against `prototype.json` `name` field and folder paths under `Prototypes/Patient/` and `Prototypes/Provider/`.
+- Locate prototypes by matching name against `prototype.json` `name` field and folder paths under `Prototypes/Patient/`, `Prototypes/Provider/`, and `Prototypes/CSA/`.
 - If multiple prototypes match, list them in plain language and ask the contributor to select one. **Never guess.**
 - Never modify unrelated prototypes or hub files unless explicitly required and approved.
 
@@ -48,7 +48,7 @@ For **Diagnose** and **Preview** with no content changes, still perform a read-o
 
 ## STAGE 2: LOCATE THE PROTOTYPE
 
-1. Search `Prototypes/Patient/` and `Prototypes/Provider/` for matches to the provided prototype name.
+1. Search `Prototypes/Patient/`, `Prototypes/Provider/`, and `Prototypes/CSA/` for matches to the provided prototype name.
 2. If one match: show the selected prototype path and current `prototype.json` summary (name, project, category, owner, status, version, lastUpdated).
 3. If multiple matches: ask the contributor to choose.
 4. If no match: explain plainly and suggest `@add-prototype` if they need to add a new prototype.
@@ -104,6 +104,12 @@ Contributors may send one `Action: Update` prompt that includes multiple changes
 2. Show current and proposed values for every field that will change.
 3. Apply all requested changes in one pass while preserving unrelated metadata.
 4. Do not combine `Action: Update` with `Action: Archive` or `Action: Restore` in the same implementation pass. If a contributor requests both archive/restore and other metadata changes, stop, explain the conflict, and ask them to submit separate prompts.
+
+**Category changes**
+
+Category changes are path changes and are **not** part of routine `Action: Update`. Do not change `prototype.json` category or move folders during status, tag, detail, Archive, Restore, or Diagnose actions unless a separate approved migration plan exists.
+
+If a contributor requests a category change, stop and show a separate move plan before changing a prototype between **Patient**, **Provider**, and **CSA**.
 
 **Update workflow**
 

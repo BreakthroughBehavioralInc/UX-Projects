@@ -43,7 +43,8 @@ Read-only checks:
 3. Check whether `.cursor/skills/add-prototype/SKILL.md`, `.cursor/skills/manage-prototype/SKILL.md`, and `.cursor/skills/prototype-help/SKILL.md` exist.
 4. If skills are missing from the chat menu but the files exist, recommend starting a **new** Cursor chat after the latest UX-Projects update.
 5. Note whether the contributor’s goal involves a **new** prototype, an **existing** prototype in UX-Projects, or **repository readiness** only.
-6. If relevant, list published prototypes found under `Prototypes/Patient/` and `Prototypes/Provider/` (names only).
+6. If relevant, list published prototypes found under `Prototypes/Patient/`, `Prototypes/Provider/`, and `Prototypes/CSA/` (names only).
+7. When a contributor is unsure whether a prototype is **Patient**, **Provider**, or **CSA**, explain the primary-audience rule in plain language. Tags do not determine category. Ask for the primary audience only when necessary.
 
 Do **not** pull, commit, push, modify files, or run destructive commands.
 
@@ -72,7 +73,7 @@ Example for add:
 ```text
 @add-prototype
 
-Category: Patient or Provider
+Category: Patient, Provider, or CSA
 Project: <project name>
 Prototype title: <prototype title>
 Owner: <your name or team>

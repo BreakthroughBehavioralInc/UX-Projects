@@ -140,12 +140,12 @@ body {
 
 .metrics-strip {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--spacing-3);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--spacing-2);
 }
 
 .metric-item {
-  padding: var(--spacing-4);
+  padding: var(--spacing-3);
   background: var(--everkit-color-bg-default);
   border: 1px solid var(--everkit-color-border-default);
   border-radius: var(--border-radius-lg);
@@ -705,6 +705,16 @@ a:focus-visible {
 .label-provider {
   background: var(--everkit-color-bg-brand-subtle);
   color: var(--everkit-color-content-brand);
+}
+
+.label-csa {
+  background: var(--everkit-color-badge-warning-subtle-bg);
+  color: var(--everkit-color-badge-warning-subtle-content);
+}
+
+.label-unknown {
+  background: var(--everkit-color-badge-neutral-subtle-bg);
+  color: var(--everkit-color-badge-neutral-subtle-content);
 }
 
 .status-draft {

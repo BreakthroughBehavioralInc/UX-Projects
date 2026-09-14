@@ -3,13 +3,14 @@
 
   const ARCHIVED = 'Archived'
   const ACTIVE_STATUSES = ['Draft', 'In Review', 'Testing', 'Approved']
+  const CATEGORIES = ['Patient', 'Provider', 'CSA']
   const CATALOG_URL = './generated/catalog.json'
   const HUB_NAME = 'Prototype Hub'
   const DATE_DISPLAY_FALLBACK = '—'
 
   const FIELD_HELP = {
     project: 'The larger initiative or workstream.',
-    category: 'The primary audience, Patient or Provider.',
+    category: 'The primary audience: Patient, Provider, or CSA.',
     status: "The prototype's current lifecycle stage.",
     tags: 'Keywords used to describe and find the prototype.',
     owner: 'The person or team responsible for the prototype.',
@@ -39,6 +40,7 @@
       summaryTotal: document.getElementById('summary-total'),
       summaryPatient: document.getElementById('summary-patient'),
       summaryProvider: document.getElementById('summary-provider'),
+      summaryCsa: document.getElementById('summary-csa'),
       summaryProjects: document.getElementById('summary-projects'),
       summaryOwners: document.getElementById('summary-owners'),
       searchInput: document.getElementById('search-input'),
@@ -111,6 +113,7 @@
       'summaryTotal',
       'summaryPatient',
       'summaryProvider',
+      'summaryCsa',
       'summaryProjects',
       'summaryOwners',
       'searchInput',
@@ -144,7 +147,10 @@
   }
 
   function categoryClass(category) {
-    return category === 'Patient' ? 'label-patient' : 'label-provider'
+    if (category === 'Patient') return 'label-patient'
+    if (category === 'Provider') return 'label-provider'
+    if (category === 'CSA') return 'label-csa'
+    return 'label-unknown'
   }
 
   function isValidIsoDateParts(year, month, day) {
@@ -237,6 +243,7 @@
     elements.summaryTotal.textContent = '—'
     elements.summaryPatient.textContent = '—'
     elements.summaryProvider.textContent = '—'
+    elements.summaryCsa.textContent = '—'
     elements.summaryProjects.textContent = '—'
     elements.summaryOwners.textContent = '—'
     renderResultsToolbar()
@@ -346,6 +353,7 @@
     elements.summaryTotal.textContent = String(visible.length)
     elements.summaryPatient.textContent = String(visible.filter((item) => item.category === 'Patient').length)
     elements.summaryProvider.textContent = String(visible.filter((item) => item.category === 'Provider').length)
+    elements.summaryCsa.textContent = String(visible.filter((item) => item.category === 'CSA').length)
     elements.summaryProjects.textContent = String(projects.size)
     elements.summaryOwners.textContent = String(owners.size)
   }

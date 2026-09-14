@@ -96,11 +96,13 @@ Type `@` and search for a skill. If your Cursor version shows repository skills 
 ```text
 @add-prototype
 
-Category: Patient or Provider
+Category: Patient, Provider, or CSA
 Project: <project name>
 Prototype title: <prototype title>
 Owner: <your name or team>
 ```
+
+Choose the category that represents the prototype's **primary audience**. Use **CSA** for primarily CSA-facing experiences. Tags describe a prototype but do not determine its category.
 
 **`@manage-prototype`** — updates, previews, publishes, archives, restores, or diagnoses an existing prototype in UX-Projects.
 
@@ -136,7 +138,7 @@ This test should give you guidance only. It should not change, commit, push, or 
 Before you approve publishing, confirm:
 
 - The prototype name and project are correct
-- **Patient** or **Provider** is correct
+- **Patient**, **Provider**, or **CSA** is correct
 - The owner is correct
 - Important screens, links, and interactions work
 - Desktop and mobile layouts look acceptable

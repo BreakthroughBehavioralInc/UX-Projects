@@ -4,8 +4,9 @@
 const fs = require('fs')
 const path = require('path')
 
+const { CATEGORIES } = require('./prototype-categories')
+
 const ROOT = path.join(__dirname, '..', 'Prototypes')
-const CATEGORIES = ['Patient', 'Provider']
 const OUTPUT = path.join(ROOT, 'generated', 'catalog.json')
 const VALID_STATUSES = ['Draft', 'In Review', 'Testing', 'Approved', 'Archived']
 const KEBAB = /^[a-z0-9]+(-[a-z0-9]+)*$/
@@ -44,7 +45,7 @@ function validateMetadata(meta, filePath, category, projectSlug, prototypeSlug) 
   })
 
   if (!CATEGORIES.includes(meta.category)) {
-    fail(`Invalid category in ${filePath}. Must be Patient or Provider.`)
+    fail(`Invalid category in ${filePath}. Must be one of: ${CATEGORIES.join(', ')}`)
   }
 
   if (meta.category !== category) {
@@ -160,6 +161,7 @@ function printSummary(entries) {
     total: entries.length,
     Patient: 0,
     Provider: 0,
+    CSA: 0,
     Draft: 0,
     'In Review': 0,
     Testing: 0,
@@ -176,6 +178,7 @@ function printSummary(entries) {
   console.log(`Total prototypes: ${counts.total}`)
   console.log(`Patient prototypes: ${counts.Patient}`)
   console.log(`Provider prototypes: ${counts.Provider}`)
+  console.log(`CSA prototypes: ${counts.CSA}`)
   console.log(`Draft: ${counts.Draft}`)
   console.log(`In Review: ${counts['In Review']}`)
   console.log(`Testing: ${counts.Testing}`)

@@ -22,7 +22,7 @@ All three skills are already included in UX-Projects. You do not install them se
 
 ## What Is Prototype Hub?
 
-Prototype Hub is the internal catalog for discovering, reviewing, and opening Patient and Provider prototypes. **UX Prototype Playground** is one example prototype in the Hub, not the Hub itself. The Hub uses a wide, responsive card grid so larger catalogs remain scannable on desktop, tablet, and mobile.
+Prototype Hub is the internal catalog for discovering, reviewing, and opening Patient, Provider, and CSA prototypes. **UX Prototype Playground** is one example prototype in the Hub, not the Hub itself. The Hub uses a wide, responsive card grid so larger catalogs remain scannable on desktop, tablet, and mobile.
 
 This repository is for prototype and concept work. It is not a production application or general file-storage location.
 
@@ -40,13 +40,13 @@ Prototype Hub is hosted as a **Private** GitHub Pages site. Viewing the live sit
 ```text
 @add-prototype
 
-Category: Patient or Provider
+Category: Patient, Provider, or CSA
 Project: <project name>
 Prototype title: <prototype title>
 Owner: <your name or team>
 ```
 
-Use this same skill whether you already have a prototype or want Cursor to create one.
+Use this same skill whether you already have a prototype or want Cursor to create one. Choose the category that represents the prototype's **primary audience**.
 
 **If you already have a prototype:** Cursor finds it, shows the source and destination, and proposes copying it into Prototype Hub without changing your original files.
 
@@ -142,7 +142,7 @@ The same readiness and safety checks apply at the start of the workflow and agai
 Before you tell Cursor to publish, confirm:
 
 - Project and prototype names are correct
-- **Patient** or **Provider** is correct
+- **Patient**, **Provider**, or **CSA** is correct
 - Owner is correct
 - You opened and reviewed the prototype itself
 - Important links and interactions work
@@ -247,7 +247,7 @@ The **Manage** form lets you combine changes in one request:
 
 ### Responsive catalog
 
-The Hub uses a responsive card grid to support a growing prototype catalog. Use search, filters, sort, and grouping to locate prototypes quickly on desktop, tablet, and mobile.
+The Hub uses a responsive card grid to support a growing prototype catalog. Use search, filters, sort, and grouping to locate prototypes quickly on desktop, tablet, and mobile. The **Category** filter includes **All**, **Patient**, **Provider**, and **CSA**.
 
 **Combined update example**
 
@@ -323,6 +323,27 @@ I am trying to: <describe what you need>
 
 ---
 
+## Approved Categories
+
+- **Patient**
+- **Provider**
+- **CSA**
+
+Every prototype has one primary category. Tags describe a prototype but do not determine its category.
+
+### Category definitions
+
+- **Patient** — primarily patient-facing experiences such as portals, scheduling, billing, collections, communications, and onboarding.
+- **Provider** — primarily provider-, clinician-, nurse-, care-team-, or clinical-operations-facing experiences.
+- **CSA** — primarily CSA-facing experiences.
+
+### Primary audience
+
+- Choose the category that represents the prototype's primary audience.
+- If a prototype spans multiple audiences, note the cross-audience scope in the project or prototype README.
+- Do not duplicate a prototype across category folders.
+- A `csa` tag does not replace the **CSA** category and does not automatically determine category.
+
 ## How Prototypes Are Organized
 
 Every prototype belongs to one category, one project, and one prototype folder:
@@ -336,28 +357,63 @@ Prototypes/
 ├── Patient/
 │   └── <project-name>/
 │       └── <prototype-name>/
-└── Provider/
+├── Provider/
+│   └── <project-name>/
+│       └── <prototype-name>/
+└── CSA/
     └── <project-name>/
         └── <prototype-name>/
 ```
 
-- **Patient** or **Provider** is the primary audience. Do not create a separate Product category folder.
+- **Patient**, **Provider**, and **CSA** are peer category folders. Do not create a separate Product category folder.
 - **Project** is the initiative, product, or workstream.
 - **Prototype** is one concept, workflow, or variation.
 - Cursor generates valid folder names automatically. You do not need to name folders yourself.
 - One project may contain multiple prototypes.
 - Every prototype must remain self-contained.
 
-**Patient** — patient-facing experiences such as portals, scheduling, billing, collections, communications, and onboarding.
-
-**Provider** — provider-facing, clinician-facing, nurse-facing, clinical-operations, and care-team experiences.
-
-If a prototype serves both audiences, choose the **primary audience** and note the cross-audience scope in the project README.
-
 Example paths:
 
 - `Prototypes/Provider/clinical-ops-messaging/nurse-workflow/`
 - `Prototypes/Provider/ux-prototype-playground/primary-demo/` (**UX Prototype Playground**)
+- `Prototypes/CSA/<project-name>/<prototype-name>/`
+
+### Live URLs
+
+Patient prototype:
+
+```
+/Patient/<project-name>/<prototype-name>/
+```
+
+Provider prototype:
+
+```
+/Provider/<project-name>/<prototype-name>/
+```
+
+CSA prototype:
+
+```
+/CSA/<project-name>/<prototype-name>/
+```
+
+### Category changes
+
+Routine **Manage** actions do not change **Category**. Moving between **Patient**, **Provider**, and **CSA** changes the folder path and live URL.
+
+If you are considering a category change, ask Cursor to diagnose and show a safe move plan before anything is moved. Do not manually drag prototype folders between category directories.
+
+```text
+@manage-prototype
+
+Prototype: <prototype name>
+Action: Diagnose
+
+I am considering changing the category from <current category> to <new category>.
+
+Inspect the current folder, metadata, links, and potential impact. Do not move or change anything. Show a safe migration plan for review.
+```
 
 After you approve publishing, Cursor updates Prototype Hub automatically. You do not create catalog cards manually.
 

@@ -5,7 +5,7 @@ Copy into a **new** Cursor chat when adding a prototype:
 ```text
 @add-prototype
 
-Category: <Patient or Provider>
+Category: <Patient, Provider, or CSA>
 Project: <project name>
 Prototype title: <prototype title>
 Owner: <your name or team>

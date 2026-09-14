@@ -42,6 +42,12 @@ Provider prototype:
 https://bookish-barnacle-2ywmpk2.pages.github.io/Provider/<project-name>/<prototype-name>/
 ```
 
+CSA prototype:
+
+```
+https://bookish-barnacle-2ywmpk2.pages.github.io/CSA/<project-name>/<prototype-name>/
+```
+
 UX Prototype Playground (example):
 
 ```
@@ -64,6 +70,7 @@ UX-Projects/
 │       ├── manage-prototype/
 │       └── prototype-help/
 ├── scripts/
+│   ├── prototype-categories.js
 │   ├── build-prototype-catalog.js
 │   └── validate-prototypes.js
 ├── .github/
@@ -81,7 +88,10 @@ UX-Projects/
     ├── Patient/
     │   └── <project-name>/
     │       └── <prototype-name>/
-    └── Provider/
+    ├── Provider/
+    │   └── <project-name>/
+    │       └── <prototype-name>/
+    └── CSA/
         └── <project-name>/
             └── <prototype-name>/
 ```
@@ -124,7 +134,15 @@ The Hub is static and prompt-generation only. It does not write to the repositor
 
 ### Catalog source
 
-`scripts/build-prototype-catalog.js` reads each `prototype.json` and writes `Prototypes/generated/catalog.json`. Contributors and the Hub UI do not edit the catalog directly.
+`scripts/build-prototype-catalog.js` reads each `prototype.json` under `Prototypes/Patient/`, `Prototypes/Provider/`, and `Prototypes/CSA/` and writes `Prototypes/generated/catalog.json`. Approved categories are defined in `scripts/prototype-categories.js`. Contributors and the Hub UI do not edit the catalog directly.
+
+### Category metrics and filters
+
+The Hub summary strip counts visible prototypes by **Patient**, **Provider**, and **CSA**, plus projects and owners. The Category filter includes **All**, **Patient**, **Provider**, and **CSA**. CSA cards use the `label-csa` badge treatment in `hub.css`.
+
+### Category migration safety
+
+Category migration changes folder paths and live URLs. Routine Manage actions must not migrate category. If a contributor requests a category change, stop and show a separate move plan before moving folders or metadata. Validate folder/category alignment after any approved migration, rebuild the catalog, preview the Hub, and require approval before publish.
 
 ### Manage prompt generation
 
@@ -196,7 +214,7 @@ Every prototype must include `prototype.json` with these required fields:
 {
   "name": "<human-readable prototype name>",
   "project": "<human-readable project name>",
-  "category": "Patient or Provider",
+  "category": "Patient, Provider, or CSA",
   "owner": "<person or team>",
   "status": "Draft, In Review, Testing, Approved, or Archived",
   "description": "<short description>",
@@ -209,7 +227,7 @@ Every prototype must include `prototype.json` with these required fields:
 
 Validation rules:
 
-- `category` must be `Patient` or `Provider`
+- `category` must be `Patient`, `Provider`, or `CSA`
 - `status` must be `Draft`, `In Review`, `Testing`, `Approved`, or `Archived`
 - `entryPoint` must exist
 - Folder names must use lowercase kebab-case
@@ -338,7 +356,7 @@ Stop and diagnose safely if there are unexpected changes, merge conflicts, or an
 <Project Name>
 
 ## Category
-Patient / Provider
+Patient / Provider / CSA
 
 ## Owner
 <Designer, Product Manager, or team>

@@ -1,12 +1,12 @@
 ---
 name: add-prototype
-description: Adds an existing or new Patient or Provider prototype to Prototype Hub, handles technical setup, validates it, previews it, and publishes only after approval.
+description: Adds an existing or new Patient, Provider, or CSA prototype to Prototype Hub, handles technical setup, validates it, previews it, and publishes only after approval.
 disable-model-invocation: true
 ---
 
 # Add Prototype
 
-Adds an existing or new Patient or Provider prototype to **Prototype Hub**. Handles technical setup, validation, preview, and publish-after-approval.
+Adds an existing or new Patient, Provider, or CSA prototype to **Prototype Hub**. Handles technical setup, validation, preview, and publish-after-approval.
 
 Speak to contributors in plain language. Do not ask them to run scripts, name folders, edit metadata, or run Git commands. Do not begin with a technical questionnaire.
 
@@ -35,7 +35,7 @@ Ask only for these four fields if they were not already provided:
 
 | Field | Example |
 |-------|---------|
-| **Category** | `Patient` or `Provider` |
+| **Category** | `Patient`, `Provider`, or `CSA` |
 | **Project** | Clinical Ops Messaging |
 | **Prototype title** | Nurse Workflow |
 | **Owner** | `<your name or team>` |
@@ -97,7 +97,7 @@ Search open workspace folders for likely existing prototypes:
 Ignore unrelated folders:
 
 - Prototype Hub hub files (`Prototypes/index.html`, hub CSS/JS, generated catalog)
-- Already published prototypes under `Prototypes/Patient/` or `Prototypes/Provider/` unless the contributor explicitly selected one
+- Already published prototypes under `Prototypes/Patient/`, `Prototypes/Provider/`, or `Prototypes/CSA/` unless the contributor explicitly selected one
 - `node_modules`, `.git`, scripts, unrelated build output, temporary files, and operating-system files
 
 If more than one possible source exists, list options in plain language and ask the contributor to select one. **Never guess.**
@@ -172,9 +172,11 @@ Keep every prototype self-contained. Do not modify unrelated prototypes. Use fic
 
 ### Technical paths (behind the scenes)
 
-1. Verify **Category** is exactly `Patient` or `Provider`.
-2. Convert **Project** and **Prototype title** to lowercase kebab-case folder names.
-3. **Stop** if destination path already exists.
+1. Verify **Category** is exactly `Patient`, `Provider`, or `CSA`.
+2. Explain the primary-audience rule in plain language when the contributor is unsure: **Patient** for primarily patient-facing work, **Provider** for primarily provider/clinical-operations work, and **CSA** for primarily CSA-facing work. Tags do not determine category.
+3. Create `Prototypes/CSA/` safely when the first approved CSA prototype is added.
+4. Convert **Project** and **Prototype title** to lowercase kebab-case folder names.
+5. **Stop** if destination path already exists.
 
 ---
 
@@ -262,7 +264,7 @@ Do not change approved Prototype Hub implementation unless explicitly requested:
 - **UX Prototype Playground** name, path, and content
 - Other published prototype paths and content
 - GitHub Pages workflow and Private visibility
-- Prototype Hub title, **Patient & Provider Prototype Review** subtitle, and UX header badge
+- Prototype Hub title, **Patient, Provider & CSA Prototype Review** subtitle, and UX header badge
 
 ## If this skill is unavailable
 
