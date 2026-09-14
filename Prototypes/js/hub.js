@@ -382,7 +382,7 @@
         <div class="record-tags" title="${escapeHtml(FIELD_HELP.tags)}">${(item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('') || '<span class="record-tags-empty">No tags</span>'}</div>
       </div>
       <div class="record-actions">
-        <a class="btn-primary" href="${escapeHtml(item.url)}">Open Prototype</a>
+        <a class="btn-primary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">Open Prototype</a>
         <button type="button" class="btn-secondary manage-open-btn" data-prototype-name="${escapeHtml(item.name)}" aria-label="Manage ${escapeHtml(item.name)}">Manage</button>
       </div>
     `

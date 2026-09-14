@@ -61,14 +61,20 @@
       <h2 id="controls-heading" class="visually-hidden">Search and filters</h2>
 
       <div class="toolbar-row">
-        <label class="control-group search-group" for="search-input">
+        <label class="control-group search-group">
           <span class="control-label">Search</span>
-          <input type="search" id="search-input" placeholder="Search prototypes, projects, owners, or tags" autocomplete="off">
+          <span class="search-input-wrap">
+            <svg class="search-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M20 20l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <input type="search" id="search-input" class="everkit-input" placeholder="Search prototypes, projects, owners, or tags" autocomplete="off">
+          </span>
         </label>
 
         <label class="control-group" for="filter-category">
           <span class="control-label">Category</span>
-          <select id="filter-category">
+          <select id="filter-category" class="everkit-select">
             <option value="All">All</option>
             <option value="Patient">Patient</option>
             <option value="Provider">Provider</option>
@@ -77,7 +83,7 @@
 
         <label class="control-group" for="filter-status">
           <span class="control-label">Status</span>
-          <select id="filter-status">
+          <select id="filter-status" class="everkit-select">
             <option value="Active">Active only</option>
             <option value="All">All statuses</option>
             <option value="Draft">Draft</option>
@@ -90,14 +96,14 @@
 
         <label class="control-group" for="filter-project">
           <span class="control-label">Project</span>
-          <select id="filter-project">
+          <select id="filter-project" class="everkit-select">
             <option value="All">All projects</option>
           </select>
         </label>
 
         <label class="control-group" for="filter-owner">
           <span class="control-label">Owner</span>
-          <select id="filter-owner">
+          <select id="filter-owner" class="everkit-select">
             <option value="All">All owners</option>
           </select>
         </label>
@@ -106,7 +112,7 @@
       <div class="toolbar-row-secondary">
         <label class="control-group" for="sort-by">
           <span class="control-label">Sort by</span>
-          <select id="sort-by">
+          <select id="sort-by" class="everkit-select">
             <option value="recent">Recently updated</option>
             <option value="name">Prototype name</option>
             <option value="project">Project</option>
@@ -118,9 +124,9 @@
         <fieldset class="control-group grouping-fieldset">
           <legend class="control-label">Group by</legend>
           <div class="radio-row">
-            <label><input type="radio" name="group-by" value="all" checked> Show all</label>
-            <label><input type="radio" name="group-by" value="project"> Project</label>
-            <label><input type="radio" name="group-by" value="owner"> Owner</label>
+            <label><input type="radio" class="everkit-radio" name="group-by" value="all" checked> Show all</label>
+            <label><input type="radio" class="everkit-radio" name="group-by" value="project"> Project</label>
+            <label><input type="radio" class="everkit-radio" name="group-by" value="owner"> Owner</label>
           </div>
         </fieldset>
       </div>
@@ -199,7 +205,7 @@
               <p class="manage-field-label">Current status</p>
               <p id="manage-current-status" class="manage-current-status"></p>
               <label for="manage-new-status" class="manage-field-label">New status</label>
-              <select id="manage-new-status" class="manage-input"></select>
+              <select id="manage-new-status" class="manage-input everkit-select"></select>
               <p class="manage-field-help">To remove this prototype from the default Hub view, use Archive below.</p>
             </section>
 
@@ -208,14 +214,14 @@
               <p class="manage-field-label" id="manage-current-tags-label">Current tags</p>
               <div id="manage-tag-chips" class="manage-tag-chips" aria-live="polite" aria-labelledby="manage-current-tags-label"></div>
               <label for="manage-tag-input" class="manage-field-label">Add tags</label>
-              <input type="text" id="manage-tag-input" class="manage-input" autocomplete="off" placeholder="Enter a tag">
+              <input type="text" id="manage-tag-input" class="manage-input everkit-input" autocomplete="off" placeholder="Enter a tag">
               <p class="manage-field-help">Type a tag and press Enter.</p>
             </section>
 
             <section id="manage-other-section" class="manage-section" aria-labelledby="manage-other-heading">
               <h3 id="manage-other-heading" class="manage-section-heading">Other changes</h3>
               <label for="manage-other-changes" class="manage-field-label">Describe anything else you want Cursor to update.</label>
-              <textarea id="manage-other-changes" class="manage-input manage-textarea" rows="3" placeholder="For example: update the description or owner."></textarea>
+              <textarea id="manage-other-changes" class="manage-input manage-textarea everkit-input" rows="3" placeholder="For example: update the description or owner."></textarea>
               <p class="manage-field-help">For example: update the description, owner, or other prototype details. Leave blank if no other changes are needed.</p>
             </section>
 
@@ -248,7 +254,7 @@
                 </label>
                 <div id="manage-restore-options" class="manage-nested-option" hidden>
                   <label for="manage-restore-status" class="manage-field-label">Restore status</label>
-                  <select id="manage-restore-status" class="manage-input"></select>
+                  <select id="manage-restore-status" class="manage-input everkit-select"></select>
                 </div>
               </div>
             </section>
@@ -258,7 +264,7 @@
             <section class="manage-section" aria-labelledby="manage-diagnose-heading">
               <h3 id="manage-diagnose-heading" class="manage-section-heading">Describe the problem</h3>
               <label for="manage-diagnose-input" class="visually-hidden">Describe the problem</label>
-              <textarea id="manage-diagnose-input" class="manage-input manage-textarea" rows="4" placeholder="Describe what looks wrong or what you need help with."></textarea>
+              <textarea id="manage-diagnose-input" class="manage-input manage-textarea everkit-input" rows="4" placeholder="Describe what looks wrong or what you need help with."></textarea>
               <p class="manage-field-help">Cursor will inspect the prototype first without changing files.</p>
             </section>
           </div>
@@ -272,7 +278,7 @@
             <p id="manage-final-tags" class="manage-final-tags" hidden></p>
           </div>
           <label for="manage-prompt-output" class="manage-field-label">Cursor prompt</label>
-          <textarea id="manage-prompt-output" class="manage-prompt-output" rows="6"></textarea>
+          <textarea id="manage-prompt-output" class="manage-prompt-output everkit-input" rows="6" readonly></textarea>
           <p id="manage-copy-status" class="manage-copy-status" role="status" aria-live="polite"></p>
           <details class="manage-next-steps">
             <summary>What happens next?</summary>
