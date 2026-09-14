@@ -103,7 +103,7 @@
         </label>
       </div>
 
-      <div class="toolbar-row">
+      <div class="toolbar-row-secondary">
         <label class="control-group" for="sort-by">
           <span class="control-label">Sort by</span>
           <select id="sort-by">
@@ -124,13 +124,13 @@
           </div>
         </fieldset>
       </div>
-    </section>
 
-    <section class="results-toolbar" id="results-toolbar" aria-live="polite">
-      <p class="results-toolbar-summary" id="results-summary">Showing — prototypes</p>
-      <p class="results-toolbar-meta" id="results-meta">Grouped by: Show all</p>
-      <div class="results-toolbar-actions">
-        <button type="button" class="btn-text" id="clear-filters" disabled>Clear filters</button>
+      <div class="results-toolbar" id="results-toolbar" aria-live="polite">
+        <p class="results-toolbar-summary" id="results-summary">Showing — prototypes</p>
+        <p class="results-toolbar-meta" id="results-meta">Grouped by: Show all</p>
+        <div class="results-toolbar-actions">
+          <button type="button" class="btn-text" id="clear-filters" disabled>Clear filters</button>
+        </div>
       </div>
     </section>
 
@@ -142,7 +142,7 @@
 
       <div id="catalog-error" class="state-message error-state" hidden role="alert" aria-label="Prototype Hub catalog error">
         <h2>Prototype Hub could not be loaded</h2>
-        <p>Unable to load the prototype catalog. Refresh the page or contact the repository owner.</p>
+        <p>Unable to load the prototype catalog. Refresh the page or ask Cursor to diagnose the issue.</p>
       </div>
 
       <div id="catalog-empty" class="state-message empty-state" hidden aria-label="No prototypes in Prototype Hub">
@@ -158,6 +158,158 @@
       <div id="catalog-results"></div>
     </section>
   </main>
+
+  <div id="manage-overlay" class="manage-overlay" hidden>
+    <div
+      id="manage-dialog"
+      class="manage-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="manage-dialog-title"
+      aria-describedby="manage-dialog-intro"
+    >
+      <header class="manage-dialog-header">
+        <div class="manage-dialog-heading">
+          <h2 id="manage-dialog-title">Manage prototype</h2>
+          <p id="manage-dialog-subtitle" class="manage-dialog-subtitle"></p>
+        </div>
+        <button type="button" id="manage-close" class="manage-close-btn" aria-label="Close Manage Prototype">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </header>
+
+      <div class="manage-dialog-body">
+        <div id="manage-form-view">
+          <p id="manage-dialog-intro" class="manage-intro">
+            Select the changes you want to make. The Hub will prepare one Cursor prompt for you to review and run.
+          </p>
+
+          <div class="manage-mode-tabs" role="tablist" aria-label="Manage prototype mode">
+            <button type="button" id="manage-tab-changes" class="manage-mode-tab is-active" role="tab" aria-selected="true" aria-controls="manage-changes-panel">Make changes</button>
+            <button type="button" id="manage-tab-diagnose" class="manage-mode-tab" role="tab" aria-selected="false" aria-controls="manage-diagnose-panel">Diagnose a problem</button>
+          </div>
+
+          <div id="manage-form-error" class="manage-form-error" role="alert" hidden></div>
+
+          <div id="manage-changes-panel" class="manage-panel" role="tabpanel" aria-labelledby="manage-tab-changes">
+            <dl id="manage-overview" class="manage-overview"></dl>
+
+            <section id="manage-status-section" class="manage-section" aria-labelledby="manage-status-heading">
+              <h3 id="manage-status-heading" class="manage-section-heading">Status</h3>
+              <p class="manage-field-label">Current status</p>
+              <p id="manage-current-status" class="manage-current-status"></p>
+              <label for="manage-new-status" class="manage-field-label">New status</label>
+              <select id="manage-new-status" class="manage-input"></select>
+              <p class="manage-field-help">To remove this prototype from the default Hub view, use Archive below.</p>
+            </section>
+
+            <section id="manage-tags-section" class="manage-section" aria-labelledby="manage-tags-heading">
+              <h3 id="manage-tags-heading" class="manage-section-heading">Tags</h3>
+              <p class="manage-field-label" id="manage-current-tags-label">Current tags</p>
+              <div id="manage-tag-chips" class="manage-tag-chips" aria-live="polite" aria-labelledby="manage-current-tags-label"></div>
+              <label for="manage-tag-input" class="manage-field-label">Add tags</label>
+              <input type="text" id="manage-tag-input" class="manage-input" autocomplete="off" placeholder="Enter a tag">
+              <p class="manage-field-help">Type a tag and press Enter.</p>
+            </section>
+
+            <section id="manage-other-section" class="manage-section" aria-labelledby="manage-other-heading">
+              <h3 id="manage-other-heading" class="manage-section-heading">Other changes</h3>
+              <label for="manage-other-changes" class="manage-field-label">Describe anything else you want Cursor to update.</label>
+              <textarea id="manage-other-changes" class="manage-input manage-textarea" rows="3" placeholder="For example: update the description or owner."></textarea>
+              <p class="manage-field-help">For example: update the description, owner, or other prototype details. Leave blank if no other changes are needed.</p>
+            </section>
+
+            <section id="manage-lifecycle-section" class="manage-section manage-section-divider" aria-labelledby="manage-lifecycle-heading">
+              <div id="manage-archive-block">
+                <h3 id="manage-lifecycle-heading" class="manage-section-heading">Archive prototype</h3>
+                <p id="manage-archive-desc" class="manage-field-help">Archiving hides this prototype from the default Hub view. It does not delete the prototype or its files.</p>
+                <label class="manage-checkbox-label" for="manage-archive-include">
+                  <input type="checkbox" id="manage-archive-include" class="everkit-checkbox" aria-describedby="manage-archive-desc manage-archive-blocked-msg manage-archive-active-msg">
+                  Include archiving in this request
+                </label>
+                <p id="manage-archive-blocked-msg" class="manage-archive-message" role="status" hidden>Archive must be submitted separately. Clear the other changes before including Archive.</p>
+                <p id="manage-archive-active-msg" class="manage-archive-message" role="status" hidden>Archive is handled as a separate request. Remove Archive to make other changes.</p>
+                <fieldset id="manage-archive-confirm-block" class="manage-archive-confirm" hidden>
+                  <legend class="manage-archive-confirm-legend">Confirm archive</legend>
+                  <p id="manage-archive-confirm-desc" class="manage-field-help">This prototype will be hidden from the default Hub view. The prototype and its files will not be deleted.</p>
+                  <label class="manage-checkbox-label" for="manage-archive-confirm">
+                    <input type="checkbox" id="manage-archive-confirm" class="everkit-checkbox" aria-describedby="manage-archive-confirm-desc manage-archive-confirm-error">
+                    I understand and want to include this change.
+                  </label>
+                  <p id="manage-archive-confirm-error" class="manage-field-error" role="alert" hidden></p>
+                </fieldset>
+              </div>
+              <div id="manage-restore-block" hidden>
+                <h3 class="manage-section-heading">Restore prototype</h3>
+                <p id="manage-restore-desc" class="manage-field-help">Restoring returns this prototype to the default active workflow.</p>
+                <label class="manage-checkbox-label" for="manage-restore-include">
+                  <input type="checkbox" id="manage-restore-include" class="everkit-checkbox" aria-describedby="manage-restore-desc">
+                  Include restoration in this request
+                </label>
+                <div id="manage-restore-options" class="manage-nested-option" hidden>
+                  <label for="manage-restore-status" class="manage-field-label">Restore status</label>
+                  <select id="manage-restore-status" class="manage-input"></select>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div id="manage-diagnose-panel" class="manage-panel" role="tabpanel" aria-labelledby="manage-tab-diagnose" hidden>
+            <section class="manage-section" aria-labelledby="manage-diagnose-heading">
+              <h3 id="manage-diagnose-heading" class="manage-section-heading">Describe the problem</h3>
+              <label for="manage-diagnose-input" class="visually-hidden">Describe the problem</label>
+              <textarea id="manage-diagnose-input" class="manage-input manage-textarea" rows="4" placeholder="Describe what looks wrong or what you need help with."></textarea>
+              <p class="manage-field-help">Cursor will inspect the prototype first without changing files.</p>
+            </section>
+          </div>
+        </div>
+
+        <div id="manage-review-view" hidden>
+          <h3 class="manage-review-heading">Review changes</h3>
+          <div class="manage-review-summary-wrap">
+            <h4 class="manage-review-subheading">Requested changes</h4>
+            <ul id="manage-change-summary" class="manage-change-summary"></ul>
+            <p id="manage-final-tags" class="manage-final-tags" hidden></p>
+          </div>
+          <label for="manage-prompt-output" class="manage-field-label">Cursor prompt</label>
+          <textarea id="manage-prompt-output" class="manage-prompt-output" rows="6"></textarea>
+          <p id="manage-copy-status" class="manage-copy-status" role="status" aria-live="polite"></p>
+          <details class="manage-next-steps">
+            <summary>What happens next?</summary>
+            <ol class="manage-steps">
+              <li>Open UX-Projects in Cursor.</li>
+              <li>Start a new chat and paste the prompt.</li>
+              <li>Review the local preview and approve only when correct.</li>
+            </ol>
+          </details>
+        </div>
+      </div>
+
+      <footer class="manage-dialog-footer">
+        <div id="manage-footer-form" class="manage-footer-inner">
+          <p id="manage-change-count" class="manage-change-count" aria-live="polite">No changes selected</p>
+          <div class="manage-footer-actions">
+            <button type="button" id="manage-cancel" class="btn-secondary">Cancel</button>
+            <button type="button" id="manage-review-btn" class="btn-primary" disabled>Review Cursor prompt</button>
+          </div>
+        </div>
+        <div id="manage-footer-review" class="manage-footer-inner" hidden>
+          <p class="manage-change-count manage-change-count-review">Ready to copy</p>
+          <div class="manage-footer-actions">
+            <button type="button" id="manage-back-edit" class="btn-secondary">Back to edit</button>
+            <button type="button" id="manage-copy" class="btn-primary">Copy Cursor prompt</button>
+          </div>
+        </div>
+        <div id="manage-footer-diagnose" class="manage-footer-inner" hidden>
+          <p class="manage-change-count manage-change-count-review">Diagnostic prompt</p>
+          <div class="manage-footer-actions">
+            <button type="button" id="manage-cancel-diagnose" class="btn-secondary">Cancel</button>
+            <button type="button" id="manage-review-diagnose-btn" class="btn-primary" disabled>Review diagnostic prompt</button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
 
   <footer class="hub-footer">
     <div class="container">

@@ -8,6 +8,7 @@ The Prototype Hub interface uses EverKit design-system tokens and patterns where
 
 - [Live URLs](#live-urls)
 - [Repository Structure](#repository-structure)
+- [Prototype Hub (Technical)](#prototype-hub-technical)
 - [Contributor Quick Start (Technical)](#contributor-quick-start-technical)
 - [prototype.json Metadata](#prototypejson-metadata)
 - [Local Preview and Validation](#local-preview-and-validation)
@@ -74,7 +75,7 @@ UX-Projects/
     │   ├── everkit-tokens.css
     │   └── hub.css
     ├── js/
-    │   └── hub.js
+    │   └── hub.js                 # Catalog UI; Manage action generates @manage-prototype prompts only
     ├── generated/
     │   └── catalog.json           # Built by scripts/build-prototype-catalog.js
     ├── Patient/
@@ -91,6 +92,77 @@ Each prototype folder contains:
 - `prototype.json`
 - `README.md`
 - `css/`, `js/`, and `assets/` as needed
+
+---
+
+## Prototype Hub (Technical)
+
+### Hub UI files
+
+| File | Role |
+|------|------|
+| `Prototypes/index.html` | Hub landing page and Manage modal markup |
+| `Prototypes/css/hub.css` | Hub layout, responsive grid, EverKit checkbox styling |
+| `Prototypes/js/hub.js` | Catalog rendering, search/filter/sort, Manage prompt generation |
+| `Prototypes/generated/catalog.json` | Built catalog consumed by the Hub (do not edit manually) |
+
+The Hub is static and prompt-generation only. It does not write to the repository, call APIs, or publish changes.
+
+### Responsive grid
+
+- Hub workspace uses a centered max width with fluid side margins.
+- Prototype cards use `repeat(auto-fill, minmax(360px, 1fr))` so columns reflow across viewport sizes.
+- Search, filters, sort, and grouping are implemented in `hub.js`.
+
+### Date display
+
+- Stored `lastUpdated` values in `prototype.json` and `catalog.json` remain `YYYY-MM-DD`.
+- Visible Hub dates use `MM/DD/YYYY` (for example, `09/11/2026`).
+- `formatDisplayDate()` in `hub.js` parses ISO date strings directly — no `Date()` object and no timezone conversion.
+- **Recently updated** sorting uses the raw ISO string via `localeCompare`.
+- Invalid or missing values display the neutral fallback `—`.
+
+### Catalog source
+
+`scripts/build-prototype-catalog.js` reads each `prototype.json` and writes `Prototypes/generated/catalog.json`. Contributors and the Hub UI do not edit the catalog directly.
+
+### Manage prompt generation
+
+`hub.js` generates `@manage-prototype` prompts for:
+
+| Hub action | Generated `Action` |
+|------------|-------------------|
+| Combined routine edits | `Update` |
+| Confirmed archive | `Archive` |
+| Restore | `Restore` |
+| Diagnose mode | `Diagnose` |
+
+Manage modes:
+
+- **Make changes** — one form for status, tags, other changes, archive, or restore.
+- **Diagnose a problem** — read-only diagnostic prompt only.
+
+### Tag state
+
+On open, Manage loads catalog tags into `originalTags` and `workingTags`. Chip add/remove updates `workingTags` only. Review diffs compare `workingTags` against `originalTags` to produce accurate add/remove summaries and prompts. Unchanged tags are preserved unless explicitly removed.
+
+### Archive exclusivity
+
+- Archive cannot be selected while status, tag, or other metadata edits are pending.
+- When archive is confirmed, routine editing controls are disabled.
+- Archive counts as exactly one requested change.
+- Archive and restore cannot be combined with other metadata changes in one Hub request.
+
+### Validation and publish safety
+
+Contributors use skills for the standard workflow. Maintainers run validation before publish:
+
+```bash
+node scripts/validate-prototypes.js
+node scripts/build-prototype-catalog.js
+```
+
+Approved workflow publishes directly to `main` after contributor approval. Before push, pull `origin/main`, stop on conflicts, and never force-push. Confirm deployment under **Actions > Deploy GitHub Pages**.
 
 ---
 

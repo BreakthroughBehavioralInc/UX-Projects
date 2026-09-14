@@ -73,11 +73,48 @@ Wait for approval before making changes (except **Diagnose**, which makes no cha
 
 ### UPDATE
 
-1. Ask for a short description of the requested change.
-2. Modify only the selected prototype folder and directly required metadata.
-3. Update `version` and `lastUpdated` in `prototype.json` appropriately.
-4. Proceed to **Validate and Preview** (Stage 4).
-5. Require approval before publish (Stages 5–6).
+`Action: Update` supports changing prototype metadata and other approved prototype details without touching unrelated fields.
+
+**Supported update types**
+
+| Request type | How to interpret |
+|--------------|------------------|
+| **Change status** | Set `status` to one of the approved active values: `Draft`, `In Review`, `Testing`, or `Approved`. Show current and proposed status. Do not set `Archived` through `Action: Update` — use `Action: Archive` instead. Preserve tags unless the contributor explicitly requests tag changes in the same prompt. |
+| **Add tags** | Keep existing tags and append only the listed new tags. Do not rename or remove tags unless explicitly requested. |
+| **Remove tags** | Keep existing tags except remove only the listed tags. |
+| **Other metadata** | Update only the fields the contributor named (for example, description, owner, project notes). Preserve all unrelated prototype content and metadata. |
+
+Prototype Hub generates differential tag add/remove prompts only. It does not generate full tag-replacement requests.
+
+**Tag rules**
+
+- `tags` must remain a JSON array in `prototype.json`.
+- Compare requested tag changes against the current catalog/`prototype.json` state.
+- Trim accidental spaces from contributor-supplied tags.
+- Do not silently rename existing tags.
+- Preserve unchanged tags unless explicitly removed.
+- Avoid duplicate tags.
+- The repository validator requires an array only; it does not enforce additional tag format rules. Do not invent new tag naming rules.
+
+**Combined Update requests**
+
+Contributors may send one `Action: Update` prompt that includes multiple changes in a `Make these changes:` list (status, tags, and other details). When a combined prompt arrives:
+
+1. Parse each bullet independently.
+2. Show current and proposed values for every field that will change.
+3. Apply all requested changes in one pass while preserving unrelated metadata.
+4. Do not combine `Action: Update` with `Action: Archive` or `Action: Restore` in the same implementation pass. If a contributor requests both archive/restore and other metadata changes, stop, explain the conflict, and ask them to submit separate prompts.
+
+**Update workflow**
+
+1. Locate the selected prototype and show current values for the fields that will change.
+2. If the contributor prompt is ambiguous, ask one clarifying question. Never guess.
+3. Modify only the selected prototype folder and directly required metadata.
+4. Use only approved status values.
+5. Update `version` and `lastUpdated` in `prototype.json` according to existing repository rules.
+6. Proceed to **Validate and Preview** (Stage 4).
+7. Show the updated Prototype Hub card in the local Hub preview.
+8. Require approval before publish (Stages 5–6).
 
 ### PREVIEW
 
@@ -95,23 +132,29 @@ Wait for approval before making changes (except **Diagnose**, which makes no cha
 
 ### ARCHIVE
 
-1. Explain that archiving hides the prototype from the default Prototype Hub view but does not delete it. Direct URLs remain accessible.
-2. Set `"status": "Archived"` in `prototype.json` and update `lastUpdated`.
-3. Proceed to **Validate and Preview**, then require approval before publish.
+Treat Archive as a separate request. Prototype Hub enforces archive exclusivity and generates `Action: Archive` only when archive is the sole requested change.
+
+1. If the prompt mixes Archive with routine metadata changes (status, tags, or other details), stop and ask the contributor to submit Archive separately.
+2. Explain that archiving hides the prototype from the default Prototype Hub view but does not delete it. Direct URLs remain accessible.
+3. Set `"status": "Archived"` in `prototype.json` and update `lastUpdated`.
+4. Proceed to **Validate and Preview**, show the updated Hub behavior, then require approval before publish.
 
 ### RESTORE
 
-1. If the current status is `Archived`, ask which valid non-Archived status to use (`Draft`, `In Review`, `Testing`, or `Approved`) if it cannot be determined safely from context.
-2. Update `prototype.json` status and `lastUpdated`.
-3. Proceed to **Validate and Preview**, then require approval before publish.
+1. Apply only to prototypes whose current status is `Archived`.
+2. If the prompt mixes Restore with other metadata changes, stop and ask the contributor to submit Restore separately.
+3. Set status to the approved active value from the prompt (`Draft`, `In Review`, `Testing`, or `Approved`). Ask if it cannot be determined safely from context.
+4. Update `prototype.json` status and `lastUpdated`.
+5. Proceed to **Validate and Preview**, then require approval before publish.
 
 ### DIAGNOSE
 
-1. Make no changes initially.
+1. Make no file changes during the initial diagnostic action.
 2. Inspect the prototype folder, validation output, catalog entry, and any reported symptoms.
 3. Explain the issue in plain language.
 4. Recommend the safest next action (`Update`, `Publish`, `@add-prototype`, or wait).
-5. Show all proposed changes before implementation.
+5. Do not commit or push during the initial diagnostic action.
+6. Show all proposed changes before implementation.
 
 ---
 

@@ -147,6 +147,33 @@ Before you approve publishing, confirm:
 
 For the complete review workflow, see [Review and Publish](README.md#review-and-publish) in README.md.
 
+### Update an existing prototype
+
+On a prototype card, use **Open Prototype** to view the prototype or **Manage** to request updates.
+
+**Manage** opens one consolidated form. Current tags appear as removable chips. Type a new tag and press **Enter** to add it. Select all routine changes in one form, choose **Review Cursor prompt**, copy the prompt, and paste it into a **new** Cursor chat. Review Cursor's local preview before approving publication.
+
+Use **Diagnose a problem** when something looks wrong. Cursor inspects first without changing files.
+
+Prototype Hub generates prompts only. It does not edit repository files directly.
+
+**Example**
+
+```text
+@manage-prototype
+
+Prototype: <prototype name>
+Action: Update
+
+Make these changes:
+
+- Change the status to Testing.
+- Add these tags:
+  - accessibility
+```
+
+For the full management workflow, see [Manage an Existing Prototype](README.md#manage-an-existing-prototype) in README.md.
+
 ### If a skill does not appear
 
 If you have **not** finished Phase 1, complete [First-Time Setup](#phase-1-first-time-setup) first.

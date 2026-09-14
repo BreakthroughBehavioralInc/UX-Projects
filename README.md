@@ -22,7 +22,7 @@ All three skills are already included in UX-Projects. You do not install them se
 
 ## What Is Prototype Hub?
 
-Prototype Hub is the internal catalog for discovering, reviewing, and opening Patient and Provider prototypes. **UX Prototype Playground** is one example prototype in the Hub, not the Hub itself.
+Prototype Hub is the internal catalog for discovering, reviewing, and opening Patient and Provider prototypes. **UX Prototype Playground** is one example prototype in the Hub, not the Hub itself. The Hub uses a wide, responsive card grid so larger catalogs remain scannable on desktop, tablet, and mobile.
 
 This repository is for prototype and concept work. It is not a production application or general file-storage location.
 
@@ -169,6 +169,8 @@ After publishing, ask Cursor to confirm your prototype is live and open it from 
 
 Use `@manage-prototype` to update, preview, publish, archive, restore, or diagnose a prototype that is already in UX-Projects.
 
+Each prototype card includes **Open Prototype** and **Manage**. **Manage** opens one consolidated form. Review the prototype's current information, select every change you need, review a combined change summary, and copy one Cursor prompt. Prototype Hub prepares the prompt only. It does not edit, commit, push, or publish repository files.
+
 ```text
 @manage-prototype
 
@@ -178,14 +180,108 @@ Action: Update, Preview, Publish, Archive, Restore, or Diagnose
 
 | Action | What it does |
 |--------|----------------|
-| **Update** | Change the selected prototype. Cursor asks what to change, updates only that prototype, validates, and previews before publishing. |
+| **Update** | Change the selected prototype. This includes status changes, tag changes, and other approved metadata updates. Cursor shows current and proposed values, updates only that prototype, validates, previews the updated Hub card locally, and waits for your approval before publishing. |
 | **Preview** | Open local prototype and Prototype Hub previews without changing content unless you ask. |
 | **Publish** | Validate and publish approved local changes after you review the proposed files. |
 | **Archive** | Hide the prototype from the default Hub view without deleting it. Requires your approval. |
 | **Restore** | Return an archived prototype to an active status. Requires your approval. |
 | **Diagnose** | Explain an issue in plain language and recommend the safest next step before making changes. |
 
-Cursor locates the prototype safely. If multiple prototypes match, it asks you to choose one. It does not modify unrelated files.
+### Manage form: one place for all changes
+
+The **Manage** form lets you combine changes in one request:
+
+| Section | What you can do |
+|---------|-----------------|
+| **Status** | Choose a new active status (`Draft`, `In Review`, `Testing`, `Approved`) or leave **No change**. |
+| **Tags** | Current tags appear as removable chips. Add with Enter and remove individual tags before review. |
+| **Other changes** | Describe optional updates such as description or owner. |
+| **Archive** | For active prototypes, request archiving separately at the bottom of the form. |
+| **Restore** | For archived prototypes, request restoration with an active status. |
+| **Diagnose a problem** | Switch modes to generate a read-only `Action: Diagnose` prompt. |
+
+### Status
+
+**Active status choices** in the Manage form: `Draft`, `In Review`, `Testing`, `Approved`
+
+**Archived** remains a valid repository status, but it is not selected through the normal status dropdown. Archiving uses the dedicated **Archive prototype** workflow at the bottom of the form.
+
+### Tags
+
+- Existing tags appear as removable chips in **Current tags**.
+- Select a tag's remove control to request removal of that tag.
+- Type a tag and press **Enter** to request addition.
+- Additions and removals can be combined in one Update request.
+- Unchanged tags remain preserved.
+- Tags are compared against the original catalog state before review.
+- The review screen shows only actual additions and removals.
+- Contributors do not manually edit `prototype.json`.
+
+### Archive
+
+- Archiving hides the prototype from the default Prototype Hub view.
+- Archiving does not delete the prototype or its files.
+- Archive is an exclusive request. It cannot be combined with status, tag, or other metadata changes in one Hub request.
+- Archive requires explicit confirmation before review.
+- Archive counts as exactly one requested change.
+- Cursor shows the updated Hub locally before publishing.
+
+### Restore
+
+- Restore applies only to archived prototypes.
+- Select an approved active status (`Draft`, `In Review`, `Testing`, or `Approved`).
+- Restore cannot be combined with other metadata changes in one Hub request.
+- Cursor validates and previews the restored prototype before publication.
+
+### Diagnose
+
+- **Diagnose a problem** inspects first without changing files.
+- Diagnose explains the problem in plain language and recommends the safest next step.
+- Diagnose does not commit or push unless a later approved workflow requires it.
+
+### Dates
+
+- **Updated** dates display as `MM/DD/YYYY` in Prototype Hub (for example, `09/11/2026`).
+- Metadata remains stored as `YYYY-MM-DD` in `prototype.json` and the generated catalog.
+- The visible format does not change the underlying value.
+
+### Responsive catalog
+
+The Hub uses a responsive card grid to support a growing prototype catalog. Use search, filters, sort, and grouping to locate prototypes quickly on desktop, tablet, and mobile.
+
+**Combined update example**
+
+```text
+@manage-prototype
+
+Prototype: <prototype name>
+Action: Update
+
+Make these changes:
+
+- Change the status from Testing to In Review.
+- Add these tags:
+  - accessibility
+  - mobile
+- Remove these tags:
+  - playground
+
+Preserve all unrelated prototype content and metadata.
+
+Show the proposed changes and updated Prototype Hub card in a local preview before committing or pushing.
+```
+
+### Contributor workflow
+
+1. Open Prototype Hub and select **Manage** on the prototype card.
+2. Use **Make changes** for routine updates, or **Diagnose a problem** for read-only investigation.
+3. Select all desired routine changes in one form, then choose **Review Cursor prompt**.
+4. Confirm the change summary shows only actual differences, then copy the combined prompt.
+5. Paste and run the prompt in a new Cursor chat with the complete UX-Projects repository open.
+6. Review the local Hub preview and proposed changes.
+7. Approve publishing only when the requested changes are correct.
+
+Cursor locates the prototype safely. If multiple prototypes match, it asks you to choose one. It does not modify unrelated files. Contributors do not edit `prototype.json` or `Prototypes/generated/catalog.json` manually.
 
 ---
 
