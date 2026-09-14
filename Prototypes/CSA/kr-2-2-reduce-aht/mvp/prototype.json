@@ -1,0 +1,12 @@
+{
+  "name": "KR 2.2 – Reduce AHT MVP",
+  "project": "KR 2.2 – Reduce AHT",
+  "category": "CSA",
+  "owner": "AlfredoCMDL",
+  "status": "In Review",
+  "description": "Sierra AI handoff panel v2 — clean developer deliverable. All 19 call-flow scenarios with progressive script personalization (auth/retention/emergency branches). Pending SME sign-off on script templates.",
+  "version": "2.0.0",
+  "lastUpdated": "2026-09-14",
+  "entryPoint": "index.html",
+  "tags": ["csa", "sierra-ai", "handoff", "aht", "call-center", "script-templates", "v2"]
+}
