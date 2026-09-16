@@ -1,0 +1,28 @@
+---
+description: CSA Sierra handoff UX decisions — persistent rail in CSA, not Finesse modal
+globs: csa-handoff-prototype/**/*
+alwaysApply: false
+---
+
+# CSA handoff experience
+
+Read `docs/csa-experience-decisions.md` before changing handoff or CSA shell UI.
+
+## Non‑negotiables
+
+1. **CSA only** — handoff context is a persistent CSA surface (left rail, right rail, or sticky top band), never a dismissible Finesse/modal-only pattern.
+2. **Binary auth labels** — UI shows **Authenticated** or **Not authenticated** only. Never “partial authentication”, “partly verified”, or similar.
+3. **Sierra verify fields** — first name, last name, DOB, phone for the match API; IVR values prepopulate when captured.
+4. **Status = Alert** — auth state uses DS `Alert`, not custom modal header chrome.
+5. **Reason in alert** — `intentSummary` lives in the status `Alert` description only; no separate “Reason for calling” field.
+6. **Application layout** — full-bleed CSA shell (`Header layout="application"`, `PageContainer size="full"`).
+
+## Prototype scope
+
+- Storybook lives in this repo (`npm run dev` → port **6008**).
+- Use `@everkit/design-system` components; do not fork DS patterns into one-off CSS.
+- Scenario payloads: `src/data/scenarios.ts`; MVP walkthrough: `ScenarioBar` + `MVP_MASTER_FLOW_SCENARIO_NUMBERS`.
+
+## Copy
+
+- Avoid “screenpop” in UI strings; use handoff/status language aligned with `HandoffPanel`.

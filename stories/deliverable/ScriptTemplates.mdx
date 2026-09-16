@@ -1,0 +1,172 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Script Templates" />
+
+# Script Templates
+
+The "Suggested script" field is generated from the Sierra payload at transfer time.
+Branches are evaluated top-to-bottom; **first match wins.**
+
+**SME review:** Taylor / Farra — confirm copy is accurate before developer implementation.
+
+---
+
+## Branch map
+
+<table>
+  <thead>
+    <tr>
+      <th style={{width:"2rem"}}>#</th>
+      <th style={{width:"13rem"}}>Condition</th>
+      <th>Suggested script</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Emergency — name known</td>
+      <td>"<strong>[firstName]</strong>, I understand this may be an emergency — I'm here with you right now. Can you tell me what's happening?"</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Emergency — name unknown</td>
+      <td>"I understand this may be an emergency — I'm here with you right now. Can you tell me what's happening?"</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Retention — intent + name + DOB known</td>
+      <td>"Hi <strong>[firstName]</strong>, thanks for staying on the line. I see you were calling about <strong>[topic]</strong> — I just need to confirm your date of birth as <strong>[MM/DD/YYYY]</strong>, and then I can help you right away."</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Retention — intent + name known</td>
+      <td>"Hi <strong>[firstName]</strong>, thanks for staying on the line. I see you were calling about <strong>[topic]</strong> — I'm a live agent and I'm here to help with that."</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Retention — intent only known</td>
+      <td>"Hi, thanks for staying on the line. I see you were calling about <strong>[topic]</strong> — I'm a live agent and I'm here to help with that. Could I get your name?"</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Retention — nothing known</td>
+      <td>"Hi, thanks for staying on the line. I know our automated system wasn't quite what you needed — I'm a live agent and I'm here to help. What's going on today?"</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Spanish-speaking caller</td>
+      <td>"Hola, gracias por llamar. ¿En qué le puedo ayudar hoy?"</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Pharmacy — member authenticated</td>
+      <td>"Hi, thanks for holding. I understand you're calling on behalf of <strong>[patientName]</strong> — how can I help you today?"</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Pharmacy — member not authenticated</td>
+      <td>"Hi, thanks for holding. I understand you're calling on behalf of a patient. I'll need to verify the patient's information — I have <strong>[fields]</strong> — is that correct?"</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Caregiver proxy — chief complaint known</td>
+      <td>"Hi, thanks for holding. I understand you're calling on behalf of <strong>[patientName]</strong> for a <strong>[chiefComplaint]</strong> — let me help you get that booked."</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Caregiver proxy — no chief complaint</td>
+      <td>"Hi, thanks for holding. I understand you're calling on behalf of <strong>[patientName]</strong> — how can I help you today?"</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Consent declined — scheduling intent</td>
+      <td>"Hi <strong>[firstName]</strong>, thanks for holding. I see you're calling about a <strong>[chiefComplaint]</strong> visit — I do need to let you know that without your consent to our service agreement, I'm unable to book an appointment. Would you like me to walk you through the consent process now?"</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Billing inquiry — authenticated</td>
+      <td>"Hi <strong>[firstName]</strong>, thanks for holding. I understand you have a question about your billing — I'm happy to help. What would you like to know?"</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Dermatology inquiry — authenticated</td>
+      <td>"Hi <strong>[firstName]</strong>, thanks for holding. I understand you have some questions about dermatology — what would you like to know?"</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Behavioral health — authenticated</td>
+      <td>"Hi <strong>[firstName]</strong>, thanks for holding. I understand you're looking to schedule a behavioral health appointment — I'm here to help you get that set up."</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Authenticated — chief complaint known</td>
+      <td>"Hi <strong>[firstName]</strong>, thanks for holding. I understand you're calling about needing a visit to take care of your <strong>[chiefComplaint]</strong> — a call with one of our next available providers could help. Does that sound right?"</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Authenticated — no chief complaint</td>
+      <td>"Hi <strong>[firstName]</strong>, thanks for holding. How can I help you today?"</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Not authenticated (default)</td>
+      <td>"Hi <strong>[firstName]</strong>, I see you need help with your <strong>[chiefComplaint]</strong> — I just need to double-check your information. I have <strong>[fields]</strong> — is this correct?"</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Scenario → branch reference
+
+<table>
+  <thead>
+    <tr>
+      <th style={{width:"5rem"}}>Scenario</th>
+      <th>Label</th>
+      <th style={{width:"14rem"}}>Branch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Schedule visit — authenticated</td><td>16 · Authenticated + chief complaint</td></tr>
+    <tr><td>2</td><td>Schedule visit — not authenticated (name mismatch)</td><td>18 · Not authenticated</td></tr>
+    <tr><td>3</td><td>Multiple accounts — not authenticated</td><td>18 · Not authenticated</td></tr>
+    <tr><td>4</td><td>Spanish-speaking — authenticated</td><td>7 · Spanish caller</td></tr>
+    <tr><td>5</td><td>Caregiver proxy — minor child</td><td>10 · Caregiver proxy + complaint</td></tr>
+    <tr><td>6</td><td>Consent declined — scheduling blocked</td><td>12 · Consent blocked</td></tr>
+    <tr><td>7</td><td>Consent declined — billing inquiry</td><td>13 · Billing inquiry</td></tr>
+    <tr><td>8</td><td>Pharmacy — authenticated</td><td>8 · Pharmacy + authenticated</td></tr>
+    <tr><td>9</td><td>Pharmacy — not authenticated</td><td>9 · Pharmacy + not authenticated</td></tr>
+    <tr><td>10</td><td>Dermatology inquiry — authenticated</td><td>14 · Dermatology</td></tr>
+    <tr><td>11</td><td>Dermatology inquiry — not authenticated</td><td>18 · Not authenticated</td></tr>
+    <tr><td>12</td><td>Behavioral health — authenticated</td><td>15 · Behavioral health</td></tr>
+    <tr><td>13</td><td>Retention — caller wanted to disconnect, no identity</td><td>6 · Retention, nothing known</td></tr>
+    <tr><td>14</td><td>Mental health crisis — no identity known</td><td>2 · Emergency, name unknown</td></tr>
+    <tr><td>15</td><td>Dropped call — Call ID lookup</td><td><em>No script — panel shows Call ID lookup state</em></td></tr>
+    <tr><td>16</td><td>Retention — intent captured, name/DOB not collected</td><td>5 · Retention, intent only</td></tr>
+    <tr><td>17</td><td>Retention — intent + name, DOB not collected</td><td>4 · Retention, intent + name</td></tr>
+    <tr><td>18</td><td>Retention — intent + name + DOB captured</td><td>3 · Retention, intent + name + DOB</td></tr>
+    <tr><td>19</td><td>Mental health crisis — name captured, not authenticated</td><td>1 · Emergency, name known</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Variable key
+
+<table>
+  <thead>
+    <tr>
+      <th style={{width:"10rem"}}>Variable</th>
+      <th>Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>[firstName]</code></td><td><code>matchedPatient.firstName</code> → <code>collectedFields.firstName</code> → <code>"there"</code></td></tr>
+    <tr><td><code>[patientName]</code></td><td><code>matchedPatient.firstName + lastName</code> → <code>"the patient"</code> / <code>"your child"</code></td></tr>
+    <tr><td><code>[chiefComplaint]</code></td><td><code>visitReason.callerStatement</code> (lower-cased, period stripped)</td></tr>
+    <tr><td><code>[topic]</code></td><td><code>chiefComplaint</code> → <code>SERVICE_LINE_TITLES[suggestedServiceLine]</code></td></tr>
+    <tr><td><code>[fields]</code></td><td>Joined list of: name · DOB as MM/DD/YYYY · Phone as XXX-XXX-XXXX</td></tr>
+    <tr><td><code>[MM/DD/YYYY]</code></td><td><code>collectedFields.dob</code> formatted as month/day/year</td></tr>
+  </tbody>
+</table>
