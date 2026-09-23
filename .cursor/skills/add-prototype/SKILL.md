@@ -182,8 +182,9 @@ Keep every prototype self-contained. Do not modify unrelated prototypes. Use fic
 
 ## STAGE 5: VALIDATE AND PREVIEW
 
-1. Run `node scripts/validate-prototypes.js`.
-2. Run `node scripts/build-prototype-catalog.js`.
+1. Run `node scripts/check-repo-layout.cjs`.
+2. Run `node scripts/validate-prototypes.cjs`.
+3. Run `node scripts/build-prototype-catalog.cjs`.
 3. Confirm the prototype appears **exactly once** in the generated catalog.
 4. Confirm entry point, asset paths, and required files are present.
 5. Start a local server from `Prototypes/` and verify:
@@ -225,7 +226,7 @@ Only after explicit approval:
 
 1. Pull the latest `origin/main` safely again.
 2. **Stop** if remote changes create a conflict. Do not delete another contributor’s work to resolve a conflict. Explain in plain language and recommend the next safe step.
-3. Re-run `node scripts/validate-prototypes.js` and `node scripts/build-prototype-catalog.js`.
+3. Re-run `node scripts/check-repo-layout.cjs`, `node scripts/validate-prototypes.cjs`, and `node scripts/build-prototype-catalog.cjs`.
 4. Run `git status`, `git diff`, and `git diff --check`.
 5. Confirm no unrelated files changed.
 6. Stage only the intended prototype folder, new project README if created, `prototype.json`, and `Prototypes/generated/catalog.json`.

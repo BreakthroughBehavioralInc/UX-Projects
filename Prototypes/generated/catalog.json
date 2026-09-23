@@ -1,7 +1,27 @@
 {
-  "generatedAt": "2026-09-14T15:03:37.107Z",
-  "count": 2,
+  "generatedAt": "2026-09-23T17:54:45.901Z",
+  "count": 3,
   "prototypes": [
+    {
+      "name": "KR 2.2 – Reduce AHT MVP",
+      "project": "KR 2.2 – Reduce AHT",
+      "category": "CSA",
+      "owner": "AlfredoCMDL",
+      "status": "In Review",
+      "description": "Sierra AI handoff panel v2 — clean developer deliverable. All 19 call-flow scenarios with progressive script personalization (auth/retention/emergency branches). Pending SME sign-off on script templates.",
+      "version": "2.0.0",
+      "lastUpdated": "2026-09-14",
+      "tags": [
+        "csa",
+        "sierra-ai",
+        "handoff",
+        "aht",
+        "call-center",
+        "script-templates",
+        "v2"
+      ],
+      "url": "./CSA/kr-2-2-reduce-aht/mvp/"
+    },
     {
       "name": "KR 2.2 – Reduce AHT V1",
       "project": "KR 2.2 – Reduce AHT",

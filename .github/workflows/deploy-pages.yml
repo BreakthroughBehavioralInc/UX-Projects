@@ -29,11 +29,14 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Check repository layout
+        run: node scripts/check-repo-layout.cjs
+
       - name: Validate prototypes
-        run: node scripts/validate-prototypes.js
+        run: node scripts/validate-prototypes.cjs
 
       - name: Build prototype catalog
-        run: node scripts/build-prototype-catalog.js
+        run: node scripts/build-prototype-catalog.cjs
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

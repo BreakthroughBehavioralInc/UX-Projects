@@ -4,7 +4,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const { CATEGORIES } = require('./prototype-categories')
+const { CATEGORIES } = require('./prototype-categories.cjs')
 
 const ROOT = process.env.PROTOTYPES_ROOT
   ? path.resolve(process.env.PROTOTYPES_ROOT)

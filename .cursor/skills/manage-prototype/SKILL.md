@@ -168,8 +168,9 @@ Treat Archive as a separate request. Prototype Hub enforces archive exclusivity 
 
 When the action requires file or metadata changes:
 
-1. Run `node scripts/validate-prototypes.js`.
-2. Run `node scripts/build-prototype-catalog.js`.
+1. Run `node scripts/check-repo-layout.cjs`.
+2. Run `node scripts/validate-prototypes.cjs`.
+3. Run `node scripts/build-prototype-catalog.cjs`.
 3. Confirm the prototype appears correctly in the generated catalog.
 4. Start local previews for the prototype and Prototype Hub when useful.
 5. Show validation results and the contributor review checklist.

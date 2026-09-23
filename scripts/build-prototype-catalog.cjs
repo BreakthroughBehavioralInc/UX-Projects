@@ -4,7 +4,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const { CATEGORIES } = require('./prototype-categories')
+const { CATEGORIES } = require('./prototype-categories.cjs')
 
 const ROOT = path.join(__dirname, '..', 'Prototypes')
 const OUTPUT = path.join(ROOT, 'generated', 'catalog.json')

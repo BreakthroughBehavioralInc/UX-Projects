@@ -70,9 +70,13 @@ UX-Projects/
 │       ├── manage-prototype/
 │       └── prototype-help/
 ├── scripts/
-│   ├── prototype-categories.js
-│   ├── build-prototype-catalog.js
-│   └── validate-prototypes.js
+│   ├── prototype-categories.cjs
+│   ├── build-prototype-catalog.cjs
+│   ├── validate-prototypes.cjs
+│   └── check-repo-layout.cjs
+│
+├── workspaces/                  # Node/Storybook dev projects (never package.json at repo root)
+│   └── <project-slug>/
 ├── .github/
 │   └── workflows/
 │       └── deploy-pages.yml
@@ -84,7 +88,7 @@ UX-Projects/
     ├── js/
     │   └── hub.js                 # Catalog UI; Manage action generates @manage-prototype prompts only
     ├── generated/
-    │   └── catalog.json           # Built by scripts/build-prototype-catalog.js
+    │   └── catalog.json           # Built by scripts/build-prototype-catalog.cjs
     ├── Patient/
     │   └── <project-name>/
     │       └── <prototype-name>/
@@ -134,7 +138,7 @@ The Hub is static and prompt-generation only. It does not write to the repositor
 
 ### Catalog source
 
-`scripts/build-prototype-catalog.js` reads each `prototype.json` under `Prototypes/Patient/`, `Prototypes/Provider/`, and `Prototypes/CSA/` and writes `Prototypes/generated/catalog.json`. Approved categories are defined in `scripts/prototype-categories.js`. Contributors and the Hub UI do not edit the catalog directly.
+`scripts/build-prototype-catalog.cjs` reads each `prototype.json` under `Prototypes/Patient/`, `Prototypes/Provider/`, and `Prototypes/CSA/` and writes `Prototypes/generated/catalog.json`. Approved categories are defined in `scripts/prototype-categories.cjs`. Contributors and the Hub UI do not edit the catalog directly.
 
 ### Category metrics and filters
 
@@ -176,8 +180,9 @@ On open, Manage loads catalog tags into `originalTags` and `workingTags`. Chip a
 Contributors use skills for the standard workflow. Maintainers run validation before publish:
 
 ```bash
-node scripts/validate-prototypes.js
-node scripts/build-prototype-catalog.js
+node scripts/check-repo-layout.cjs
+node scripts/validate-prototypes.cjs
+node scripts/build-prototype-catalog.cjs
 ```
 
 Approved workflow publishes directly to `main` after contributor approval. Before push, pull `origin/main`, stop on conflicts, and never force-push. Confirm deployment under **Actions > Deploy GitHub Pages**.
@@ -240,8 +245,9 @@ Contributors do not manually edit `prototype.json` or `Prototypes/generated/cata
 ## Local Preview and Validation
 
 ```bash
-node scripts/validate-prototypes.js
-node scripts/build-prototype-catalog.js
+node scripts/check-repo-layout.cjs
+node scripts/validate-prototypes.cjs
+node scripts/build-prototype-catalog.cjs
 cd Prototypes
 python3 -m http.server 8000
 ```
@@ -279,14 +285,18 @@ Approved workflow publishes directly to `main` after validation and contributor 
 
 ## Deployment
 
-Deployment is handled by `.github/workflows/deploy-pages.yml`.
+Deployment is handled **only** by `.github/workflows/deploy-pages.yml`.
 
 | Setting | Value |
 |---------|-------|
 | Trigger | Push to `main`, or manual **Run workflow** |
 | Published folder | Entire `Prototypes/` directory |
-| Pre-deploy steps | `validate-prototypes.js`, then `build-prototype-catalog.js` |
+| Pre-deploy steps | `check-repo-layout.cjs`, `validate-prototypes.cjs`, `build-prototype-catalog.cjs` |
 | Pages visibility | **Private** |
+
+**Do not** add a second Pages workflow (for example `peaceiris/actions-gh-pages` or `deploy.yml`). That conflicts with the Hub deploy and can take the site offline.
+
+Node.js / Storybook source belongs in `workspaces/<project-slug>/`, not at the repository root. A root `package.json` breaks Hub validation scripts.
 
 The base URL opens **Prototype Hub**. Archived prototypes remain accessible by direct URL but are hidden from the default Prototype Hub view.
 
@@ -322,8 +332,9 @@ git pull origin main
 After changes:
 
 ```bash
-node scripts/validate-prototypes.js
-node scripts/build-prototype-catalog.js
+node scripts/check-repo-layout.cjs
+node scripts/validate-prototypes.cjs
+node scripts/build-prototype-catalog.cjs
 git status
 git diff
 git add Prototypes/<category>/<project-name>/<prototype-name>
@@ -343,6 +354,8 @@ Stop and diagnose safely if there are unexpected changes, merge conflicts, or an
 - Use fictional or sanitized information only
 - Never include PHI, PII, credentials, secrets, tokens, or production exports
 - Do not change repository visibility or deployment settings without approval
+- Do not add `package.json` at the repository root — use `workspaces/<project-slug>/`
+- Do not add a second GitHub Pages workflow — Hub deploy uses `deploy-pages.yml` only
 - Treat Prototype Hub as a prototype review environment, not a production application
 
 ---
@@ -403,5 +416,5 @@ This prototype uses fictional or sanitized data and is not a production applicat
 11. Pull the latest `origin/main` again before publishing.
 12. Stop if remote changes conflict. Do not delete another contributor’s work to resolve a conflict.
 13. If the same catalog or project file was changed by someone else, stop and diagnose safely before continuing.
-14. Run `node scripts/validate-prototypes.js` and `node scripts/build-prototype-catalog.js` before publishing.
+14. Run `node scripts/check-repo-layout.cjs`, `node scripts/validate-prototypes.cjs`, and `node scripts/build-prototype-catalog.cjs` before publishing.
 15. Confirm deployment under **Actions > Deploy GitHub Pages** after pushing changes that affect the published prototype.
