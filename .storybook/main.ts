@@ -21,6 +21,7 @@ const config: StorybookConfig = {
     autodocs: false,
   },
   viteFinal: (config) => {
+    config.base = process.env.STORYBOOK_BASE_URL ?? '/';
     config.plugins = [...(config.plugins ?? []), tailwindcss()];
     config.resolve = {
       ...config.resolve,

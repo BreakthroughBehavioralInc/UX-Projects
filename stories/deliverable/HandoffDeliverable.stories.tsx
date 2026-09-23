@@ -152,7 +152,6 @@ function makeStory(scenario: TransferContextScenario): Story {
 export const S01_ScheduleVisitAuthenticated: Story = makeStory(MVP_SCENARIOS[0]);
 export const S02_ScheduleVisitNotAuthenticated: Story = makeStory(MVP_SCENARIOS[1]);
 export const S03_MultipleAccountsNotAuthenticated: Story = makeStory(MVP_SCENARIOS[2]);
-export const S04_SpanishSpeakingAuthenticated: Story = makeStory(MVP_SCENARIOS[3]);
 export const S05_CaregiverProxyMinorChild: Story = makeStory(MVP_SCENARIOS[4]);
 export const S06_ConsentDeclinedSchedulingBlocked: Story = makeStory(MVP_SCENARIOS[5]);
 export const S07_ConsentDeclinedBillingInquiry: Story = makeStory(MVP_SCENARIOS[6]);
